@@ -6,4 +6,5 @@ export type City = {
   max: number;
   feelsLike: number;
   weather: string;
+  icon: string;
 };

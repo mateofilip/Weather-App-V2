@@ -1,5 +1,6 @@
 import type { City } from "../types/City";
 import Card from "./Card";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 export default function Cards({
   cities,
@@ -8,27 +9,32 @@ export default function Cards({
   cities: City[];
   onClose: (id: number) => void;
 }) {
+  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
+
   return (
-    <section>
+    <main className="px-5 py-10">
       {cities.length > 0 ? (
-        <div>
+        <div ref={parent} className="flex flex-col-reverse gap-5">
           {cities.map((city: City) => (
             <Card
               key={city.id}
               id={city.id}
-              temperature={city.temperature}
-              max={city.max}
-              min={city.min}
               name={city.name}
+              temperature={city.temperature}
+              min={city.min}
+              max={city.max}
+              feelsLike={city.feelsLike}
+              weather={city.weather}
+              icon={city.icon}
               onClose={() => onClose(city.id)}
             />
           ))}
         </div>
       ) : (
-        <div className="animate__animated animate__fadeIn w-full h-full grid place-items-center mt-48">
+        <div className="animate__animated animate__fadeIn mt-48 grid h-full w-full place-items-center">
           <h1 className="m-0 mt-8 text-2xl">Search for a City Above!</h1>
         </div>
       )}
-    </section>
+    </main>
   );
 }

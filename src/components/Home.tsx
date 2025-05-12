@@ -14,7 +14,7 @@ export default function Home() {
   async function onSearch(cityToSearch: string) {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityToSearch}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityToSearch}&appid=${apiKey}&units=metric`,
       );
       const data = await response.json();
       const city = {
@@ -25,6 +25,7 @@ export default function Home() {
         max: data.list[0].main.temp_max,
         feelsLike: data.list[0].main.feels_like,
         weather: data.list[0].weather[0].main,
+        icon: data.list[0].weather[0].icon,
       };
 
       cities.some((c) => c.id === city.id)
@@ -41,9 +42,7 @@ export default function Home() {
     <>
       <Nav onSearch={onSearch} />
 
-      <main>
-        <Cards cities={cities} onClose={onClose} />
-      </main>
+      <Cards cities={cities} onClose={onClose} />
     </>
   );
 }
