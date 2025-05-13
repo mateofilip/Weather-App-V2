@@ -12,9 +12,12 @@ export default function Cards({
   const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
 
   return (
-    <main className="px-5 py-10">
+    <main className="px-10 py-10 md:px-16 lg:px-64">
       {cities.length > 0 ? (
-        <div ref={parent} className="flex flex-col-reverse gap-5">
+        <div
+          ref={parent}
+          className="flex flex-col-reverse gap-5 md:grid md:grid-cols-2 lg:grid-cols-3"
+        >
           {cities.map((city: City) => (
             <Card
               key={city.id}

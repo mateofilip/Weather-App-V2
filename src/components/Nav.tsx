@@ -26,13 +26,13 @@ export default function Nav({
           <input
             type="search"
             placeholder="🔎   Search for a City!"
-            className="w-full rounded-md bg-gray-100 px-5 py-3 shadow-md"
+            className="w-full rounded-md bg-gray-100 px-5 py-3 shadow-lg"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </form>
 
-        <button className="rounded-md bg-gray-100 px-5 py-3 shadow-md">
+        <button className="rounded-md bg-gray-100 px-5 py-3 shadow-lg">
           🌙
         </button>
       </div>
