@@ -22,7 +22,7 @@ export default function Card({
   onClose,
 }: CardProps) {
   return (
-    <article className="relative grid place-items-center gap-5 rounded-3xl bg-white px-5 py-10 text-center shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
+    <article className="relative grid place-items-center gap-5 rounded-3xl bg-white px-5 py-12 text-center shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
       <button
         onClick={onClose}
         className="absolute top-0 right-0 mt-3 mr-3 grid h-7 w-7 place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
@@ -38,7 +38,8 @@ export default function Card({
         </svg>
       </button>
       <img
-        src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"}
+        src={"/weather-icons/" + icon + ".svg"}
+        className="w-1/3 drop-shadow-sm"
         width="100"
         height="100"
         alt={name}
