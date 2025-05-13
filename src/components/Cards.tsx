@@ -1,6 +1,9 @@
 import type { City } from "../types/City";
+// import type { Blendy } from "blendy";
+// import { createBlendy } from "blendy";
 import Card from "./Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+// import { useRef, useEffect } from "react";
 
 export default function Cards({
   cities,
@@ -10,6 +13,11 @@ export default function Cards({
   onClose: (id: number) => void;
 }) {
   const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
+  // const blendy = createBlendy();
+
+  // useEffect(() => {
+  //   blendy.update();
+  // }, [cities]);
 
   return (
     <main className="px-10 py-10 md:px-16 lg:px-64">
