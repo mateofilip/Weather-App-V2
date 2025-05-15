@@ -26,11 +26,15 @@ export default function Home() {
         feelsLike: data.list[0].main.feels_like,
         weather: data.list[0].weather[0].main,
         icon: data.list[0].weather[0].icon,
+        sunrise: data.city.sunrise,
+        sunset: data.city.sunset,
+        humidity: data.list[0].main.humidity,
+        pressure: data.list[0].main.pressure,
       };
 
       cities.some((c) => c.id === city.id)
         ? alert("City already added")
-        : setCities([...cities, city]);
+        : setCities([city, ...cities]);
       console.log(city);
     } catch (error) {
       alert("City not found");

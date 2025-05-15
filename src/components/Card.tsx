@@ -1,7 +1,8 @@
-import type { Blendy } from "blendy";
-import { createBlendy } from "blendy";
+// import type { Blendy } from "blendy";
+// import { createBlendy } from "blendy";
 import { useRef, useState, useEffect } from "react";
-import { createPortal } from "react-dom";
+// import { createPortal } from "react-dom";
+import WeatherDetail from "./WeatherDetail";
 
 interface CardProps {
   id: number;
@@ -12,6 +13,10 @@ interface CardProps {
   feelsLike: number;
   weather: string;
   icon: string;
+  sunrise: number;
+  sunset: number;
+  humidity: number;
+  pressure: number;
   onClose: () => void;
 }
 
@@ -24,28 +29,31 @@ export default function Card({
   feelsLike,
   weather,
   icon,
+  sunrise,
+  sunset,
+  humidity,
+  pressure,
   onClose,
 }: CardProps) {
-  const blendy = useRef<Blendy | null>(null);
+  // const blendy = useRef<Blendy | null>(null);
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    blendy.current = createBlendy();
-  }, []);
+  // useEffect(() => {
+  //   blendy.current = createBlendy();
+  // }, []);
 
   return (
     <>
       <article
-        className="relative grid place-items-center gap-5 rounded-3xl bg-white px-5 py-12 text-center shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
+        className="relative grid cursor-pointer place-items-center gap-5 rounded-3xl bg-white px-5 py-10 text-center opacity-90 shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
         onClick={() => {
           setShowModal(true);
-          blendy.current?.toggle("card");
         }}
         data-blendy-from="card"
       >
         <button
           onClick={onClose}
-          className="absolute top-0 right-0 mt-3 mr-3 grid h-7 w-7 place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
+          className="absolute top-0 right-0 mt-3 mr-3 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +70,7 @@ export default function Card({
           className="w-1/3 drop-shadow-sm"
           width="100"
           height="100"
-          alt={name}
+          alt={weather}
         />
         <div>
           <h3 className="text-3xl">{name}</h3>
@@ -77,34 +85,22 @@ export default function Card({
         </div>
       </article>
 
-      {showModal &&
-        createPortal(
-          <WeatherDetail
-            onClose={() => {
-              blendy.current?.untoggle("card", () => {
-                setShowModal(false);
-              });
-            }}
-          />,
-          document.body,
-        )}
+      {showModal && (
+        <WeatherDetail
+          setShowModal={setShowModal}
+          name={name}
+          temperature={temperature}
+          min={min}
+          max={max}
+          feelsLike={feelsLike}
+          weather={weather}
+          icon={icon}
+          sunrise={sunrise}
+          sunset={sunset}
+          humidity={humidity}
+          pressure={pressure}
+        />
+      )}
     </>
-  );
-}
-
-function WeatherDetail({
-  onClose,
-}: {
-  onClose: React.MouseEventHandler<HTMLElement>;
-}) {
-  return (
-    <div
-      className="fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-black/50"
-      data-blendy-to="card"
-    >
-      <button className="bg-white" onClick={onClose}>
-        CLOSE
-      </button>
-    </div>
   );
 }

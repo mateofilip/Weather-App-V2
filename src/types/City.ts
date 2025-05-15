@@ -7,4 +7,8 @@ export type City = {
   feelsLike: number;
   weather: string;
   icon: string;
+  sunrise: number;
+  sunset: number;
+  humidity: number;
+  pressure: number;
 };

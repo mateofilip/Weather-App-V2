@@ -8,13 +8,13 @@ export default function Nav({
   const [city, setCity] = useState("");
 
   return (
-    <nav className="flex h-1/10 w-screen justify-center gap-3 bg-white px-0 py-10 align-middle shadow-xl md:justify-between md:px-15">
+    <nav className="mx-auto mt-3 flex h-1/12 w-[75vw] justify-center gap-3 rounded-full bg-white px-10 pr-3 align-middle opacity-85 shadow-xl md:justify-between">
       <div className="hidden items-center gap-2 md:flex md:text-xl">
         <span>☀</span>
         <h1>Weather App - Mateo Filip</h1>
       </div>
 
-      <div className="flex w-full items-center justify-center gap-3 align-middle md:w-1/2 lg:w-1/4">
+      <div className="flex w-full items-center justify-center gap-3 align-middle md:w-1/2 lg:w-1/3">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -25,14 +25,14 @@ export default function Nav({
         >
           <input
             type="search"
-            placeholder="🔎   Search for a City!"
-            className="w-full rounded-md bg-gray-100 px-5 py-3 shadow-lg"
+            placeholder="🔎 Search for a City!"
+            className="w-full rounded-full bg-slate-100 px-5 py-3 text-center shadow-md"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </form>
 
-        <button className="rounded-md bg-gray-100 px-5 py-3 shadow-lg">
+        <button className="rounded-full bg-slate-100 p-5 px-4 py-3 shadow-md">
           🌙
         </button>
       </div>

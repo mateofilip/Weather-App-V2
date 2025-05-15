@@ -24,7 +24,7 @@ export default function Cards({
       {cities.length > 0 ? (
         <div
           ref={parent}
-          className="flex flex-col-reverse gap-5 md:grid md:grid-cols-2 lg:grid-cols-3"
+          className="flex flex-col gap-5 md:grid md:grid-cols-2 lg:grid-cols-3"
         >
           {cities.map((city: City) => (
             <Card
@@ -37,6 +37,10 @@ export default function Cards({
               feelsLike={city.feelsLike}
               weather={city.weather}
               icon={city.icon}
+              sunrise={city.sunrise}
+              sunset={city.sunset}
+              humidity={city.humidity}
+              pressure={city.pressure}
               onClose={() => onClose(city.id)}
             />
           ))}
