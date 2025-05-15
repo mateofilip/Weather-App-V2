@@ -20,7 +20,7 @@ export default function Cards({
   // }, [cities]);
 
   return (
-    <main className="px-10 py-10 md:px-16 lg:px-64">
+    <main className="px-10 py-10 pt-4 md:px-16 md:pt-10 lg:px-64">
       {cities.length > 0 ? (
         <div
           ref={parent}
