@@ -53,7 +53,7 @@ export default function Card({
       >
         <button
           onClick={onClose}
-          className="absolute top-0 right-0 mt-3 mr-3 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
+          className="absolute top-0 right-0 mt-3 mr-3 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,12 +73,14 @@ export default function Card({
           alt={weather}
         />
         <div>
-          <h3 className="text-3xl">{name}</h3>
-          <h5 className="text-sm text-gray-700">{weather}</h5>
+          <h3 className="text-3xl text-slate-800">{name}</h3>
+          <h5 className="text-sm text-slate-600">{weather}</h5>
         </div>
         <div className="flex flex-col gap-2">
-          <h5 className="text-5xl font-bold">{Math.round(temperature)}°C</h5>
-          <p className="text-lg text-gray-700">
+          <h5 className="text-5xl font-bold text-slate-800">
+            {Math.round(temperature)}°C
+          </h5>
+          <p className="text-lg text-gray-600">
             {Math.round(min)}°C | {Math.round(max)}°C
           </p>
           {/* <p>Feels like {Math.round(feelsLike)}°C</p> */}
