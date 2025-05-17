@@ -1,5 +1,6 @@
 import Nav from "./Nav";
 import Cards from "./Cards";
+import Footer from "./Footer";
 import { useState } from "react";
 import type { City } from "../types/City";
 const apiKey = "95ec01f8b61f542bd3d75bc4a0bf4394";
@@ -47,6 +48,8 @@ export default function Home() {
       <Nav onSearch={onSearch} />
 
       <Cards cities={cities} onClose={onClose} />
+
+      <Footer />
     </>
   );
 }
