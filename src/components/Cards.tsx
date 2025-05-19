@@ -20,7 +20,7 @@ export default function Cards({
   // }, [cities]);
 
   return (
-    <main className="relative px-10 py-10 pt-4 md:px-16 md:pt-10 lg:px-64">
+    <main className="px-10 py-10 pt-4 md:px-16 md:pt-10 lg:px-64">
       {cities.length > 0 ? (
         <div
           ref={parent}
@@ -46,8 +46,9 @@ export default function Cards({
           ))}
         </div>
       ) : (
-        <div className="animate__animated animate__fadeIn mt-48 grid h-full w-full place-items-center">
-          <h1 className="m-0 mt-8 text-2xl">Search for a City Above!</h1>
+        <div className="grid place-items-center text-slate-700">
+          <img src="/weather-icons/icon.png" alt="icon" className="w-1/7" />
+          <h1 className="text-2xl">Search for a City Above!</h1>
         </div>
       )}
     </main>

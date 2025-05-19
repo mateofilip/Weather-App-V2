@@ -73,11 +73,11 @@ export default function Card({
           alt={weather}
         />
         <div>
-          <h3 className="text-3xl text-slate-800">{name}</h3>
-          <h5 className="text-sm text-slate-600">{weather}</h5>
+          <h3 className="text-3xl text-slate-700">{name}</h3>
+          <h5 className="text-sm text-slate-500">{weather}</h5>
         </div>
         <div className="flex flex-col gap-2">
-          <h5 className="text-5xl font-bold text-slate-800">
+          <h5 className="text-5xl font-semibold text-slate-700">
             {Math.round(temperature)}°C
           </h5>
           <p className="text-lg text-gray-600">
