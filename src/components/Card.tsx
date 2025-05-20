@@ -17,6 +17,7 @@ interface CardProps {
   sunset: number;
   humidity: number;
   pressure: number;
+  wind: number;
   onClose: () => void;
 }
 
@@ -33,6 +34,7 @@ export default function Card({
   sunset,
   humidity,
   pressure,
+  wind,
   onClose,
 }: CardProps) {
   // const blendy = useRef<Blendy | null>(null);
@@ -84,7 +86,7 @@ export default function Card({
           <h5 className="text-5xl font-semibold text-slate-700 dark:text-slate-100">
             {Math.round(temperature)}°C
           </h5>
-          <p className="text-lg text-gray-600 dark:text-slate-400">
+          <p className="text-lg text-slate-600 dark:text-slate-400">
             {Math.round(min)}°C | {Math.round(max)}°C
           </p>
           {/* <p>Feels like {Math.round(feelsLike)}°C</p> */}
@@ -105,6 +107,7 @@ export default function Card({
           sunset={sunset}
           humidity={humidity}
           pressure={pressure}
+          wind={wind}
         />
       )}
     </>

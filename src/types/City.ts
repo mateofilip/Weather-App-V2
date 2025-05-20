@@ -11,4 +11,5 @@ export type City = {
   sunset: number;
   humidity: number;
   pressure: number;
+  wind: number;
 };

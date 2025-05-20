@@ -41,6 +41,7 @@ export default function Cards({
               sunset={city.sunset}
               humidity={city.humidity}
               pressure={city.pressure}
+              wind={city.wind}
               onClose={() => onClose(city.id)}
             />
           ))}

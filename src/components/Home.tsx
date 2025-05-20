@@ -44,6 +44,7 @@ export default function Home() {
         sunset: data.city.sunset,
         humidity: data.list[0].main.humidity,
         pressure: data.list[0].main.pressure,
+        wind: data.list[0].wind.speed,
       };
 
       cities.some((c) => c.id === city.id)
