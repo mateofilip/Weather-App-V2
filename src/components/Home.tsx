@@ -1,6 +1,7 @@
 import Nav from "./Nav";
 import Cards from "./Cards";
 import Footer from "./Footer";
+import { Toaster, toast } from "sonner";
 import { useState } from "react";
 import type { City } from "../types/City";
 const apiKey = "95ec01f8b61f542bd3d75bc4a0bf4394";
@@ -34,18 +35,19 @@ export default function Home() {
       };
 
       cities.some((c) => c.id === city.id)
-        ? alert("City already added")
+        ? toast.warning("City already added.")
         : setCities([city, ...cities]);
       console.log(city);
     } catch (error) {
-      alert("City not found");
-      console.log(error);
+      toast.error("City not found.");
     }
   }
 
   return (
     <>
       <Nav onSearch={onSearch} />
+
+      <Toaster richColors closeButton />
 
       <Cards cities={cities} onClose={onClose} />
 
