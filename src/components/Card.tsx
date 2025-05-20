@@ -45,7 +45,7 @@ export default function Card({
   return (
     <>
       <article
-        className="relative grid cursor-pointer place-items-center gap-5 rounded-3xl bg-white px-5 py-10 text-center opacity-90 shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
+        className="relative grid cursor-pointer place-items-center gap-5 rounded-3xl bg-white px-5 py-10 text-center opacity-90 shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:bg-slate-700"
         onClick={() => {
           setShowModal(true);
         }}
@@ -73,14 +73,18 @@ export default function Card({
           alt={weather}
         />
         <div>
-          <h3 className="text-3xl text-slate-700">{name}</h3>
-          <h5 className="text-sm text-slate-500">{weather}</h5>
+          <h3 className="text-3xl text-slate-700 dark:text-slate-100">
+            {name}
+          </h3>
+          <h5 className="text-sm text-slate-500 dark:text-slate-300">
+            {weather}
+          </h5>
         </div>
         <div className="flex flex-col gap-2">
-          <h5 className="text-5xl font-semibold text-slate-700">
+          <h5 className="text-5xl font-semibold text-slate-700 dark:text-slate-100">
             {Math.round(temperature)}°C
           </h5>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-slate-400">
             {Math.round(min)}°C | {Math.round(max)}°C
           </p>
           {/* <p>Feels like {Math.round(feelsLike)}°C</p> */}

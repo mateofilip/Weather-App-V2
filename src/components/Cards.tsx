@@ -46,8 +46,12 @@ export default function Cards({
           ))}
         </div>
       ) : (
-        <div className="grid place-items-center text-slate-700">
-          <img src="/weather-icons/icon.png" alt="icon" className="w-1/7" />
+        <div className="grid place-items-center text-slate-700 dark:text-slate-100">
+          <img
+            src="/weather-icons/icon.png"
+            alt="icon"
+            className="w-1/2 md:w-1/4 lg:w-1/7"
+          />
           <h1 className="text-2xl">Search for a City Above!</h1>
         </div>
       )}
