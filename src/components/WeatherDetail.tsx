@@ -39,12 +39,12 @@ export default function WeatherDetail({
       // data-blendy-to="card"
     >
       <div
-        className="relative flex h-[85vh] w-[85vw] flex-col place-items-center rounded-2xl bg-white px-3 py-5 lg:flex-row lg:p-10 dark:bg-slate-700"
+        className="relative flex h-[85vh] w-[85vw] flex-col place-items-center gap-3 rounded-2xl bg-white/50 p-3 backdrop-blur-md lg:flex-row lg:p-3 dark:bg-slate-700/50"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={() => setShowModal(false)}
-          className="absolute top-0 right-0 z-50 mt-3 mr-3 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
+          className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export default function WeatherDetail({
             <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
           </svg>
         </button>
-        <div className="flex h-1/2 flex-col place-items-center justify-center gap-3 text-center lg:h-full lg:w-1/2 lg:gap-5">
+        <div className="flex h-1/2 flex-col place-items-center justify-center gap-3 rounded-2xl bg-slate-100 text-center opacity-85 lg:h-full lg:w-1/2 lg:gap-5 dark:bg-slate-800">
           <img
             src={"/weather-icons/" + icon + ".png"}
             className="w-1/3 drop-shadow-sm md:w-1/4 lg:w-1/3"
@@ -82,7 +82,7 @@ export default function WeatherDetail({
           </div>
         </div>
 
-        <div className="grid h-1/2 w-full grid-cols-2 grid-rows-3 place-items-center gap-2 lg:h-full lg:w-1/2 lg:gap-3">
+        <div className="grid h-1/2 w-full grid-cols-2 grid-rows-3 place-items-center gap-3 lg:h-full lg:w-1/2 lg:gap-3">
           <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
             <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
               <svg
