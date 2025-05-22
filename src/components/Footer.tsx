@@ -1,6 +1,16 @@
+import { useState } from "react";
+import TimeMachineModal from "./TimeMachineModal.tsx";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+
 export default function Footer() {
+  const [showModal, setShowModal] = useState(false);
+  const [parent, enableAnimations] = useAutoAnimate();
+
   return (
-    <footer className="bottom-0 flex flex-col items-center px-10 pb-0">
+    <footer
+      className="bottom-0 flex flex-col items-center px-10 pb-0"
+      ref={parent}
+    >
       <p className="pb-5 text-center text-xs text-slate-800 md:w-2/3 md:text-sm dark:text-slate-200">
         Roughly laid out in{" "}
         <a
@@ -58,18 +68,26 @@ export default function Footer() {
         </a>{" "}
         typeface.
       </p>
-      <a
+      {/* <a
         href="https://mf-weather-app.vercel.app/"
         target="_blank"
         rel="noreferrer noopener"
         className="grid place-items-end"
+      > */}
+
+      <button
+        className="grid place-items-end"
+        onClick={() => setShowModal(true)}
       >
         <img
           src="./src/assets/time-machine.png"
           alt="Time Machine"
           className="w-1/3 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-5 hover:scale-105 md:mr-3 md:mb-5 md:w-1/7 lg:w-1/10"
         />
-      </a>
+      </button>
+
+      {showModal && <TimeMachineModal setShowModal={setShowModal} />}
+      {/* </a> */}
     </footer>
   );
 }

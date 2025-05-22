@@ -12,12 +12,7 @@ export default function Cards({
   cities: City[];
   onClose: (id: number) => void;
 }) {
-  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
-  // const blendy = createBlendy();
-
-  // useEffect(() => {
-  //   blendy.update();
-  // }, [cities]);
+  const [parent, enableAnimations] = useAutoAnimate();
 
   return (
     <main className="px-10 py-10 pt-4 md:px-16 md:pt-10 lg:px-64">

@@ -39,7 +39,7 @@ export default function WeatherDetail({
       // data-blendy-to="card"
     >
       <div
-        className="relative flex h-[85vh] w-[85vw] flex-col place-items-center gap-3 rounded-2xl bg-white/50 p-3 backdrop-blur-md lg:flex-row lg:p-3 dark:bg-slate-700/50"
+        className="relative flex h-3/4 w-3/4 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-sm lg:flex-row lg:p-3 dark:bg-slate-700/66"
         onClick={(e) => e.stopPropagation()}
       >
         <button
