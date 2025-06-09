@@ -46,7 +46,7 @@ export default function Cards({
           <img
             src="/weather-icons/icon.png"
             alt="icon"
-            className="w-1/2 md:w-1/4 lg:w-1/7"
+            className="w-1/2 md:w-1/4 lg:w-1/8"
           />
           <h1 className="text-2xl">Search for a City Above!</h1>
         </div>

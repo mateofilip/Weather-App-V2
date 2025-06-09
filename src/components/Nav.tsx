@@ -38,14 +38,14 @@ export default function Nav({
           <input
             type="search"
             placeholder="🔎 Search for a City!"
-            className="w-full rounded-full bg-slate-100 px-5 py-3 text-center shadow-md dark:bg-slate-700 dark:text-slate-100"
+            className="w-full rounded-full bg-slate-100 px-5 py-3 text-center shadow-md transition-all duration-300 ease-in-out hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </form>
 
         <button
-          className="cursor-pointer rounded-full bg-slate-100 px-4 py-4 text-slate-700 shadow-md dark:bg-slate-700 dark:text-slate-100"
+          className="cursor-pointer rounded-full bg-slate-100 px-4 py-4 text-slate-700 shadow-md transition-colors duration-300 ease-in-out hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
           onClick={toggleTheme}
         >
           {isDark ? (
