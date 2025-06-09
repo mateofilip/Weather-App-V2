@@ -38,7 +38,7 @@ export default function TimeMachineModal({
               href="https://mf-weather-app.vercel.app/"
               target="_blank"
               rel="noreferrer noopener"
-              className="group w-1/2"
+              className="group w-10/12 md:w-2/3 lg:w-1/2"
             >
               <div className="rounded-2xl border-2 border-slate-700 p-[1px] dark:border-slate-100">
                 <img
