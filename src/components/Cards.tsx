@@ -1,9 +1,6 @@
 import type { City } from "../types/City";
-// import type { Blendy } from "blendy";
-// import { createBlendy } from "blendy";
 import Card from "./Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-// import { useRef, useEffect } from "react";
 
 export default function Cards({
   cities,

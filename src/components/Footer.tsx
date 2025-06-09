@@ -12,25 +12,16 @@ export default function Footer() {
       ref={parent}
     >
       <p className="pb-5 text-center text-xs text-slate-800 md:w-2/3 md:text-sm dark:text-slate-200">
-        Roughly laid out in{" "}
-        <a
-          href="https://www.figma.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
-        >
-          Figma
-        </a>
-        , brought to life in{" "}
+        Built in{" "}
         <a
           href="https://code.visualstudio.com/"
           target="_blank"
           rel="noreferrer noopener"
           className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
-          Visual Studio Code
+          Visual Studio Code,
         </a>{" "}
-        by yours truly. Powered by{" "}
+        powered by{" "}
         <a
           href="https://astro.build/"
           target="_blank"
@@ -39,7 +30,7 @@ export default function Footer() {
         >
           Astro
         </a>
-        , styled with{" "}
+        , styled using{" "}
         <a
           href="https://tailwindcss.com/"
           target="_blank"
@@ -48,7 +39,7 @@ export default function Footer() {
         >
           Tailwind CSS
         </a>
-        , and shipped with{" "}
+        , and delivered by{" "}
         <a
           href="https://vercel.com/"
           target="_blank"
@@ -57,7 +48,7 @@ export default function Footer() {
         >
           Vercel
         </a>
-        . All wrapped up in the{" "}
+        . All encapsulated within the{" "}
         <a
           href="https://www.fontshare.com/fonts/satoshi"
           target="_blank"
@@ -66,14 +57,17 @@ export default function Footer() {
         >
           Satoshi
         </a>{" "}
-        typeface.
+        font with the help of some AI generated icons. Data is brought by{" "}
+        <a
+          href="https://openweathermap.org/api"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+        >
+          OpenWeatherMap API
+        </a>
+        .
       </p>
-      {/* <a
-        href="https://mf-weather-app.vercel.app/"
-        target="_blank"
-        rel="noreferrer noopener"
-        className="grid place-items-end"
-      > */}
 
       <button
         className="grid place-items-end"
@@ -87,7 +81,6 @@ export default function Footer() {
       </button>
 
       {showModal && <TimeMachineModal setShowModal={setShowModal} />}
-      {/* </a> */}
     </footer>
   );
 }

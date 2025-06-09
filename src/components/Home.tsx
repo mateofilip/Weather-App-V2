@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import { Toaster, toast } from "sonner";
 import { useState, useEffect } from "react";
 import type { City } from "../types/City";
-const apiKey = "95ec01f8b61f542bd3d75bc4a0bf4394";
+const apiKey = (await import.meta.env.PUBLIC_API_KEY) as string;
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
