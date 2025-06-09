@@ -41,7 +41,7 @@ export default function Cards({
       ) : (
         <div className="grid place-items-center text-slate-700 dark:text-slate-100">
           <img
-            src="../weather-icons/icon.png"
+            src="/weather-icons/icon.png"
             alt="icon"
             className="w-1/2 md:w-1/4 lg:w-1/8"
           />
