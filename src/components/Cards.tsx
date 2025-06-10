@@ -2,6 +2,8 @@ import type { City } from "../types/City";
 import Card from "./Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
+const iconUrl = require("/weather-icons/icon.png").default;
+
 export default function Cards({
   cities,
   onClose,
@@ -40,11 +42,7 @@ export default function Cards({
         </div>
       ) : (
         <div className="grid place-items-center text-slate-700 dark:text-slate-100">
-          <img
-            src="/weather-icons/icon.png"
-            alt="icon"
-            className="w-1/2 md:w-1/4 lg:w-1/8"
-          />
+          <img src={iconUrl} alt="icon" className="w-1/2 md:w-1/4 lg:w-1/8" />
           <h1 className="text-2xl">Search for a City Above!</h1>
         </div>
       )}
