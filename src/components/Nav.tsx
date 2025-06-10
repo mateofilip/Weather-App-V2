@@ -1,4 +1,5 @@
 import { useState } from "react";
+const iconUrl = "src/assets/icon.png";
 
 export default function Nav({
   onSearch,
@@ -22,7 +23,7 @@ export default function Nav({
   return (
     <nav className="mx-auto mt-3 flex h-1/12 w-[80vw] justify-between gap-3 rounded-full bg-white p-3 align-middle opacity-85 shadow-lg transition-all duration-300 ease-in-out hover:scale-[103%] hover:shadow-xl md:w-[75vw] md:justify-between md:px-10 md:pr-3 dark:bg-slate-800">
       <div className="hidden items-center gap-2 text-slate-700 md:flex md:text-xl dark:text-slate-100">
-        <img src="./src/assets/icon.png" alt="icon" className="h-1/2" />
+        <img src={iconUrl} alt="icon" className="h-1/2" />
         <h1 className="">Weather App</h1>
       </div>
 
