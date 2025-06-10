@@ -41,11 +41,11 @@ export default function TimeMachineModal({
               className="group w-10/12 md:w-2/3 lg:w-1/2"
             >
               <div className="rounded-2xl border-2 border-slate-700 p-[1px] dark:border-slate-100">
-                <img
+                {/* <img
                   src="src/icons/v1site.png"
                   alt="v1 Site"
                   className="relative rounded-xl transition-all duration-300 ease-in-out hover:blur-xs hover:brightness-33"
-                />
+                /> */}
               </div>
 
               <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold text-slate-100 opacity-0 drop-shadow-xl group-hover:opacity-100">
