@@ -42,7 +42,7 @@ export default function TimeMachineModal({
             >
               <div className="rounded-2xl border-2 border-slate-700 p-[1px] dark:border-slate-100">
                 <img
-                  src="src/weather-icons/v1site.png"
+                  src="src/icons/v1site.png"
                   alt="v1 Site"
                   className="relative rounded-xl transition-all duration-300 ease-in-out hover:blur-xs hover:brightness-33"
                 />
