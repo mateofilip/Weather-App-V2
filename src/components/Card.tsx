@@ -1,7 +1,4 @@
-// import type { Blendy } from "blendy";
-// import { createBlendy } from "blendy";
 import { useRef, useState, useEffect } from "react";
-// import { createPortal } from "react-dom";
 import WeatherDetail from "./WeatherDetail";
 
 interface CardProps {
@@ -37,12 +34,7 @@ export default function Card({
   wind,
   onClose,
 }: CardProps) {
-  // const blendy = useRef<Blendy | null>(null);
   const [showModal, setShowModal] = useState(false);
-
-  // useEffect(() => {
-  //   blendy.current = createBlendy();
-  // }, []);
 
   return (
     <>
@@ -68,7 +60,7 @@ export default function Card({
           </svg>
         </button>
         <img
-          src={"/weather-icons/" + icon + ".png"}
+          src={"src/weather-icons/" + icon + ".png"}
           className="w-1/3 drop-shadow-sm"
           width="100"
           height="100"
@@ -89,7 +81,6 @@ export default function Card({
           <p className="text-lg text-slate-600 dark:text-slate-400">
             {Math.round(min)}°C | {Math.round(max)}°C
           </p>
-          {/* <p>Feels like {Math.round(feelsLike)}°C</p> */}
         </div>
       </article>
 

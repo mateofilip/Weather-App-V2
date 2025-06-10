@@ -36,7 +36,6 @@ export default function WeatherDetail({
     <div
       className="fixed top-0 left-0 z-50 grid h-screen w-screen place-items-center bg-black/50 dark:bg-black/60"
       onClick={() => setShowModal(false)}
-      // data-blendy-to="card"
     >
       <div
         className="relative flex h-3/4 w-3/4 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-sm lg:flex-row lg:p-3 dark:bg-slate-700/66"
@@ -58,7 +57,7 @@ export default function WeatherDetail({
         </button>
         <div className="flex h-1/2 flex-col place-items-center justify-center gap-3 rounded-2xl bg-slate-100 text-center opacity-85 lg:h-full lg:w-1/2 lg:gap-5 dark:bg-slate-800">
           <img
-            src={"/weather-icons/" + icon + ".png"}
+            src={"src/weather-icons/" + icon + ".png"}
             className="w-1/3 drop-shadow-sm md:w-1/4 lg:w-1/3"
             width="100"
             height="100"
