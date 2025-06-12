@@ -57,7 +57,7 @@ export default function WeatherDetail({
         </button>
         <div className="flex h-1/2 flex-col place-items-center justify-center gap-3 rounded-2xl bg-slate-100 text-center opacity-85 lg:h-full lg:w-1/2 lg:gap-5 dark:bg-slate-800">
           <img
-            src={"src/icons/" + icon + ".png"}
+            src={"/icons/" + icon + ".png"}
             className="w-1/3 drop-shadow-sm md:w-1/4 lg:w-1/3"
             width="100"
             height="100"

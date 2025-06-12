@@ -60,7 +60,7 @@ export default function Card({
           </svg>
         </button>
         <img
-          src={"src/icons/" + icon + ".png"}
+          src={"/icons/" + icon + ".png"}
           className="w-1/3 drop-shadow-sm"
           width="100"
           height="100"

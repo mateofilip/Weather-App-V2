@@ -50,7 +50,6 @@ export default function Home() {
       cities.some((c) => c.id === city.id)
         ? toast.warning("City already added.")
         : setCities([city, ...cities]);
-      console.log(city);
     } catch (error) {
       toast.error("City not found.");
     }
