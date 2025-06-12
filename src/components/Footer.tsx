@@ -73,11 +73,11 @@ export default function Footer() {
         className="grid place-items-end"
         onClick={() => setShowModal(true)}
       >
-        {/* <img
+        <img
           src="src\icons\timemachine.png"
           alt="Time Machine"
           className="w-1/3 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-5 hover:scale-105 md:mr-3 md:mb-5 md:w-1/7 lg:w-1/10"
-        /> */}
+        />
       </button>
 
       {showModal && <TimeMachineModal setShowModal={setShowModal} />}
