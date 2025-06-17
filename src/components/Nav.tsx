@@ -26,26 +26,27 @@ export default function Nav({
         <h1 className="">Weather App</h1>
       </div>
 
-      <div className="flex w-full items-center justify-between align-middle md:w-1/2 md:justify-end md:gap-3">
+      <div className="flex h-full w-full items-center justify-between align-middle md:w-1/2 md:justify-end md:gap-3">
         <form
+          action="."
           onSubmit={(e) => {
             e.preventDefault();
             onSearch(city);
             setCity("");
           }}
-          className="w-4/5 md:w-3/4"
+          className="h-full w-4/5 md:w-3/4"
         >
           <input
             type="search"
             placeholder="🔎 Search for a City!"
-            className="w-full rounded-full bg-slate-100 px-5 py-3 text-center shadow-md transition-all duration-300 ease-in-out hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
+            className="h-full w-full rounded-full bg-slate-100 px-5 py-3 text-center shadow-md transition-all duration-300 ease-in-out hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </form>
 
         <button
-          className="cursor-pointer rounded-full bg-slate-100 px-4 py-4 text-slate-700 shadow-md transition-colors duration-300 ease-in-out hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
+          className="h-full cursor-pointer rounded-full bg-slate-100 px-4 py-4 text-slate-700 shadow-md transition-colors duration-300 ease-in-out hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
           onClick={toggleTheme}
         >
           {isDark ? (
