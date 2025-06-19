@@ -35,7 +35,7 @@ export default function TimeMachineModal({
             </h2>
 
             <a
-              href="https://mf-weather-app.vercel.app/"
+              href="https://old-mf-weather-app.vercel.app/"
               target="_blank"
               rel="noreferrer noopener"
               className="group w-10/12 md:w-2/3 lg:w-1/2"
