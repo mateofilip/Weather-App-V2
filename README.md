@@ -1,48 +1,71 @@
-# Astro Starter Kit: Basics
+# Weather App V2
+
+A modern, responsive weather application built with Astro, React, and Tailwind CSS. Get real-time weather forecasts for any city, with beautiful UI, dark/light mode, and detailed weather info.
+
+## Features
+
+- 🌤️ Search for any city and view current weather details
+- 📊 See temperature, min/max, feels like, humidity, pressure, wind, sunrise/sunset
+- 🌓 Toggle between light and dark mode
+- 🗂️ Animated, responsive weather cards
+- 🕰️ "Time Machine" modal to visit the previous version of the app
+- 🚫 Prevents duplicate cities and handles errors gracefully
+- ⚡ Fast, smooth UI with auto-animations
+- 🖼️ Custom icons and Satoshi font
+
+## Screenshots
+
+![Weather App Screenshot](public/icons/v1site.png)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm
+- An OpenWeatherMap API key
+
+### Setup
+
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   cd Weather-App-V2
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file in the root and add your API key:
+   ```env
+   PUBLIC_API_KEY=your_openweathermap_api_key
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
+   The app will be available at `http://localhost:4321`.
+
+### Build for Production
 
 ```sh
-npm create astro@latest -- --template basics
+npm run build
+npm run preview
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Deployment
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Deploy easily to Vercel, Netlify, or any static host.
+- Ensure your `PUBLIC_API_KEY` is set in your deployment environment variables.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Credits
 
-## 🚀 Project Structure
+- [Astro](https://astro.build/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [Fontshare Satoshi](https://www.fontshare.com/fonts/satoshi)
 
-Inside of your Astro project, you'll see the following folders and files:
+---
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+© 2024 Weather App V2. Built by [Your Name].
