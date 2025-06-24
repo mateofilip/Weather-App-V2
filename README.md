@@ -15,7 +15,7 @@ A modern, responsive weather application built with Astro, React, and Tailwind C
 
 ## Screenshots
 
-![Weather App Screenshot](public/icons/v1site.png)
+![Weather App Screenshot](public/icons/v2site.png)
 
 ## Getting Started
 
@@ -68,4 +68,4 @@ npm run preview
 
 ---
 
-© 2024 Weather App V2. Built by [Your Name].
+© 2025 Weather App V2. Built by Mateo Filip.
