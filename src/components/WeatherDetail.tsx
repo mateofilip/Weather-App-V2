@@ -105,7 +105,7 @@ export default function WeatherDetail({
                 Feels Like
               </h6>
             </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-400">
+            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
               {Math.round(feelsLike)}°C
             </p>
           </section>
@@ -129,7 +129,7 @@ export default function WeatherDetail({
                 Wind Speed
               </h6>
             </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-400">
+            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
               {" "}
               {wind} m/s
             </p>
@@ -154,7 +154,7 @@ export default function WeatherDetail({
                 Pressure
               </h6>
             </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-400">
+            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
               {" "}
               {pressure} hPa
             </p>
@@ -178,7 +178,7 @@ export default function WeatherDetail({
                 Humidity
               </h6>
             </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-400">
+            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
               {" "}
               {humidity}%
             </p>
@@ -208,7 +208,7 @@ export default function WeatherDetail({
                 Sunrise
               </h6>
             </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-400">
+            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
               {" "}
               {sunriseTime.toLocaleTimeString([], {
                 hour: "2-digit",
@@ -241,7 +241,7 @@ export default function WeatherDetail({
                 Sunset
               </h6>
             </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-400">
+            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
               {" "}
               {sunsetTime.toLocaleTimeString([], {
                 hour: "2-digit",

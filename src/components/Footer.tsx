@@ -8,10 +8,10 @@ export default function Footer() {
 
   return (
     <footer
-      className="bottom-0 flex flex-col items-center px-10 pb-0"
+      className="bottom-0 flex flex-col items-center px-4 pb-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-32"
       ref={parent}
     >
-      <p className="pb-5 text-center text-xs text-slate-800 md:w-2/3 md:text-sm dark:text-slate-200">
+      <p className="max-w-4xl pb-6 text-center text-xs text-slate-800 sm:text-sm md:text-base lg:text-sm xl:text-base dark:text-slate-200">
         Built in{" "}
         <a
           href="https://code.visualstudio.com/"
@@ -76,7 +76,7 @@ export default function Footer() {
         <img
           src="/icons/timemachine.png"
           alt="Time Machine"
-          className="w-1/3 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-5 hover:scale-105 md:mr-3 md:mb-5 md:w-1/7 lg:w-1/10"
+          className="w-12 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32"
         />
       </button>
 
