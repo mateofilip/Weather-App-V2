@@ -20,7 +20,7 @@ export default function Nav({
   };
 
   return (
-    <nav className="mx-auto mt-4 flex min-h-[60px] w-[95vw] max-w-6xl items-center justify-between gap-4 rounded-full bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl sm:px-6 md:px-8 lg:px-10 dark:bg-slate-800/90">
+    <nav className="mx-auto mt-4 flex min-h-[60px] w-[95vw] max-w-6xl items-center justify-between gap-4 rounded-full bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl sm:relative sm:top-4 sm:z-10 sm:mt-4 sm:px-6 md:px-8 lg:px-10 dark:bg-slate-800/90">
       {/* Logo and Title - Hidden on mobile */}
       <div className="hidden items-center gap-3 text-slate-700 sm:flex dark:text-slate-100">
         <img
@@ -48,7 +48,7 @@ export default function Nav({
           <input
             type="search"
             placeholder="🔎 Search for a City!"
-            className="h-10 w-full rounded-full bg-slate-100 px-4 py-2 text-center text-sm shadow-md transition-all duration-300 ease-in-out placeholder:text-slate-500 hover:bg-slate-200 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none sm:h-12 sm:text-base dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-400 dark:hover:bg-slate-600 dark:focus:bg-slate-600"
+            className="h-10 w-full rounded-full bg-slate-100 px-4 py-2 text-center text-sm shadow-md transition-all duration-300 ease-in-out placeholder:text-slate-500 hover:bg-slate-200 focus:ring-2 focus:ring-blue-500/20 focus:outline-none sm:h-12 sm:text-base dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-400 dark:hover:bg-slate-600 dark:focus:bg-slate-600"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />

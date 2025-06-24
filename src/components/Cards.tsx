@@ -12,11 +12,11 @@ export default function Cards({
   const [parent, enableAnimations] = useAutoAnimate();
 
   return (
-    <main className="px-4 py-8 sm:px-6 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
+    <main className="px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
       {cities.length > 0 ? (
         <div
           ref={parent}
-          className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
         >
           {cities.map((city: City) => (
             <Card
@@ -39,13 +39,13 @@ export default function Cards({
           ))}
         </div>
       ) : (
-        <div className="flex min-h-[60vh] flex-col items-center justify-center text-slate-700 dark:text-slate-100">
+        <div className="flex min-h-[50vh] flex-col items-center justify-center text-slate-700 sm:min-h-[60vh] dark:text-slate-100">
           <img
             src="/icons/icon.png"
             alt="icon"
-            className="mb-6 w-24 sm:w-32 lg:w-40"
+            className="mb-4 w-20 sm:mb-6 sm:w-24 lg:w-32"
           />
-          <h1 className="text-xl sm:text-2xl lg:text-3xl">
+          <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl">
             Search for a City Above!
           </h1>
         </div>
