@@ -76,7 +76,7 @@ export default function Footer() {
         <img
           src="/icons/timemachine.png"
           alt="Time Machine"
-          className="w-10 cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 sm:w-12 md:w-16 lg:w-20 xl:w-24 2xl:w-28"
+          className="w-10 animate-pulse cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 sm:w-12 md:w-16 lg:w-20 xl:w-24 2xl:w-28"
         />
       </button>
 

@@ -39,7 +39,7 @@ export default function Card({
   return (
     <>
       <article
-        className="relative grid cursor-pointer place-items-center gap-3 rounded-3xl bg-white px-5 py-8 text-center opacity-90 shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl sm:gap-4 sm:px-6 sm:py-10 lg:gap-5 lg:px-8 lg:py-12 dark:bg-slate-700"
+        className="relative grid cursor-pointer place-items-center gap-3 rounded-2xl bg-white px-5 py-8 text-center opacity-90 shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl sm:gap-4 sm:rounded-3xl sm:px-6 sm:py-10 lg:gap-5 lg:px-8 lg:py-12 dark:bg-slate-700"
         onClick={() => {
           setShowModal(true);
         }}

@@ -12,7 +12,7 @@ export default function TimeMachineModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="grid h-9/11 w-5/6 place-items-center rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 dark:bg-slate-700/66"
+        className="grid h-9/10 w-5/6 place-items-center rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 dark:bg-slate-700/66"
       >
         <button
           className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
@@ -40,11 +40,11 @@ export default function TimeMachineModal({
               rel="noreferrer noopener"
               className="group w-10/12 md:w-2/3 lg:w-1/2"
             >
-              <div className="rounded-2xl border-2 border-slate-700 p-[1px] dark:border-slate-100">
+              <div className="overflow-hidden rounded-2xl border-2 border-slate-700 p-[1px] transition-all duration-300 ease-in-out group-hover:-rotate-3 group-hover:shadow-2xl dark:border-slate-100">
                 <img
                   src="/icons/v1site.png"
                   alt="v1 Site"
-                  className="relative rounded-xl transition-all duration-300 ease-in-out hover:blur-xs hover:brightness-33"
+                  className="relative rounded-xl transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:blur-sm group-hover:brightness-50"
                 />
               </div>
 

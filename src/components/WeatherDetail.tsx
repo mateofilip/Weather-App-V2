@@ -38,7 +38,7 @@ export default function WeatherDetail({
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative flex h-9/11 w-5/6 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 lg:flex-row lg:p-3 dark:bg-slate-700/66"
+        className="relative flex h-9/10 w-5/6 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 lg:flex-row lg:p-3 dark:bg-slate-700/66"
         onClick={(e) => e.stopPropagation()}
       >
         <button

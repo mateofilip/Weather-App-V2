@@ -20,7 +20,7 @@ export default function Nav({
   };
 
   return (
-    <nav className="mx-auto mt-4 flex min-h-[60px] w-[95vw] max-w-6xl items-center justify-between gap-4 rounded-full bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl sm:relative sm:top-4 sm:z-10 sm:mt-4 sm:px-6 md:px-8 lg:px-10 dark:bg-slate-800/90">
+    <nav className="mx-auto mt-4 flex min-h-[60px] w-[95vw] max-w-6xl items-center justify-between gap-4 rounded-full bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl sm:relative sm:top-4 sm:z-10 sm:mt-0 sm:px-6 md:px-8 lg:px-10 dark:bg-slate-800/90">
       {/* Logo and Title - Hidden on mobile */}
       <div className="hidden items-center gap-3 text-slate-700 sm:flex dark:text-slate-100">
         <img
