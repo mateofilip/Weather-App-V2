@@ -7,12 +7,12 @@ export default function TimeMachineModal({
 }: TimeMachineModalProps) {
   return (
     <div
-      className="fixed top-0 left-0 z-50 grid h-screen w-screen place-items-center bg-black/50 dark:bg-black/60"
+      className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/50 dark:bg-black/60"
       onClick={() => setShowModal(false)}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="grid h-3/4 w-3/4 place-items-center rounded-2xl bg-white/66 p-3 backdrop-blur-sm dark:bg-slate-700/66"
+        className="grid h-9/11 w-5/6 place-items-center rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 dark:bg-slate-700/66"
       >
         <button
           className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
