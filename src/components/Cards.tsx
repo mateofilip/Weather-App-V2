@@ -11,16 +11,20 @@ export default function Cards({
 }) {
   const [parent, enableAnimations] = useAutoAnimate();
 
-  const smCols = Math.min(cities.length, 2);
-  const lgCols = Math.min(cities.length, 3);
-  const gridColsClass = `grid-cols-1${cities.length > 1 ? ` sm:grid-cols-${smCols}` : ""}${cities.length > 2 ? ` lg:grid-cols-${lgCols}` : ""}`;
+  // Determine grid classes based on number of cities
+  const getGridClasses = () => {
+    if (cities.length === 1) return "grid-cols-1";
+    if (cities.length === 2) return "grid-cols-1 sm:grid-cols-2";
+    if (cities.length === 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+    return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+  };
 
   return (
     <main className="px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
       {cities.length > 0 ? (
         <div
           ref={parent}
-          className={`mx-auto grid w-fit justify-items-center gap-4 sm:gap-6 ${gridColsClass}`}
+          className={`mx-auto grid w-fit justify-items-center gap-4 sm:gap-6 ${getGridClasses()}`}
         >
           {cities.map((city: City) => (
             <Card
