@@ -28,7 +28,7 @@ export default function Nav({
           alt="Weather App Icon"
           className="h-8 w-8 sm:h-10 sm:w-10"
         />
-        <h1 className="text-lg font-semibold sm:text-xl lg:text-2xl">
+        <h1 className="text-lg font-medium sm:text-xl lg:text-2xl">
           Weather App
         </h1>
       </div>
