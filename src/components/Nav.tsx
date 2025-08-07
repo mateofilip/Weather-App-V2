@@ -48,7 +48,7 @@ export default function Nav({
           <input
             type="search"
             placeholder="🔎 Search for a City!"
-            className="h-10 w-full rounded-full bg-slate-100 px-4 py-2 text-center text-sm shadow-md transition-all duration-300 ease-in-out placeholder:text-slate-500 hover:bg-slate-200 focus:ring-2 focus:ring-blue-600/20 focus:outline-none sm:h-12 sm:text-base dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-400 dark:hover:bg-slate-600 dark:focus:bg-slate-600"
+            className="h-10 w-full rounded-full bg-slate-100 px-4 py-2 text-center shadow-md transition-all duration-300 ease-in-out placeholder:text-slate-500 hover:bg-slate-200 focus:ring-2 focus:ring-blue-600/20 focus:outline-none sm:h-12 sm:text-base dark:bg-slate-700 dark:text-slate-100 dark:placeholder:text-slate-400 dark:hover:bg-slate-600 dark:focus:bg-slate-600"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
