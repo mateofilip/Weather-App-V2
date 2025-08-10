@@ -68,7 +68,7 @@ export default function Nav({
               viewBox="0 0 15 15"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={`absolute transition-all duration-500 ease-in-out sm:h-5 sm:w-5 ${
+              className={`absolute transition-all duration-300 ease-in-out sm:h-5 sm:w-5 ${
                 isDark
                   ? "scale-100 rotate-0 opacity-100"
                   : "scale-75 -rotate-90 opacity-0"
@@ -89,7 +89,7 @@ export default function Nav({
               viewBox="0 0 15 15"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={`absolute transition-all duration-500 ease-in-out sm:h-5 sm:w-5 ${
+              className={`absolute transition-all duration-300 ease-in-out sm:h-5 sm:w-5 ${
                 isDark
                   ? "scale-75 rotate-90 opacity-0"
                   : "scale-100 rotate-0 opacity-100"
