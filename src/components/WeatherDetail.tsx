@@ -34,16 +34,16 @@ export default function WeatherDetail({
 
   return (
     <div
-      className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/50 dark:bg-black/60"
+      className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/50 backdrop-blur-sm dark:bg-black/60"
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative flex h-9/10 w-5/6 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 lg:flex-row lg:p-3 dark:bg-slate-700/66"
+        className="relative flex h-9/10 w-5/6 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-3xl md:h-3/4 md:w-3/4 lg:flex-row lg:p-3 dark:bg-slate-700/66"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={() => setShowModal(false)}
-          className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-300 ease-in-out hover:scale-110 hover:bg-red-600"
+          className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:bg-red-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

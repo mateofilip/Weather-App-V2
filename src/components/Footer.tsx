@@ -17,7 +17,7 @@ export default function Footer() {
           href="https://code.visualstudio.com/"
           target="_blank"
           rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-200 ease-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-200 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
           Visual Studio Code,
         </a>{" "}
@@ -26,7 +26,7 @@ export default function Footer() {
           href="https://astro.build/"
           target="_blank"
           rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-200 ease-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-200 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
           Astro
         </a>
@@ -35,7 +35,7 @@ export default function Footer() {
           href="https://tailwindcss.com/"
           target="_blank"
           rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-200 ease-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-200 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
           Tailwind CSS
         </a>
@@ -44,7 +44,7 @@ export default function Footer() {
           href="https://vercel.com/"
           target="_blank"
           rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-200 ease-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-200 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
           Vercel
         </a>
@@ -53,7 +53,7 @@ export default function Footer() {
           href="https://www.fontshare.com/fonts/satoshi"
           target="_blank"
           rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-200 ease-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-200 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
           Satoshi
         </a>{" "}
@@ -62,7 +62,7 @@ export default function Footer() {
           href="https://openweathermap.org/api"
           target="_blank"
           rel="noreferrer noopener"
-          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
+          className="relative cursor-pointer font-semibold text-slate-700 transition-all duration-200 ease-out after:absolute after:bottom-0 after:left-0 after:h-1/15 after:w-0 after:rounded-full after:bg-slate-700 after:transition-all after:duration-200 hover:after:w-full dark:text-slate-300 dark:after:bg-slate-300"
         >
           OpenWeatherMap API
         </a>
@@ -76,7 +76,7 @@ export default function Footer() {
         <img
           src="/icons/timemachine.png"
           alt="Time Machine"
-          className="w-10 animate-bounce cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 sm:w-12 md:w-16 lg:w-20 xl:w-24 2xl:w-28"
+          className="w-10 animate-bounce cursor-pointer transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-105 sm:w-12 md:w-16 lg:w-20 xl:w-24 2xl:w-28"
         />
       </button>
 
