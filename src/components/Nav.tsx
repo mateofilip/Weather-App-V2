@@ -36,7 +36,7 @@ export default function Nav({
         </h1>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         {/* Search Section */}
         <form
           action="."
@@ -67,7 +67,7 @@ export default function Nav({
             <input
               type="search"
               placeholder="Search..."
-              className="block w-full rounded-full border border-white/20 bg-white/20 py-2 pr-4 pl-9 text-sm text-slate-800 placeholder-slate-500 shadow-sm backdrop-blur-sm transition-all focus:w-full focus:border-blue-500/50 focus:bg-white/30 focus:ring-2 focus:ring-blue-500/20 focus:outline-none dark:bg-white/5 dark:text-slate-100 dark:placeholder-slate-400 dark:focus:bg-white/10"
+              className="text-md block w-full rounded-full border border-white/20 bg-white/20 py-2 pr-4 pl-9 text-slate-800 placeholder-slate-500 shadow-sm backdrop-blur-sm transition-all focus:w-full focus:border-blue-500/50 focus:bg-white/30 focus:ring-2 focus:ring-blue-500/20 focus:outline-none dark:bg-white/5 dark:text-slate-100 dark:placeholder-slate-400 dark:focus:bg-white/10"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />

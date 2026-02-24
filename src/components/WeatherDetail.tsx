@@ -41,16 +41,16 @@ export default function WeatherDetail({
     value: string | React.ReactNode;
     icon: React.ReactNode;
   }) => (
-    <div className="group flex flex-col justify-between gap-2 rounded-3xl border border-white/40 bg-white/60 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/80 hover:shadow-md dark:border-white/10 dark:bg-slate-800/60 dark:hover:bg-slate-700/80">
+    <div className="group flex flex-col justify-between gap-2 rounded-3xl border border-white/40 bg-white/60 p-3 shadow-sm backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/80 hover:shadow-md sm:p-4 dark:border-white/10 dark:bg-slate-800/60 dark:hover:bg-slate-700/80">
       <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
         <div className="text-slate-500 transition-colors group-hover:text-blue-500 dark:text-slate-400 dark:group-hover:text-blue-400">
           {Icon}
         </div>
-        <span className="text-sm font-medium tracking-wider uppercase opacity-80">
+        <span className="text-xs font-medium tracking-wider uppercase opacity-80 sm:text-sm">
           {title}
         </span>
       </div>
-      <p className="text-xl font-bold text-slate-800 lg:text-2xl dark:text-slate-100">
+      <p className="text-lg font-bold text-slate-800 sm:text-xl lg:text-2xl dark:text-slate-100">
         {value}
       </p>
     </div>
@@ -58,11 +58,11 @@ export default function WeatherDetail({
 
   return (
     <div
-      className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm transition-all duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm transition-all duration-300"
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative flex w-full max-w-5xl flex-col overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/90 shadow-2xl backdrop-blur-2xl transition-all lg:flex-row dark:border-white/10 dark:bg-slate-900/90"
+        className="relative my-auto flex w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] border border-white/40 bg-white/90 shadow-2xl backdrop-blur-2xl transition-all lg:flex-row lg:rounded-[2.5rem] dark:border-white/10 dark:bg-slate-900/90"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -87,13 +87,13 @@ export default function WeatherDetail({
         </button>
 
         {/* Left Side: Main Info */}
-        <div className="relative flex flex-col items-center justify-center gap-6 p-8 text-center lg:w-2/5 lg:p-12 lg:pr-0">
+        <div className="relative flex flex-col items-center justify-center gap-4 p-6 text-center lg:w-2/5 lg:gap-6 lg:p-12 lg:pr-0">
           {/* Weather Icon Glow Effect */}
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-blue-400/30 blur-3xl dark:bg-blue-600/20" />
             <img
               src={"/icons/" + icon + ".png"}
-              className="relative w-32 drop-shadow-2xl transition-transform hover:scale-110 lg:w-48"
+              className="relative w-24 drop-shadow-2xl transition-transform hover:scale-110 md:w-32 lg:w-48"
               width="150"
               height="150"
               alt={weather}
@@ -101,19 +101,20 @@ export default function WeatherDetail({
           </div>
 
           <div className="space-y-1">
-            <h2 className="text-4xl font-bold tracking-tight text-slate-800 lg:text-5xl dark:text-white">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-800 md:text-4xl lg:text-5xl dark:text-white">
               {name}
             </h2>
-            <p className="text-lg font-medium text-blue-600 lg:text-xl dark:text-blue-400">
+            <p className="text-base font-medium text-blue-600 lg:text-xl dark:text-blue-400">
               {weather}
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-2 px-8 py-4">
-            <span className="text-6xl font-bold text-slate-800 lg:text-7xl dark:text-white">
-              {Math.round(temperature)} <span className="absolute">°</span>
+          <div className="flex flex-col items-center gap-2 rounded-3xl px-6 py-3 lg:px-8 lg:py-4">
+            <span className="text-5xl font-bold text-slate-800 md:text-6xl lg:text-7xl dark:text-white">
+              {Math.round(temperature)}{" "}
+              <span className="absolute text-3xl lg:text-4xl">°</span>
             </span>
-            <div className="flex gap-4 text-slate-600 dark:text-slate-300">
+            <div className="flex gap-4 text-sm text-slate-600 lg:text-base dark:text-slate-300">
               <span className="flex items-center gap-1">
                 <span className="text-blue-500">↓</span> {Math.round(min)}°
               </span>
@@ -125,7 +126,7 @@ export default function WeatherDetail({
         </div>
 
         {/* Right Side: Details Grid */}
-        <div className="grid flex-1 grid-cols-2 gap-3 bg-slate-50/50 p-6 backdrop-blur-sm sm:gap-4 lg:grid-cols-2 lg:gap-6 lg:p-10 dark:bg-slate-900/20">
+        <div className="grid flex-1 grid-cols-2 gap-2 bg-slate-50/50 p-4 backdrop-blur-sm md:gap-3 md:p-6 lg:gap-6 lg:p-10 dark:bg-slate-900/20">
           <StatCard
             title="Feels Like"
             value={`${Math.round(feelsLike)}°`}

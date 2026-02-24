@@ -51,9 +51,9 @@ export default function Cards({
           <img
             src="/icons/icon.png"
             alt="icon"
-            className="mb-0 w-20 sm:mb-0 sm:w-24 lg:w-32"
+            className="mb-0 w-40 sm:mb-0 sm:w-24 lg:w-32"
           />
-          <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl">
+          <h1 className="text-3xl sm:text-xl lg:text-2xl xl:text-3xl">
             Search for a City Above!
           </h1>
         </div>
