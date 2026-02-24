@@ -32,66 +32,112 @@ export default function WeatherDetail({
   const sunsetTime = new Date(sunset * 1000);
   const sunriseTime = new Date(sunrise * 1000);
 
+  const StatCard = ({
+    title,
+    value,
+    icon: Icon,
+  }: {
+    title: string;
+    value: string | React.ReactNode;
+    icon: React.ReactNode;
+  }) => (
+    <div className="group flex flex-col justify-between gap-2 rounded-3xl border border-white/40 bg-white/60 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/80 hover:shadow-md dark:border-white/10 dark:bg-slate-800/60 dark:hover:bg-slate-700/80">
+      <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+        <div className="text-slate-500 transition-colors group-hover:text-blue-500 dark:text-slate-400 dark:group-hover:text-blue-400">
+          {Icon}
+        </div>
+        <span className="text-sm font-medium tracking-wider uppercase opacity-80">
+          {title}
+        </span>
+      </div>
+      <p className="text-xl font-bold text-slate-800 lg:text-2xl dark:text-slate-100">
+        {value}
+      </p>
+    </div>
+  );
+
   return (
     <div
-      className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/50 backdrop-blur-sm dark:bg-black/60"
+      className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm transition-all duration-300"
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative flex h-9/10 w-5/6 flex-col place-items-center gap-3 rounded-2xl bg-white/66 p-3 backdrop-blur-3xl md:h-3/4 md:w-3/4 lg:flex-row lg:p-3 dark:bg-slate-700/66"
+        className="relative flex w-full max-w-5xl flex-col overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/90 shadow-2xl backdrop-blur-2xl transition-all lg:flex-row dark:border-white/10 dark:bg-slate-900/90"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Close Button */}
         <button
           onClick={() => setShowModal(false)}
-          className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:bg-red-600"
+          className="absolute top-4 right-4 z-20 grid h-10 w-10 place-items-center rounded-full border border-white/40 bg-white/60 text-slate-600 shadow-sm backdrop-blur-md transition-all hover:scale-110 hover:bg-white/80 hover:text-red-500 lg:top-6 lg:right-6 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-300 dark:hover:bg-slate-700/80 dark:hover:text-red-400"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="18px"
-            fill="white"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
           >
-            <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
-        <div className="flex h-1/2 flex-col place-items-center justify-center gap-3 rounded-2xl bg-slate-100 text-center opacity-85 lg:h-full lg:w-1/2 lg:gap-5 dark:bg-slate-800">
-          <img
-            src={"/icons/" + icon + ".png"}
-            className="w-1/3 drop-shadow-sm md:w-1/4 lg:w-1/3"
-            width="100"
-            height="100"
-            alt={weather}
-          />
-          <div>
-            <h3 className="text-3xl text-slate-700 lg:text-5xl dark:text-slate-100">
-              {name}
-            </h3>
-            <h5 className="text-sm text-slate-500 lg:text-lg dark:text-slate-400">
-              {weather}
-            </h5>
+
+        {/* Left Side: Main Info */}
+        <div className="relative flex flex-col items-center justify-center gap-6 p-8 text-center lg:w-2/5 lg:p-12 lg:pr-0">
+          {/* Weather Icon Glow Effect */}
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-blue-400/30 blur-3xl dark:bg-blue-600/20" />
+            <img
+              src={"/icons/" + icon + ".png"}
+              className="relative w-32 drop-shadow-2xl transition-transform hover:scale-110 lg:w-48"
+              width="150"
+              height="150"
+              alt={weather}
+            />
           </div>
-          <div className="flex flex-col gap-2">
-            <h5 className="text-5xl font-semibold text-slate-700 lg:text-7xl dark:text-slate-100">
-              {Math.round(temperature)}°C
-            </h5>
-            <p className="text-lg text-slate-600 lg:text-3xl dark:text-slate-400">
-              {Math.round(min)}°C | {Math.round(max)}°C
+
+          <div className="space-y-1">
+            <h2 className="text-4xl font-bold tracking-tight text-slate-800 lg:text-5xl dark:text-white">
+              {name}
+            </h2>
+            <p className="text-lg font-medium text-blue-600 lg:text-xl dark:text-blue-400">
+              {weather}
             </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-2 px-8 py-4">
+            <span className="text-6xl font-bold text-slate-800 lg:text-7xl dark:text-white">
+              {Math.round(temperature)} <span className="absolute">°</span>
+            </span>
+            <div className="flex gap-4 text-slate-600 dark:text-slate-300">
+              <span className="flex items-center gap-1">
+                <span className="text-blue-500">↓</span> {Math.round(min)}°
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="text-red-500">↑</span> {Math.round(max)}°
+              </span>
+            </div>
           </div>
         </div>
 
-        <div className="grid h-1/2 w-full grid-cols-2 grid-rows-3 place-items-center gap-3 lg:h-full lg:w-1/2 lg:gap-3">
-          <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
-            <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
+        {/* Right Side: Details Grid */}
+        <div className="grid flex-1 grid-cols-2 gap-3 bg-slate-50/50 p-6 backdrop-blur-sm sm:gap-4 lg:grid-cols-2 lg:gap-6 lg:p-10 dark:bg-slate-900/20">
+          <StatCard
+            title="Feels Like"
+            value={`${Math.round(feelsLike)}°`}
+            icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-6 w-6"
               >
                 <path d="M12 9a4 4 0 0 0-2 7.5" />
@@ -101,98 +147,82 @@ export default function WeatherDetail({
                 <path d="M4 13H2" />
                 <path d="M6.34 7.34 4.93 5.93" />
               </svg>
-              <h6 className="font-semibold text-slate-700 dark:text-slate-100">
-                Feels Like
-              </h6>
-            </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
-              {Math.round(feelsLike)}°C
-            </p>
-          </section>
-          <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
-            <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
+            }
+          />
+          <StatCard
+            title="Wind Speed"
+            value={`${wind} m/s`}
+            icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-6 w-6"
               >
                 <path d="M12.8 19.6A2 2 0 1 0 14 16H2" />
                 <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2" />
                 <path d="M9.8 4.4A2 2 0 1 1 11 8H2" />
               </svg>
-              <h6 className="font-semibold text-slate-700 dark:text-slate-100">
-                Wind Speed
-              </h6>
-            </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
-              {" "}
-              {wind} m/s
-            </p>
-          </section>
-          <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
-            <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
+            }
+          />
+          <StatCard
+            title="Humidity"
+            value={`${humidity}%`}
+            icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-6 w-6"
+              >
+                <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z" />
+                <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97" />
+              </svg>
+            }
+          />
+          <StatCard
+            title="Pressure"
+            value={`${pressure} hPa`}
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-6 w-6"
               >
                 <path d="M15.6 2.7a10 10 0 1 0 5.7 5.7" />
                 <circle cx="12" cy="12" r="2" />
                 <path d="M13.4 10.6 19 5" />
               </svg>
-              <h6 className="font-semibold text-slate-700 dark:text-slate-100">
-                Pressure
-              </h6>
-            </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
-              {" "}
-              {pressure} hPa
-            </p>
-          </section>
-          <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
-            <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
+            }
+          />
+          <StatCard
+            title="Sunrise"
+            value={sunriseTime.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+            icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z" />
-                <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97" />
-              </svg>
-              <h6 className="font-semibold text-slate-700 dark:text-slate-100">
-                Humidity
-              </h6>
-            </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
-              {" "}
-              {humidity}%
-            </p>
-          </section>
-          <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
-            <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-6 w-6"
               >
                 <path d="M12 2v8" />
@@ -204,28 +234,23 @@ export default function WeatherDetail({
                 <path d="m8 6 4-4 4 4" />
                 <path d="M16 18a4 4 0 0 0-8 0" />
               </svg>
-              <h6 className="font-semibold text-slate-700 dark:text-slate-100">
-                Sunrise
-              </h6>
-            </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
-              {" "}
-              {sunriseTime.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </p>
-          </section>
-          <section className="grid h-full w-full content-between rounded-2xl bg-slate-100 p-3 opacity-85 shadow-md lg:p-5 dark:bg-slate-800">
-            <div className="flex items-center gap-1 text-slate-700 lg:text-xl dark:text-slate-100">
+            }
+          />
+          <StatCard
+            title="Sunset"
+            value={sunsetTime.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+            icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-6 w-6"
               >
                 <path d="M12 10V2" />
@@ -237,18 +262,8 @@ export default function WeatherDetail({
                 <path d="m16 6-4 4-4-4" />
                 <path d="M16 18a4 4 0 0 0-8 0" />
               </svg>
-              <h6 className="font-semibold text-slate-700 dark:text-slate-100">
-                Sunset
-              </h6>
-            </div>
-            <p className="text-xl text-slate-600 lg:text-4xl dark:text-slate-300">
-              {" "}
-              {sunsetTime.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </p>
-          </section>
+            }
+          />
         </div>
       </div>
     </div>

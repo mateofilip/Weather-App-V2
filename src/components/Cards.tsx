@@ -20,7 +20,7 @@ export default function Cards({
   };
 
   return (
-    <main className="px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
+    <main className="m-auto px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
       {cities.length > 0 ? (
         <div
           ref={parent}
