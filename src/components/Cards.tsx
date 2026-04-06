@@ -20,7 +20,7 @@ export default function Cards({
   };
 
   return (
-    <main className="px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
+    <main className="m-auto px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
       {cities.length > 0 ? (
         <div
           ref={parent}
@@ -51,9 +51,9 @@ export default function Cards({
           <img
             src="/icons/icon.png"
             alt="icon"
-            className="mb-0 w-20 sm:mb-0 sm:w-24 lg:w-32"
+            className="mb-0 w-40 sm:mb-0 sm:w-24 lg:w-32"
           />
-          <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl">
+          <h1 className="text-3xl sm:text-xl lg:text-2xl xl:text-3xl">
             Search for a City Above!
           </h1>
         </div>

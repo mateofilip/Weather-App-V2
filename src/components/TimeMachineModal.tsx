@@ -12,7 +12,7 @@ export default function TimeMachineModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="grid h-9/10 w-5/6 place-items-center rounded-2xl bg-white/66 p-3 backdrop-blur-sm md:h-3/4 md:w-3/4 dark:bg-slate-700/66"
+        className="relative grid h-9/10 w-5/6 place-items-center rounded-2xl border border-white/20 bg-white/40 p-3 shadow-2xl backdrop-blur-xl md:h-3/4 md:w-3/4 dark:border-white/10 dark:bg-slate-900/40"
       >
         <button
           className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:bg-red-600"
@@ -28,7 +28,7 @@ export default function TimeMachineModal({
             <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
           </svg>
         </button>
-        <div className="flex h-full w-full flex-col place-items-center justify-center gap-3 rounded-2xl bg-slate-100 text-center opacity-85 lg:gap-5 dark:bg-slate-800">
+        <div className="flex h-full w-full flex-col place-items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/20 text-center shadow-lg backdrop-blur-md lg:gap-5 dark:bg-white/5">
           <div className="grid place-items-center gap-5">
             <h2 className="text-center text-2xl font-semibold text-slate-700 dark:text-slate-100">
               Check this app's previous version!
