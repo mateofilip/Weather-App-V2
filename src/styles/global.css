@@ -3,12 +3,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  font-family: "Satoshi", monospace;
+  font-family: "Satoshi", system-ui, sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: "Satoshi", monospace;
+    font-family: "Satoshi", system-ui, sans-serif;
     font-optical-sizing: auto;
   }
 }
@@ -22,6 +22,6 @@
 }
 
 html {
-  font-family: "Satoshi", monospace;
+  font-family: "Satoshi", system-ui, sans-serif;
   scroll-behavior: smooth;
 }
