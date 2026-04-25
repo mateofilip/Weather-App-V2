@@ -15,7 +15,7 @@ export default function TimeMachineModal({
         className="relative grid h-9/10 w-5/6 place-items-center rounded-2xl border border-white/20 bg-white/40 p-3 shadow-2xl backdrop-blur-xl md:h-3/4 md:w-3/4 dark:border-white/10 dark:bg-slate-900/40"
       >
         <button
-          className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:bg-red-600"
+          className="absolute top-0 right-0 z-50 -mt-7 -mr-7 grid h-7 w-7 cursor-pointer place-items-center rounded-full border-2 border-black/5 bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:border-black/5 hover:bg-red-500"
           onClick={() => setShowModal(false)}
         >
           <svg

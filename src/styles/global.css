@@ -24,6 +24,4 @@
 html {
   font-family: "Satoshi", monospace;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: gray transparent;
 }
