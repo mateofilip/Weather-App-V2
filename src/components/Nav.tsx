@@ -82,7 +82,7 @@ export default function Nav({
         >
           <div className="relative h-5 w-5">
             <svg
-              className={`absolute inset-0 h-full w-full transform transition-all duration-500 ease-out ${
+              className={`absolute inset-0 h-full w-full transform transition-all duration-200 ease-out ${
                 isDark
                   ? "scale-0 rotate-180 opacity-0"
                   : "scale-100 rotate-0 opacity-100"
@@ -99,7 +99,7 @@ export default function Nav({
               />
             </svg>
             <svg
-              className={`absolute inset-0 h-full w-full transform transition-all duration-500 ease-out ${
+              className={`absolute inset-0 h-full w-full transform transition-all duration-200 ease-out ${
                 isDark
                   ? "scale-100 rotate-0 opacity-100"
                   : "scale-0 -rotate-180 opacity-0"

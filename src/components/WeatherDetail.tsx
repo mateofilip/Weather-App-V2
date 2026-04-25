@@ -41,7 +41,7 @@ export default function WeatherDetail({
     value: string | React.ReactNode;
     icon: React.ReactNode;
   }) => (
-    <div className="group flex flex-col justify-between gap-2 rounded-3xl border border-white/40 bg-white/60 p-3 shadow-sm backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/80 hover:shadow-md sm:p-4 dark:border-white/10 dark:bg-slate-800/60 dark:hover:bg-slate-700/80">
+    <div className="group flex flex-col justify-between gap-2 rounded-3xl border border-white/40 bg-white/60 p-3 shadow-sm backdrop-blur-xl transition-all duration-200 hover:scale-[1.02] hover:bg-white/80 hover:shadow-md sm:p-4 dark:border-white/10 dark:bg-slate-800/60 dark:hover:bg-slate-700/80">
       <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
         <div className="text-slate-500 transition-colors group-hover:text-blue-500 dark:text-slate-400 dark:group-hover:text-blue-400">
           {Icon}
@@ -58,7 +58,7 @@ export default function WeatherDetail({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm transition-all duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm transition-all duration-200"
       onClick={() => setShowModal(false)}
     >
       <div

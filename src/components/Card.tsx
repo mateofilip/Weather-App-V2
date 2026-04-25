@@ -39,7 +39,7 @@ export default function Card({
   return (
     <>
       <article
-        className="relative mx-auto grid w-xs cursor-pointer place-items-center gap-3 rounded-2xl bg-white/30 px-5 py-8 text-center shadow-xl backdrop-blur-md border border-white/20 transition-all duration-200 ease-out hover:scale-105 hover:shadow-2xl sm:gap-4 sm:rounded-3xl sm:px-6 sm:py-10 lg:gap-5 lg:px-8 lg:py-12 dark:bg-slate-800/30 dark:border-white/10"
+        className="relative mx-auto grid w-xs cursor-pointer place-items-center gap-3 rounded-2xl border border-white/20 bg-white/30 px-5 py-8 text-center shadow-xl backdrop-blur-md transition-all duration-200 ease-out hover:scale-105 hover:shadow-2xl sm:gap-4 sm:rounded-3xl sm:px-6 sm:py-10 lg:gap-5 lg:px-8 lg:py-12 dark:border-white/10 dark:bg-slate-800/30"
         onClick={() => {
           setShowModal(true);
         }}
@@ -47,7 +47,7 @@ export default function Card({
       >
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 grid h-6 w-6 cursor-pointer place-items-center rounded-full bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:bg-red-500 sm:top-3 sm:right-3 sm:h-7 sm:w-7"
+          className="absolute top-2 right-2 grid h-6 w-6 cursor-pointer place-items-center rounded-full border border-black/30 bg-red-400 transition-all duration-200 ease-out hover:scale-110 hover:bg-red-500 sm:top-3 sm:right-3 sm:h-7 sm:w-7"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
