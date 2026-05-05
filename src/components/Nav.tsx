@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Image } from "@lonik/oh-image/react";
 
 export default function Nav({
   onSearch,
@@ -25,10 +26,11 @@ export default function Nav({
     <nav className="sticky top-6 z-50 mx-auto mb-8 flex w-fit max-w-4xl items-center justify-between gap-3 rounded-full border border-white/30 bg-white/30 p-2 shadow-lg backdrop-blur-xl transition-all duration-200 ease-out hover:bg-white/40 hover:shadow-xl sm:gap-6 sm:p-2.5 dark:border-white/10 dark:bg-slate-900/40 dark:hover:bg-slate-900/50">
       {/* Logo Section */}
       <div className="flex items-center gap-2 pl-2">
-        <img
+        <Image
           src="/icons/navicon.png"
           alt="Weather App Icon"
           className="h-5 w-5 object-contain sm:h-6 sm:w-6"
+          priority
         />
 
         <h1 className="hidden text-lg font-bold tracking-tight text-slate-800 sm:block sm:text-xl dark:text-slate-100">

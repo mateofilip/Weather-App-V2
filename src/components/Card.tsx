@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import WeatherDetail from "./WeatherDetail";
+import { Image } from "@lonik/oh-image/react";
 
 interface CardProps {
   id: number;
@@ -60,12 +61,13 @@ export default function Card({
             <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
           </svg>
         </button>
-        <img
+        <Image
           src={"/icons/" + icon + ".png"}
           className="w-16 drop-shadow-sm sm:w-20 lg:w-24"
           width="100"
           height="100"
           alt={weather}
+          priority
         />
         <div>
           <h3 className="text-lg text-slate-700 sm:text-xl lg:text-2xl xl:text-3xl dark:text-slate-100">

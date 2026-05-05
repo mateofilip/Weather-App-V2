@@ -1,6 +1,7 @@
 import type { City } from "../types/City";
 import Card from "./Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { Image } from "@lonik/oh-image/react";
 
 export default function Cards({
   cities,
@@ -48,10 +49,16 @@ export default function Cards({
         </div>
       ) : (
         <div className="flex min-h-[50vh] flex-col items-center justify-center text-slate-700 sm:min-h-[60vh] dark:text-slate-100">
-          <img
+          {/*<img
             src="/icons/icon.png"
             alt="icon"
             className="mb-0 w-40 sm:mb-0 sm:w-24 lg:w-32"
+          />*/}
+          <Image
+            src="/icons/icon.png"
+            alt="icon"
+            className="mb-0 w-40 sm:mb-0 sm:w-24 lg:w-32"
+            priority
           />
           <h1 className="text-3xl sm:text-xl lg:text-2xl xl:text-3xl">
             Search for a City Above!

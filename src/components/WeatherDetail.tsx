@@ -1,3 +1,5 @@
+import { Image } from "@lonik/oh-image/react";
+
 interface WeatherDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
@@ -91,12 +93,13 @@ export default function WeatherDetail({
           {/* Weather Icon Glow Effect */}
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-blue-400/30 blur-3xl dark:bg-blue-600/20" />
-            <img
+            <Image
               src={"/icons/" + icon + ".png"}
               className="relative w-24 drop-shadow-2xl transition-transform hover:scale-110 md:w-32 lg:w-48"
               width="150"
               height="150"
               alt={weather}
+              priority
             />
           </div>
 

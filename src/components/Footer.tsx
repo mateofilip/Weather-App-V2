@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TimeMachineModal from "./TimeMachineModal.tsx";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { Image } from "@lonik/oh-image/react";
 
 export default function Footer() {
   const [showModal, setShowModal] = useState(false);
@@ -73,7 +74,7 @@ export default function Footer() {
         className="absolute right-0 bottom-0 ml-auto px-4 pb-6"
         onClick={() => setShowModal(true)}
       >
-        <img
+        <Image
           src="/icons/timemachine.gif"
           alt="Time Machine"
           className="w-7 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-105 sm:w-12 md:w-16 lg:w-20 xl:w-24 2xl:w-28"

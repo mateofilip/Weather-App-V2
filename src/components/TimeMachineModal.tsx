@@ -1,3 +1,5 @@
+import { Image } from "@lonik/oh-image/react";
+
 interface TimeMachineModalProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -41,10 +43,11 @@ export default function TimeMachineModal({
               className="group w-10/12 md:w-2/3 lg:w-1/2"
             >
               <div className="overflow-hidden rounded-2xl border-2 border-slate-700 p-[1px] transition-all duration-200 ease-out group-hover:-rotate-3 group-hover:shadow-2xl dark:border-slate-100">
-                <img
+                <Image
                   src="/icons/v1site.png"
                   alt="v1 Site"
                   className="relative rounded-xl transition-all duration-200 ease-out group-hover:scale-105 group-hover:blur-sm group-hover:brightness-50"
+                  priority
                 />
               </div>
 
