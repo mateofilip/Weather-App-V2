@@ -44,9 +44,11 @@ export default function TimeMachineModal({
             >
               <div className="overflow-hidden rounded-2xl border-2 border-slate-700 p-[1px] transition-all duration-200 ease-out group-hover:-rotate-3 group-hover:shadow-2xl dark:border-slate-100">
                 <Image
-                  src="/icons/v1site.png"
+                  src="/icons/v1site.avif"
                   alt="v1 Site"
                   className="relative rounded-xl transition-all duration-200 ease-out group-hover:scale-105 group-hover:blur-sm group-hover:brightness-50"
+                  width={2992}
+                  height={1880}
                   priority
                 />
               </div>

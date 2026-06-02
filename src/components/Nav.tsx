@@ -27,9 +27,11 @@ export default function Nav({
       {/* Logo Section */}
       <div className="flex items-center gap-2 pl-2">
         <Image
-          src="/icons/navicon.png"
+          src="/icons/navicon.avif"
           alt="Weather App Icon"
           className="h-5 w-5 object-contain sm:h-6 sm:w-6"
+          width={1024}
+          height={1024}
           priority
         />
 

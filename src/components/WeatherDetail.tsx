@@ -94,7 +94,7 @@ export default function WeatherDetail({
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-blue-400/30 blur-3xl dark:bg-blue-600/20" />
             <Image
-              src={"/icons/" + icon + ".png"}
+              src={"/icons/" + icon + ".avif"}
               className="relative w-24 drop-shadow-2xl transition-transform hover:scale-110 md:w-32 lg:w-48"
               width="150"
               height="150"

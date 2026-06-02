@@ -62,12 +62,11 @@ export default function Card({
           </svg>
         </button>
         <Image
-          src={"/icons/" + icon + ".png"}
+          src={"/icons/" + icon + ".avif"}
           className="w-16 drop-shadow-sm sm:w-20 lg:w-24"
-          width="100"
-          height="100"
+          width={100}
+          height={100}
           alt={weather}
-          priority
         />
         <div>
           <h3 className="text-lg text-slate-700 sm:text-xl lg:text-2xl xl:text-3xl dark:text-slate-100">
