@@ -11,7 +11,7 @@ A modern, responsive weather application built with Astro, React, and Tailwind C
 - 🕰️ "Time Machine" modal to visit the previous version of the app
 - 🚫 Prevents duplicate cities and handles errors gracefully
 - ⚡ Fast, smooth UI with auto-animations
-- 🖼️ Custom icons and Satoshi font
+- 🖼️ Custom icons and OpenRunde font
 
 ## Screenshots
 
@@ -64,7 +64,7 @@ npm run preview
 - [React](https://react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [OpenWeatherMap API](https://openweathermap.org/api)
-- [Fontshare Satoshi](https://www.fontshare.com/fonts/satoshi)
+- [OpenRunde](https://github.com/lauridskern/open-runde)
 
 ---
 

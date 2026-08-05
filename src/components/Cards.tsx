@@ -1,14 +1,16 @@
 import type { City } from "../types/City";
 import Card from "./Card";
+import EmptyState from "./EmptyState";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { Image } from "@lonik/oh-image/react";
 
 export default function Cards({
   cities,
   onClose,
+  onSearch,
 }: {
   cities: City[];
   onClose: (id: number) => void;
+  onSearch: (city: string) => void;
 }) {
   const [parent, enableAnimations] = useAutoAnimate();
 
@@ -48,24 +50,7 @@ export default function Cards({
           ))}
         </div>
       ) : (
-        <div className="flex min-h-[50vh] flex-col items-center justify-center text-slate-700 sm:min-h-[60vh] dark:text-slate-100">
-          {/*<img
-            src="/icons/icon.avif"
-            alt="icon"
-            className="mb-0 w-40 sm:mb-0 sm:w-24 lg:w-32"
-          />*/}
-          <Image
-            src="/icons/icon.avif"
-            alt="icon"
-            className="mb-0 w-40 sm:mb-0 sm:w-24 lg:w-32"
-            width={1024}
-            height={1024}
-            priority
-          />
-          <h1 className="text-3xl sm:text-xl lg:text-2xl xl:text-3xl">
-            Search for a City Above!
-          </h1>
-        </div>
+        <EmptyState onSearch={onSearch} />
       )}
     </main>
   );

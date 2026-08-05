@@ -1,6 +1,7 @@
 import Nav from "./Nav";
 import Cards from "./Cards";
-import Footer from "./Footer";
+import StackInfo from "./StackInfo";
+import TimeMachine from "./TimeMachine";
 import { Toaster, toast } from "sonner";
 import { useState, useEffect } from "react";
 import type { City } from "../types/City";
@@ -61,9 +62,11 @@ export default function Home() {
 
       <Toaster richColors closeButton />
 
-      <Cards cities={cities} onClose={onClose} />
+      <Cards cities={cities} onClose={onClose} onSearch={onSearch} />
 
-      <Footer />
+      <TimeMachine />
+
+      <StackInfo />
     </>
   );
 }

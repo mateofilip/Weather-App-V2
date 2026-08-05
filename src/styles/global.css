@@ -3,25 +3,42 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  font-family: "Satoshi", system-ui, sans-serif;
-}
-
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: "Satoshi", system-ui, sans-serif;
-    font-optical-sizing: auto;
-  }
+  font-family: "OpenRunde", system-ui, sans-serif;
 }
 
 @font-face {
-  font-family: Satoshi;
+  font-family: "OpenRunde";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
   font-display: swap;
-  src: url("/Satoshi-Variable.woff2") format("woff2");
+  src: url("/OpenRunde-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "OpenRunde";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/OpenRunde-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "OpenRunde";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/OpenRunde-Semibold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "OpenRunde";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/OpenRunde-Bold.woff2") format("woff2");
 }
 
 html {
-  font-family: "Satoshi", system-ui, sans-serif;
+  font-family: "OpenRunde", system-ui, sans-serif;
   scroll-behavior: smooth;
 }
