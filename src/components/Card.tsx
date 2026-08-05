@@ -63,7 +63,7 @@ export default function Card({
           </svg>
         </button>
 
-        <div className="flex items-start justify-between gap-3 pt-2 sm:pt-3">
+        <div className="mb-2 flex items-center justify-between gap-3">
           <div className="min-w-0">
             <h3 className="truncate text-lg font-semibold tracking-tight text-neutral-950 sm:text-xl dark:text-slate-50">
               {name}
