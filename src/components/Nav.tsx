@@ -23,7 +23,7 @@ export default function Nav({
   };
 
   return (
-    <nav className="sticky top-6 z-50 mx-auto mb-8 flex w-fit max-w-4xl items-center justify-between gap-6 rounded-full border border-slate-50/25 bg-slate-50/80 p-2 shadow-lg backdrop-blur-xl transition-all duration-200 ease-out hover:shadow-xl sm:gap-10 sm:p-2.5 dark:border-slate-50/10 dark:bg-neutral-950/60">
+    <nav className="sticky top-6 z-50 mx-auto mb-8 flex w-fit max-w-4xl items-center justify-between gap-6 rounded-full border border-slate-50/25 bg-slate-50/80 p-2 shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl transition-all duration-200 ease-out hover:shadow-md sm:gap-10 sm:p-2.5 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10">
       {/* Logo Section */}
       <div className="flex items-center gap-2 pl-2">
         <Image
@@ -71,7 +71,7 @@ export default function Nav({
             <input
               type="search"
               placeholder="Search for a city..."
-              className="text-md block w-full rounded-full border border-slate-50/25 bg-slate-50/40 py-2 pr-4 pl-9 text-neutral-950 placeholder-neutral-950/60 shadow-sm backdrop-blur-sm transition-all hover:shadow-md focus:w-full focus:border-neutral-950/50 focus:bg-slate-50/60 focus:ring-2 focus:ring-neutral-950/20 focus:outline-none dark:border-slate-50/10 dark:bg-slate-50/10 dark:text-slate-50 dark:placeholder-slate-50/60 dark:focus:border-slate-50/50 dark:focus:bg-slate-50/20 dark:focus:ring-slate-50/20"
+              className="text-md block w-full rounded-full border border-slate-50/25 bg-slate-50/40 py-2 pr-4 pl-9 text-neutral-950 placeholder-neutral-950/60 shadow-sm transition-all hover:shadow-md focus:w-full focus:border-neutral-950/50 focus:bg-slate-50/60 focus:ring-2 focus:ring-neutral-950/20 focus:outline-none dark:border-slate-50/10 dark:bg-slate-50/10 dark:text-slate-50 dark:placeholder-slate-50/60 dark:focus:border-slate-50/50 dark:focus:bg-slate-50/20 dark:focus:ring-slate-50/20"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
@@ -81,7 +81,7 @@ export default function Nav({
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="group relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-50/25 bg-slate-50/40 shadow-sm backdrop-blur-sm transition-all hover:bg-slate-50/60 hover:shadow-md focus:ring-2 focus:ring-neutral-950/20 focus:outline-none sm:h-10 sm:w-10 dark:border-slate-50/10 dark:bg-slate-50/10 dark:hover:bg-slate-50/20"
+          className="group relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-50/25 bg-slate-50/40 shadow-sm transition-all hover:bg-slate-50/60 hover:shadow-md focus:ring-2 focus:ring-neutral-950/20 focus:outline-none sm:h-10 sm:w-10 dark:border-slate-50/10 dark:bg-slate-50/10 dark:hover:bg-slate-50/20"
           aria-label="Toggle theme"
         >
           <div className="relative h-5 w-5">

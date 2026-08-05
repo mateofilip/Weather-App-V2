@@ -43,7 +43,7 @@ export default function WeatherDetail({
     value: string | React.ReactNode;
     slug: string;
   }) => (
-    <div className="group flex flex-col justify-between gap-3 rounded-2xl border border-neutral-950/10 bg-neutral-950/5 p-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-neutral-950/10 hover:shadow-md active:scale-[0.98] sm:p-5 dark:border-slate-50/10 dark:bg-slate-50/5 dark:hover:bg-slate-50/10">
+    <div className="group flex flex-col justify-between gap-3 rounded-2xl border border-slate-50/25 bg-slate-50/40 p-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-50/60 hover:shadow-md active:scale-[0.98] sm:p-5 dark:border-slate-50/10 dark:bg-slate-50/10 dark:hover:bg-slate-50/20">
       <div className="flex items-center gap-2">
         <WeatherIcon
           slug={slug}
@@ -62,11 +62,11 @@ export default function WeatherDetail({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/66 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/66 p-4 backdrop-blur-3xl"
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-neutral-950/10 bg-slate-50 shadow-2xl shadow-neutral-950/40 sm:rounded-3xl lg:max-w-5xl lg:flex-row dark:border-slate-50/10 dark:bg-neutral-950 dark:shadow-2xl dark:shadow-neutral-950/70"
+        className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-50/25 bg-slate-50/80 shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl sm:rounded-3xl lg:max-w-5xl lg:flex-row dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -87,7 +87,7 @@ export default function WeatherDetail({
         </button>
 
         {/* Hero — mirrors the card layout */}
-        <div className="flex flex-col gap-6 bg-neutral-950/5 p-6 sm:gap-7 sm:p-8 lg:w-2/5 lg:p-10 dark:bg-slate-50/5">
+        <div className="flex flex-col gap-6 bg-slate-50/40 p-6 sm:gap-7 sm:p-8 lg:w-2/5 lg:p-10 dark:bg-slate-50/10">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <h2 className="truncate text-2xl font-semibold tracking-tight text-neutral-950 sm:text-3xl dark:text-slate-50">
@@ -98,7 +98,7 @@ export default function WeatherDetail({
               </p>
             </div>
             <div className="relative shrink-0">
-              <div className="absolute -inset-3 rounded-full bg-slate-50/60 blur-xl dark:bg-slate-50/5" />
+              <div className="absolute -inset-3 rounded-full bg-slate-50/40 blur-xl dark:bg-slate-50/5" />
               <WeatherIcon
                 code={icon}
                 alt={weather}
@@ -130,7 +130,7 @@ export default function WeatherDetail({
         </div>
 
         {/* Details Grid */}
-        <div className="grid flex-1 grid-cols-2 gap-3 border-t border-neutral-950/10 p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10 dark:border-slate-50/10">
+        <div className="grid flex-1 grid-cols-2 gap-3 border-t border-neutral-950/10 bg-slate-50/90 p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10 dark:border-slate-50/10 dark:bg-neutral-900/90">
           <StatCard
             title="Feels Like"
             value={`${Math.round(feelsLike)}°`}

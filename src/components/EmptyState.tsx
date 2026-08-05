@@ -5,11 +5,11 @@ export default function EmptyState({
 }: {
   onSearch: (city: string) => void;
 }) {
-  const SUGGESTIONS = ["London", "Paris", "Tokyo", "Amsterdam"];
+  const SUGGESTIONS = ["Buenos Aires", "Paris", "Tokyo", "Amsterdam", "London"];
 
   return (
     <div className="flex min-h-[50vh] items-center justify-center sm:min-h-[60vh]">
-      <div className="mx-auto flex max-w-md flex-col items-center gap-6 rounded-3xl border border-slate-50/25 bg-slate-50/80 px-8 py-12 text-center shadow-xl shadow-neutral-950/20 ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl sm:gap-8 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:shadow-2xl dark:shadow-neutral-950/60 dark:ring-slate-50/10">
+      <div className="mx-auto flex max-w-md flex-col items-center gap-6 rounded-3xl border border-slate-50/25 bg-slate-50/80 px-8 py-12 text-center shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl sm:gap-8 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10">
         <div className="relative">
           <div className="absolute -inset-8 rounded-full bg-slate-50/60 blur-2xl dark:bg-slate-50/10" />
           <WeatherIcon

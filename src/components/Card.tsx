@@ -40,7 +40,7 @@ export default function Card({
   return (
     <>
       <article
-        className="relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl border border-slate-50/25 bg-slate-50/80 px-5 py-10 text-left shadow-xl shadow-neutral-950/20 ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-2xl active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:shadow-2xl dark:shadow-neutral-950/60 dark:ring-slate-50/10 dark:hover:shadow-2xl dark:hover:shadow-neutral-950/70"
+        className="relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl border border-slate-50/25 bg-slate-50/80 px-5 py-10 text-left shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-md active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10"
         onClick={() => {
           setShowModal(true);
         }}
