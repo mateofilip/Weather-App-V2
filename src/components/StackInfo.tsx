@@ -70,7 +70,7 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
         onClick={() => {
           open !== undefined ? onOpenChange?.(true) : setIsOpen(true);
         }}
-        className="group fixed right-4 bottom-4 z-40 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-white/70 text-black shadow-lg transition-all hover:scale-110 hover:bg-white/80 focus:outline-none active:scale-95 dark:border-white/12 dark:bg-black/33 dark:text-white dark:hover:bg-white/10"
+        className="group fixed right-4 bottom-4 z-40 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-50/25 bg-slate-50/80 text-neutral-950 shadow-lg backdrop-blur-xl transition-all hover:scale-110 hover:bg-slate-50/90 focus:outline-none active:scale-95 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:text-slate-50 dark:hover:bg-slate-50/10"
         aria-label="View Tech Stack"
       >
         <svg
@@ -89,35 +89,35 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
           <path d="M12 8h.01" />
         </svg>
         <div className="visible absolute -right-1 bottom-10 flex translate-y-2 flex-col items-end opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-hover:delay-300">
-          <div className="flex items-center gap-2 rounded-full border border-white/25 bg-white/70 px-3 py-2 text-[10px] whitespace-nowrap text-black shadow-lg dark:border-white/12 dark:bg-black/33 dark:text-white">
+          <div className="flex items-center gap-2 rounded-full border border-slate-50/25 bg-slate-50/80 px-3 py-2 text-xs whitespace-nowrap text-neutral-950 shadow-lg backdrop-blur-xl dark:border-slate-50/10 dark:bg-neutral-950/60 dark:text-slate-50">
             Tech Stack
-            <span className="float-end inline-grid w-fit place-items-center rounded-lg border border-white/25 bg-white/40 px-2 py-1 font-mono dark:border-white/12 dark:bg-white/10">
+            <span className="float-end inline-grid w-fit place-items-center rounded-lg border border-slate-50/25 bg-slate-50/40 px-2 py-1 font-mono dark:border-slate-50/10 dark:bg-slate-50/10">
               I
             </span>
           </div>
-          <div className="mr-5 h-2 w-2 -translate-y-1 rotate-45 rounded-br-sm border-r border-b border-white/25 bg-white/70 shadow-lg dark:border-white/12 dark:bg-black/33"></div>
+          <div className="mr-5 h-2 w-2 -translate-y-1 rotate-45 rounded-br-sm border-r border-b border-slate-50/25 bg-slate-50/80 shadow-lg dark:border-slate-50/10 dark:bg-neutral-950/60"></div>
         </div>
       </button>
 
       {isOpen && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm transition-opacity duration-200 ${
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-black/66 p-4 backdrop-blur-sm transition-opacity duration-200 ${
             isAnimating ? "opacity-100" : "opacity-0"
           }`}
         >
           <div
             ref={modalRef}
-            className={`w-full max-w-sm rounded-[2rem] border border-white/25 bg-white/70 p-6 shadow-2xl backdrop-blur-3xl transition-all duration-200 dark:border-white/12 dark:bg-black/33 ${
+            className={`w-full max-w-sm rounded-3xl border border-slate-50/25 bg-slate-50/90 p-6 shadow-2xl backdrop-blur-3xl transition-all duration-200 dark:border-slate-50/10 dark:bg-neutral-950/60 ${
               isAnimating ? "scale-100 opacity-100" : "scale-95 opacity-0"
             }`}
           >
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-black dark:text-white">
+              <h2 className="text-xl font-bold text-neutral-950 dark:text-slate-50">
                 Tech Stack
               </h2>
               <button
                 onClick={handleClose}
-                className="cursor-pointer rounded-full p-1 text-black transition-all hover:bg-black/10 active:scale-95 dark:text-white dark:hover:bg-white/10"
+                className="cursor-pointer rounded-full p-1 text-neutral-950 transition-all hover:bg-neutral-950/10 active:scale-95 dark:text-slate-50 dark:hover:bg-slate-50/10"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -139,19 +139,19 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
               {stack.map((item) => (
                 <li
                   key={item.name}
-                  className="flex items-center justify-between rounded-xl border border-white/25 bg-white/40 p-3 transition-all duration-200 ease-out hover:bg-white/60 dark:border-white/12 dark:bg-white/10 dark:hover:bg-white/15"
+                  className="flex items-center justify-between rounded-xl border border-slate-50/25 bg-slate-50/50 p-3 transition-all duration-200 ease-out hover:bg-slate-50/70 dark:border-slate-50/10 dark:bg-slate-50/15 dark:hover:bg-slate-50/20"
                 >
-                  <span className="font-semibold text-black dark:text-white">
+                  <span className="font-semibold text-neutral-950 dark:text-slate-50">
                     {item.name}
                   </span>
-                  <span className="rounded-full bg-black/10 px-2 py-1 text-xs font-medium text-black/70 dark:bg-white/10 dark:text-white/70">
+                  <span className="rounded-full bg-neutral-950/10 px-2 py-1 text-xs font-medium text-neutral-950/70 dark:bg-slate-50/10 dark:text-slate-50/70">
                     {item.description}
                   </span>
                 </li>
               ))}
             </ul>
             <div className="mt-6 text-center">
-              <p className="text-xs text-black/50 dark:text-white/50">
+              <p className="text-xs text-neutral-950/50 dark:text-slate-50/50">
                 Built with ❤️ by Mateo
               </p>
             </div>

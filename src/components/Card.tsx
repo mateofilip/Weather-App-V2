@@ -40,7 +40,7 @@ export default function Card({
   return (
     <>
       <article
-        className="relative mx-auto flex w-xs cursor-pointer flex-col gap-4 rounded-2xl border border-white/25 bg-white/70 px-5 py-6 text-left shadow-[0_18px_40px_-12px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_24px_50px_-14px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.35)] active:scale-[0.98] sm:gap-5 sm:rounded-3xl sm:px-6 sm:py-7 dark:border-white/12 dark:bg-black/33 dark:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:shadow-[0_24px_50px_-14px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)]"
+        className="relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl border border-slate-50/25 bg-slate-50/80 px-5 py-10 text-left shadow-xl shadow-neutral-950/20 ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-2xl active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:shadow-2xl dark:shadow-neutral-950/60 dark:ring-slate-50/10 dark:hover:shadow-2xl dark:hover:shadow-neutral-950/70"
         onClick={() => {
           setShowModal(true);
         }}
@@ -49,7 +49,7 @@ export default function Card({
         <button
           onClick={onClose}
           aria-label={`Remove ${name}`}
-          className="absolute top-2 right-2 cursor-pointer p-1 text-black/40 transition-colors duration-200 ease-out hover:text-black/60 active:scale-95 sm:top-3 sm:right-3 dark:text-white/40 dark:hover:text-white/70"
+          className="absolute top-2 right-2 cursor-pointer p-1 text-neutral-950/40 transition-colors duration-200 ease-out hover:text-neutral-950/60 active:scale-95 sm:top-3 sm:right-3 dark:text-slate-50/40 dark:hover:text-slate-50/70"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,40 +65,42 @@ export default function Card({
 
         <div className="flex items-start justify-between gap-3 pt-2 sm:pt-3">
           <div className="min-w-0">
-            <h3 className="truncate text-lg font-semibold tracking-tight text-black sm:text-xl dark:text-white">
+            <h3 className="truncate text-lg font-semibold tracking-tight text-neutral-950 sm:text-xl dark:text-slate-50">
               {name}
             </h3>
-            <p className="text-sm text-black/60 dark:text-white/70">{weather}</p>
+            <p className="truncate text-sm text-neutral-950/60 dark:text-slate-50/70">{weather}</p>
           </div>
           <div className="relative shrink-0">
-            <div className="absolute -inset-2 rounded-full bg-white/60 blur-xl dark:bg-white/10" />
+            <div className="absolute -inset-2 rounded-full bg-slate-50/60 blur-xl dark:bg-slate-50/10" />
             <WeatherIcon
               code={icon}
               alt={weather}
-              className="relative w-14 drop-shadow-sm sm:w-16 lg:w-20"
+              className="relative h-14 w-14 drop-shadow-sm sm:h-16 sm:w-16 lg:h-20 lg:w-20"
             />
           </div>
         </div>
 
-        <div>
-          <h5 className="text-5xl font-semibold tracking-tighter tabular-nums text-black/85 sm:text-6xl dark:text-white/90">
-            {Math.round(temperature)}°C
-          </h5>
-        </div>
+        <div className="flex flex-1 flex-col justify-end gap-3">
+          <div>
+            <h5 className="text-5xl font-semibold tracking-tighter tabular-nums text-neutral-950/90 sm:text-6xl dark:text-slate-50/90">
+              {Math.round(temperature)}°C
+            </h5>
+          </div>
 
-        <div className="flex items-center justify-between border-t border-black/10 pt-3 dark:border-white/12">
-          <p className="flex items-center gap-1.5 text-sm text-black/60 dark:text-white/70">
-            <span className="text-[10px] font-medium tracking-widest uppercase text-black/40 dark:text-white/40">
+          <div className="flex items-center justify-between border-t border-neutral-950/10 pt-3 dark:border-slate-50/10">
+          <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
+            <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
               Min
             </span>
             <span className="font-semibold tabular-nums">{Math.round(min)}°</span>
           </p>
-          <p className="flex items-center gap-1.5 text-sm text-black/60 dark:text-white/70">
-            <span className="text-[10px] font-medium tracking-widest uppercase text-black/40 dark:text-white/40">
+          <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
+            <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
               Max
             </span>
             <span className="font-semibold tabular-nums">{Math.round(max)}°</span>
           </p>
+          </div>
         </div>
       </article>
 

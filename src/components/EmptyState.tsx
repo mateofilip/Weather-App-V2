@@ -9,20 +9,20 @@ export default function EmptyState({
 
   return (
     <div className="flex min-h-[50vh] items-center justify-center sm:min-h-[60vh]">
-      <div className="mx-auto flex max-w-md flex-col items-center gap-6 rounded-3xl border border-white/25 bg-white/70 px-8 py-12 text-center shadow-[0_18px_40px_-12px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-md sm:gap-8 dark:border-white/12 dark:bg-black/33 dark:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)]">
+      <div className="mx-auto flex max-w-md flex-col items-center gap-6 rounded-3xl border border-slate-50/25 bg-slate-50/80 px-8 py-12 text-center shadow-xl shadow-neutral-950/20 ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl sm:gap-8 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:shadow-2xl dark:shadow-neutral-950/60 dark:ring-slate-50/10">
         <div className="relative">
-          <div className="absolute -inset-8 rounded-full bg-white/60 blur-2xl dark:bg-white/10" />
+          <div className="absolute -inset-8 rounded-full bg-slate-50/60 blur-2xl dark:bg-slate-50/10" />
           <WeatherIcon
             slug="compass-ne"
             alt="Compass"
-            className="relative w-44 sm:w-56"
+            className="relative h-44 w-44 sm:h-56 sm:w-56"
           />
         </div>
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold tracking-tight text-black sm:text-3xl dark:text-white">
+          <h1 className="text-2xl font-semibold tracking-tight text-neutral-950 sm:text-3xl dark:text-slate-50">
             What's the weather like?
           </h1>
-          <p className="text-sm text-black/60 sm:text-base dark:text-white/60">
+          <p className="text-sm text-neutral-950/60 sm:text-base dark:text-slate-50/60">
             Search for a city above, or pick one of the suggestions below.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function EmptyState({
             <button
               key={city}
               onClick={() => onSearch(city)}
-              className="cursor-pointer rounded-full border border-white/25 bg-white/60 px-4 py-2 text-sm font-medium text-black shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-md active:scale-95 dark:border-white/12 dark:bg-white/20 dark:text-white dark:hover:bg-white/30"
+              className="cursor-pointer rounded-full border border-slate-50/25 bg-slate-50/40 px-4 py-2 text-sm font-medium text-neutral-950 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-50/60 hover:shadow-md active:scale-95 dark:border-slate-50/10 dark:bg-slate-50/10 dark:text-slate-50 dark:hover:bg-slate-50/20"
             >
               {city}
             </button>

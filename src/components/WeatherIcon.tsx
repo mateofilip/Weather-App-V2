@@ -28,10 +28,12 @@ export default function WeatherIcon({
     const bbox = el.getBBox();
     if (bbox.width === 0 || bbox.height === 0) return;
 
-    const pad = 4;
+    const side = Math.max(bbox.width, bbox.height) + 8;
+    const cx = bbox.x + bbox.width / 2;
+    const cy = bbox.y + bbox.height / 2;
     el.setAttribute(
       "viewBox",
-      `${bbox.x - pad} ${bbox.y - pad} ${bbox.width + pad * 2} ${bbox.height + pad * 2}`,
+      `${cx - side / 2} ${cy - side / 2} ${side} ${side}`,
     );
   }, [body]);
 

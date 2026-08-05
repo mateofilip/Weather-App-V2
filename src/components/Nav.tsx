@@ -23,7 +23,7 @@ export default function Nav({
   };
 
   return (
-    <nav className="sticky top-6 z-50 mx-auto mb-8 flex w-fit max-w-4xl items-center justify-between gap-6 rounded-full border border-white/25 bg-white/70 p-2 shadow-lg backdrop-blur-xl transition-all duration-200 ease-out hover:bg-white/80 hover:shadow-xl sm:gap-10 sm:p-2.5 dark:border-white/12 dark:bg-black/33 dark:hover:bg-black/40">
+    <nav className="sticky top-6 z-50 mx-auto mb-8 flex w-fit max-w-4xl items-center justify-between gap-6 rounded-full border border-slate-50/25 bg-slate-50/80 p-2 shadow-lg backdrop-blur-xl transition-all duration-200 ease-out hover:shadow-xl sm:gap-10 sm:p-2.5 dark:border-slate-50/10 dark:bg-neutral-950/60">
       {/* Logo Section */}
       <div className="flex items-center gap-2 pl-2">
         <Image
@@ -35,8 +35,8 @@ export default function Nav({
           priority
         />
 
-        <h1 className="hidden text-lg font-bold tracking-tight text-black sm:block sm:text-xl dark:text-white">
-          Weather<span className="text-black/70 dark:text-white/70">App</span>
+        <h1 className="hidden text-lg font-bold tracking-tight text-neutral-950 sm:block sm:text-xl dark:text-slate-50">
+          Weather<span className="text-neutral-950/70 dark:text-slate-50/70">App</span>
         </h1>
       </div>
 
@@ -54,7 +54,7 @@ export default function Nav({
           <div className="group relative w-full">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <svg
-                className="h-4 w-4 text-black/60 transition-colors group-focus-within:text-black dark:text-white/60 dark:group-focus-within:text-white"
+                className="h-4 w-4 text-neutral-950/60 transition-colors group-focus-within:text-neutral-950 dark:text-slate-50/60 dark:group-focus-within:text-slate-50"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -71,7 +71,7 @@ export default function Nav({
             <input
               type="search"
               placeholder="Search for a city..."
-              className="text-md block w-full rounded-full border border-white/25 bg-white/40 py-2 pr-4 pl-9 text-black placeholder-black/60 shadow-sm backdrop-blur-sm transition-all focus:w-full focus:border-black/50 focus:bg-white/60 focus:ring-2 focus:ring-black/20 focus:outline-none dark:border-white/12 dark:bg-white/10 dark:text-white dark:placeholder-white/60 dark:focus:border-white/50 dark:focus:bg-white/20 dark:focus:ring-white/20"
+              className="text-md block w-full rounded-full border border-slate-50/25 bg-slate-50/40 py-2 pr-4 pl-9 text-neutral-950 placeholder-neutral-950/60 shadow-sm backdrop-blur-sm transition-all hover:shadow-md focus:w-full focus:border-neutral-950/50 focus:bg-slate-50/60 focus:ring-2 focus:ring-neutral-950/20 focus:outline-none dark:border-slate-50/10 dark:bg-slate-50/10 dark:text-slate-50 dark:placeholder-slate-50/60 dark:focus:border-slate-50/50 dark:focus:bg-slate-50/20 dark:focus:ring-slate-50/20"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
@@ -81,7 +81,7 @@ export default function Nav({
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="group relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-white/40 shadow-sm backdrop-blur-sm transition-all hover:scale-110 hover:bg-white/60 focus:ring-2 focus:ring-black/20 focus:outline-none sm:h-10 sm:w-10 dark:border-white/12 dark:bg-white/10 dark:hover:bg-white/20"
+          className="group relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-50/25 bg-slate-50/40 shadow-sm backdrop-blur-sm transition-all hover:bg-slate-50/60 hover:shadow-md focus:ring-2 focus:ring-neutral-950/20 focus:outline-none sm:h-10 sm:w-10 dark:border-slate-50/10 dark:bg-slate-50/10 dark:hover:bg-slate-50/20"
           aria-label="Toggle theme"
         >
           <div className="relative h-5 w-5">
@@ -90,7 +90,7 @@ export default function Nav({
                 isDark
                   ? "scale-0 rotate-180 opacity-0"
                   : "scale-100 rotate-0 opacity-100"
-              } text-black`}
+              } text-neutral-950`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -107,7 +107,7 @@ export default function Nav({
                 isDark
                   ? "scale-100 rotate-0 opacity-100"
                   : "scale-0 -rotate-180 opacity-0"
-              } text-white`}
+              } text-slate-50`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

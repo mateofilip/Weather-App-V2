@@ -37,22 +37,24 @@ export default function WeatherDetail({
   const StatCard = ({
     title,
     value,
-    icon: Icon,
+    slug,
   }: {
     title: string;
     value: string | React.ReactNode;
-    icon: React.ReactNode;
+    slug: string;
   }) => (
-    <div className="group flex flex-col justify-between gap-2 rounded-3xl border border-white/25 bg-white/70 p-3 shadow-sm backdrop-blur-xl transition-all duration-200 hover:scale-[1.02] hover:bg-white/40 hover:shadow-md sm:p-4 dark:border-white/12 dark:bg-black/33 dark:hover:bg-black/40">
-      <div className="flex items-center gap-2 text-black/70 dark:text-white/70">
-        <div className="text-black/60 transition-colors group-hover:text-black dark:text-white/60 dark:group-hover:text-white">
-          {Icon}
-        </div>
-        <span className="text-xs font-medium tracking-wider uppercase opacity-80 sm:text-sm">
+    <div className="group flex flex-col justify-between gap-3 rounded-2xl border border-neutral-950/10 bg-neutral-950/5 p-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-neutral-950/10 hover:shadow-md active:scale-[0.98] sm:p-5 dark:border-slate-50/10 dark:bg-slate-50/5 dark:hover:bg-slate-50/10">
+      <div className="flex items-center gap-2">
+        <WeatherIcon
+          slug={slug}
+          alt={title}
+          className="h-6 w-6 shrink-0 text-neutral-950/60 sm:h-7 sm:w-7 dark:text-slate-50/60"
+        />
+        <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
           {title}
         </span>
       </div>
-      <p className="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">
+      <p className="text-xl font-semibold tracking-tight tabular-nums text-neutral-950/90 sm:text-2xl dark:text-slate-50/90">
         {value}
       </p>
     </div>
@@ -60,154 +62,94 @@ export default function WeatherDetail({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm transition-all duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/66 p-4 backdrop-blur-sm"
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative my-auto flex w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] border border-white/25 bg-white/70 shadow-2xl backdrop-blur-2xl transition-all lg:flex-row lg:rounded-[2.5rem] dark:border-white/12 dark:bg-black/33"
+        className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-neutral-950/10 bg-slate-50 shadow-2xl shadow-neutral-950/40 sm:rounded-3xl lg:max-w-5xl lg:flex-row dark:border-slate-50/10 dark:bg-neutral-950 dark:shadow-2xl dark:shadow-neutral-950/70"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={() => setShowModal(false)}
-          className="absolute top-4 right-4 z-20 grid h-10 w-10 cursor-pointer place-items-center rounded-full border-2 border-black/5 bg-black/60 text-white shadow-sm backdrop-blur-md transition-all hover:scale-110 hover:bg-black lg:top-6 lg:right-6 dark:border-white/10 dark:bg-white/70 dark:text-black dark:hover:bg-white"
+          aria-label="Close"
+          className="absolute top-3 right-3 z-20 cursor-pointer p-1 text-neutral-950/40 transition-colors duration-200 ease-out hover:text-neutral-950/60 active:scale-95 sm:top-4 sm:right-4 dark:text-slate-50/40 dark:hover:text-slate-50/70"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="currentColor"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
+            <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
           </svg>
         </button>
 
-        {/* Left Side: Main Info */}
-        <div className="relative flex flex-col items-center justify-center gap-4 p-6 text-center lg:w-2/5 lg:gap-6 lg:p-12 lg:pr-0">
-          {/* Weather Icon Glow Effect */}
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-white/60 blur-3xl dark:bg-white/10" />
-            <WeatherIcon
-              code={icon}
-              alt={weather}
-              className="relative w-24 drop-shadow-2xl transition-transform hover:scale-110 md:w-32 lg:w-48"
-            />
+        {/* Hero — mirrors the card layout */}
+        <div className="flex flex-col gap-6 bg-neutral-950/5 p-6 sm:gap-7 sm:p-8 lg:w-2/5 lg:p-10 dark:bg-slate-50/5">
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <h2 className="truncate text-2xl font-semibold tracking-tight text-neutral-950 sm:text-3xl dark:text-slate-50">
+                {name}
+              </h2>
+              <p className="truncate text-sm font-medium text-neutral-950/60 sm:text-base dark:text-slate-50/70">
+                {weather}
+              </p>
+            </div>
+            <div className="relative shrink-0">
+              <div className="absolute -inset-3 rounded-full bg-slate-50/60 blur-xl dark:bg-slate-50/5" />
+              <WeatherIcon
+                code={icon}
+                alt={weather}
+                className="relative h-20 w-20 drop-shadow-md sm:h-24 sm:w-24 lg:h-28 lg:w-28"
+              />
+            </div>
           </div>
 
-          <div className="space-y-1">
-            <h2 className="text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-5xl dark:text-white">
-              {name}
-            </h2>
-            <p className="text-base font-medium text-black/60 lg:text-xl dark:text-white/70">
-              {weather}
+          <div className="flex flex-1 flex-col justify-end gap-3">
+            <p className="text-6xl font-semibold tracking-tighter tabular-nums text-neutral-950/90 sm:text-7xl dark:text-slate-50/90">
+              {Math.round(temperature)}°C
             </p>
-          </div>
 
-          <div className="flex flex-col items-center gap-2 rounded-3xl px-6 py-3 lg:px-8 lg:py-4">
-            <span className="text-5xl font-bold tracking-tight tabular-nums text-black md:text-6xl lg:text-7xl dark:text-white">
-              {Math.round(temperature)}{" "}
-              <span className="absolute text-3xl lg:text-4xl">°</span>
-            </span>
-            <div className="flex gap-4 text-sm text-black/60 lg:text-base dark:text-white/60">
-              <span className="flex items-center gap-1">
-                <span className="text-black/60 dark:text-white/60">↓</span> {Math.round(min)}°
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="text-black/60 dark:text-white/60">↑</span> {Math.round(max)}°
-              </span>
+            <div className="flex items-center justify-between border-t border-neutral-950/10 pt-3 dark:border-slate-50/10">
+              <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
+                <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+                  Min
+                </span>
+                <span className="font-semibold tabular-nums">{Math.round(min)}°</span>
+              </p>
+              <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
+                <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+                  Max
+                </span>
+                <span className="font-semibold tabular-nums">{Math.round(max)}°</span>
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Right Side: Details Grid */}
-        <div className="grid flex-1 grid-cols-2 gap-2 bg-black/5 p-4 backdrop-blur-sm md:gap-3 md:p-6 lg:gap-6 lg:p-10 dark:bg-white/5">
+        {/* Details Grid */}
+        <div className="grid flex-1 grid-cols-2 gap-3 border-t border-neutral-950/10 p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10 dark:border-slate-50/10">
           <StatCard
             title="Feels Like"
             value={`${Math.round(feelsLike)}°`}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M12 9a4 4 0 0 0-2 7.5" />
-                <path d="M12 3v2" />
-                <path d="m6.6 18.4-1.4 1.4" />
-                <path d="M20 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" />
-                <path d="M4 13H2" />
-                <path d="M6.34 7.34 4.93 5.93" />
-              </svg>
-            }
+            slug="thermometer"
           />
           <StatCard
-            title="Wind Speed"
+            title="Wind"
             value={`${wind} m/s`}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M12.8 19.6A2 2 0 1 0 14 16H2" />
-                <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2" />
-                <path d="M9.8 4.4A2 2 0 1 1 11 8H2" />
-              </svg>
-            }
+            slug="wind"
           />
           <StatCard
             title="Humidity"
             value={`${humidity}%`}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z" />
-                <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97" />
-              </svg>
-            }
+            slug="humidity"
           />
           <StatCard
             title="Pressure"
             value={`${pressure} hPa`}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M15.6 2.7a10 10 0 1 0 5.7 5.7" />
-                <circle cx="12" cy="12" r="2" />
-                <path d="M13.4 10.6 19 5" />
-              </svg>
-            }
+            slug="barometer"
           />
           <StatCard
             title="Sunrise"
@@ -215,27 +157,7 @@ export default function WeatherDetail({
               hour: "2-digit",
               minute: "2-digit",
             })}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M12 2v8" />
-                <path d="m4.93 10.93 1.41 1.41" />
-                <path d="M2 18h2" />
-                <path d="M20 18h2" />
-                <path d="m19.07 10.93-1.41 1.41" />
-                <path d="M22 22H2" />
-                <path d="m8 6 4-4 4 4" />
-                <path d="M16 18a4 4 0 0 0-8 0" />
-              </svg>
-            }
+            slug="sunrise"
           />
           <StatCard
             title="Sunset"
@@ -243,27 +165,7 @@ export default function WeatherDetail({
               hour: "2-digit",
               minute: "2-digit",
             })}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M12 10V2" />
-                <path d="m4.93 10.93 1.41 1.41" />
-                <path d="M2 18h2" />
-                <path d="M20 18h2" />
-                <path d="m19.07 10.93-1.41 1.41" />
-                <path d="M22 22H2" />
-                <path d="m16 6-4 4-4-4" />
-                <path d="M16 18a4 4 0 0 0-8 0" />
-              </svg>
-            }
+            slug="sunset"
           />
         </div>
       </div>

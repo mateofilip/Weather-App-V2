@@ -17,6 +17,12 @@ import overcastNightSnow from "@meteocons/svg/fill/overcast-night-snow.svg?raw";
 import fogDay from "@meteocons/svg/fill/fog-day.svg?raw";
 import fogNight from "@meteocons/svg/fill/fog-night.svg?raw";
 import compassNe from "@meteocons/svg/fill/compass-ne.svg?raw";
+import thermometer from "@meteocons/svg/fill/thermometer.svg?raw";
+import windIcon from "@meteocons/svg/monochrome/wind.svg?raw";
+import humidityIcon from "@meteocons/svg/fill/humidity.svg?raw";
+import barometerIcon from "@meteocons/svg/fill/barometer.svg?raw";
+import sunriseIcon from "@meteocons/svg/fill/sunrise.svg?raw";
+import sunsetIcon from "@meteocons/svg/fill/sunset.svg?raw";
 
 const ICONS: Record<string, string> = {
   "01d": clearDay,
@@ -46,16 +52,25 @@ function prepare(raw: string): string {
   return raw.replace(SVG_TAG, "").replace(SVG_END, "");
 }
 
+function prepareMono(raw: string): string {
+  return prepare(raw).replace(/="black"/g, '="currentColor"');
+}
+
 export function weatherIconBody(code: string): string | undefined {
   const raw = ICONS[code];
   return raw ? prepare(raw) : undefined;
 }
 
 const SLUGS: Record<string, string> = {
-  "compass-ne": compassNe,
+  "compass-ne": prepare(compassNe),
+  thermometer: prepare(thermometer),
+  wind: prepareMono(windIcon),
+  humidity: prepare(humidityIcon),
+  barometer: prepare(barometerIcon),
+  sunrise: prepare(sunriseIcon),
+  sunset: prepare(sunsetIcon),
 };
 
 export function meteoconBody(slug: string): string | undefined {
-  const raw = SLUGS[slug];
-  return raw ? prepare(raw) : undefined;
+  return SLUGS[slug];
 }
