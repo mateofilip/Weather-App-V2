@@ -4,6 +4,7 @@ import StackInfo from "./StackInfo";
 import TimeMachine from "./TimeMachine";
 import { Toaster, toast } from "sonner";
 import { useState, useEffect } from "react";
+import { MotionConfig } from "motion/react";
 import type { City } from "../types/City";
 const apiKey = (await import.meta.env.PUBLIC_API_KEY) as string;
 
@@ -57,7 +58,10 @@ export default function Home() {
   }
 
   return (
-    <>
+    <MotionConfig
+      reducedMotion="user"
+      transition={{ duration: 0.2, ease: "easeOut" }}
+    >
       <Nav onSearch={onSearch} />
 
       <Toaster richColors closeButton />
@@ -67,6 +71,6 @@ export default function Home() {
       <TimeMachine />
 
       <StackInfo />
-    </>
+    </MotionConfig>
   );
 }

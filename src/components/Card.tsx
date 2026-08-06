@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import WeatherDetail from "./WeatherDetail";
 import WeatherIcon from "./WeatherIcon";
+import { AnimatePresence } from "motion/react";
 
 interface CardProps {
   id: number;
@@ -44,12 +45,14 @@ export default function Card({
         onClick={() => {
           setShowModal(true);
         }}
-        data-blendy-from="card"
       >
         <button
-          onClick={onClose}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
           aria-label={`Remove ${name}`}
-          className="absolute top-2 right-2 cursor-pointer p-1 text-ink/40 transition-colors duration-200 ease-out hover:text-ink/60 active:scale-95 sm:top-3 sm:right-3"
+          className="text-ink/40 hover:text-ink/60 absolute top-2 right-2 cursor-pointer p-1 transition-colors duration-200 ease-out active:scale-95 sm:top-3 sm:right-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +68,10 @@ export default function Card({
 
         <div className="mb-2 flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="truncate text-lg font-semibold tracking-tight text-ink sm:text-xl">
+            <h3 className="text-ink truncate text-lg font-semibold tracking-tight sm:text-xl">
               {name}
             </h3>
-            <p className="truncate text-sm text-ink/60">{weather}</p>
+            <p className="text-ink/60 truncate text-sm">{weather}</p>
           </div>
           <div className="relative shrink-0">
             <div className="absolute -inset-2 rounded-full bg-slate-50/60 blur-xl dark:bg-slate-50/10" />
@@ -82,45 +85,51 @@ export default function Card({
 
         <div className="flex flex-1 flex-col justify-end gap-3">
           <div>
-            <h5 className="text-5xl font-semibold tracking-tighter tabular-nums text-ink/90 sm:text-6xl">
+            <h5 className="text-ink/90 text-5xl font-semibold tracking-tighter tabular-nums sm:text-6xl">
               {Math.round(temperature)}°C
             </h5>
           </div>
 
-          <div className="flex items-center justify-between border-t border-ink/10 pt-3">
-          <p className="flex items-center gap-1.5 text-sm text-ink/60">
-            <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
-              Min
-            </span>
-            <span className="font-semibold tabular-nums">{Math.round(min)}°</span>
-          </p>
-          <p className="flex items-center gap-1.5 text-sm text-ink/60">
-            <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
-              Max
-            </span>
-            <span className="font-semibold tabular-nums">{Math.round(max)}°</span>
-          </p>
+          <div className="border-ink/10 flex items-center justify-between border-t pt-3">
+            <p className="text-ink/60 flex items-center gap-1.5 text-sm">
+              <span className="text-ink/40 text-xs font-medium tracking-widest uppercase">
+                Min
+              </span>
+              <span className="font-semibold tabular-nums">
+                {Math.round(min)}°
+              </span>
+            </p>
+            <p className="text-ink/60 flex items-center gap-1.5 text-sm">
+              <span className="text-ink/40 text-xs font-medium tracking-widest uppercase">
+                Max
+              </span>
+              <span className="font-semibold tabular-nums">
+                {Math.round(max)}°
+              </span>
+            </p>
           </div>
         </div>
       </article>
 
-      {showModal && (
-        <WeatherDetail
-          setShowModal={setShowModal}
-          name={name}
-          temperature={temperature}
-          min={min}
-          max={max}
-          feelsLike={feelsLike}
-          weather={weather}
-          icon={icon}
-          sunrise={sunrise}
-          sunset={sunset}
-          humidity={humidity}
-          pressure={pressure}
-          wind={wind}
-        />
-      )}
+      <AnimatePresence>
+        {showModal && (
+          <WeatherDetail
+            setShowModal={setShowModal}
+            name={name}
+            temperature={temperature}
+            min={min}
+            max={max}
+            feelsLike={feelsLike}
+            weather={weather}
+            icon={icon}
+            sunrise={sunrise}
+            sunset={sunset}
+            humidity={humidity}
+            pressure={pressure}
+            wind={wind}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

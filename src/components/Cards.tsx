@@ -1,7 +1,8 @@
 import type { City } from "../types/City";
 import Card from "./Card";
 import EmptyState from "./EmptyState";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 export default function Cards({
   cities,
@@ -12,46 +13,74 @@ export default function Cards({
   onClose: (id: number) => void;
   onSearch: (city: string) => void;
 }) {
-  const [parent, enableAnimations] = useAutoAnimate();
+  const [showEmpty, setShowEmpty] = useState(true);
+  const [cardsReady, setCardsReady] = useState(false);
 
-  // Determine grid classes based on number of cities
-  const getGridClasses = () => {
-    if (cities.length === 1) return "grid-cols-1";
-    if (cities.length === 2) return "grid-cols-1 sm:grid-cols-2";
-    if (cities.length === 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
-    return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+  useEffect(() => {
+    if (cities.length > 0) setShowEmpty(false);
+  }, [cities.length]);
+
+  const handleEmptyExitComplete = () => {
+    if (cities.length > 0) setCardsReady(true);
+    else setShowEmpty(true);
+  };
+
+  const handleCardsExitComplete = () => {
+    if (cities.length === 0) {
+      setShowEmpty(true);
+      setCardsReady(false);
+    }
   };
 
   return (
     <main className="m-auto px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
-      {cities.length > 0 ? (
-        <div
-          ref={parent}
-          className={`mx-auto grid w-fit justify-items-center gap-4 sm:gap-6 ${getGridClasses()}`}
-        >
-          {cities.map((city: City) => (
-            <Card
-              key={city.id}
-              id={city.id}
-              name={city.name}
-              temperature={city.temperature}
-              min={city.min}
-              max={city.max}
-              feelsLike={city.feelsLike}
-              weather={city.weather}
-              icon={city.icon}
-              sunrise={city.sunrise}
-              sunset={city.sunset}
-              humidity={city.humidity}
-              pressure={city.pressure}
-              wind={city.wind}
-              onClose={() => onClose(city.id)}
-            />
-          ))}
-        </div>
-      ) : (
-        <EmptyState onSearch={onSearch} />
-      )}
+      <div className="mx-auto flex w-fit max-w-full flex-wrap justify-center gap-4 sm:gap-6">
+        <AnimatePresence onExitComplete={handleEmptyExitComplete}>
+          {showEmpty && cities.length === 0 && (
+            <motion.div
+              key="empty"
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <div className="animate-fade-in">
+                <EmptyState onSearch={onSearch} />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence onExitComplete={handleCardsExitComplete}>
+          {cities.length > 0 &&
+            cardsReady &&
+            cities.map((city: City) => (
+              <motion.div
+                key={city.id}
+                layout
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                <div className="animate-fade-in">
+                  <Card
+                    id={city.id}
+                    name={city.name}
+                    temperature={city.temperature}
+                    min={city.min}
+                    max={city.max}
+                    feelsLike={city.feelsLike}
+                    weather={city.weather}
+                    icon={city.icon}
+                    sunrise={city.sunrise}
+                    sunset={city.sunset}
+                    humidity={city.humidity}
+                    pressure={city.pressure}
+                    wind={city.wind}
+                    onClose={() => onClose(city.id)}
+                  />
+                </div>
+              </motion.div>
+            ))}
+        </AnimatePresence>
+      </div>
     </main>
   );
 }

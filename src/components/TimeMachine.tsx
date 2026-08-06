@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TimeMachineModal from "./TimeMachineModal.tsx";
 import { Image } from "@lonik/oh-image/react";
+import { AnimatePresence } from "motion/react";
 
 export default function TimeMachine() {
   const [showModal, setShowModal] = useState(false);
@@ -21,7 +22,9 @@ export default function TimeMachine() {
         />
       </button>
 
-      {showModal && <TimeMachineModal setShowModal={setShowModal} />}
+      <AnimatePresence>
+        {showModal && <TimeMachineModal setShowModal={setShowModal} />}
+      </AnimatePresence>
     </>
   );
 }

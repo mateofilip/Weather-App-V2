@@ -1,4 +1,5 @@
 import WeatherIcon from "./WeatherIcon";
+import { motion } from "motion/react";
 
 interface WeatherDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,32 +49,40 @@ export default function WeatherDetail({
         <WeatherIcon
           slug={slug}
           alt={title}
-          className="h-6 w-6 shrink-0 text-ink/60 sm:h-7 sm:w-7"
+          className="text-ink/60 h-6 w-6 shrink-0 sm:h-7 sm:w-7"
         />
-        <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
+        <span className="text-ink/40 text-xs font-medium tracking-widest uppercase">
           {title}
         </span>
       </div>
-      <p className="text-xl font-semibold tracking-tight tabular-nums text-ink/90 sm:text-2xl">
+      <p className="text-ink/90 text-xl font-semibold tracking-tight tabular-nums sm:text-2xl">
         {value}
       </p>
     </div>
   );
 
   return (
-    <div
+    <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/25 p-4 backdrop-blur-3xl"
       onClick={() => setShowModal(false)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <div
+      <motion.div
         className="glass-surface relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl sm:rounded-3xl lg:max-w-5xl lg:flex-row"
         onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.96 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
       >
         {/* Close Button */}
         <button
           onClick={() => setShowModal(false)}
           aria-label="Close"
-          className="absolute top-3 right-3 z-20 cursor-pointer p-1 text-ink/40 transition-colors duration-200 ease-out hover:text-ink/60 active:scale-95 sm:top-4 sm:right-4"
+          className="text-ink/40 hover:text-ink/60 absolute top-3 right-3 z-20 cursor-pointer p-1 transition-colors duration-200 ease-out active:scale-95 sm:top-4 sm:right-4"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -90,10 +99,10 @@ export default function WeatherDetail({
         <div className="glass-tint flex flex-col gap-6 p-6 sm:gap-7 sm:p-8 lg:w-2/5 lg:p-10">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
-              <h2 className="truncate text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+              <h2 className="text-ink truncate text-2xl font-semibold tracking-tight sm:text-3xl">
                 {name}
               </h2>
-              <p className="truncate text-sm font-medium text-ink/60 sm:text-base">
+              <p className="text-ink/60 truncate text-sm font-medium sm:text-base">
                 {weather}
               </p>
             </div>
@@ -108,44 +117,40 @@ export default function WeatherDetail({
           </div>
 
           <div className="flex flex-1 flex-col justify-end gap-3">
-            <p className="text-6xl font-semibold tracking-tighter tabular-nums text-ink/90 sm:text-7xl">
+            <p className="text-ink/90 text-6xl font-semibold tracking-tighter tabular-nums sm:text-7xl">
               {Math.round(temperature)}°C
             </p>
 
-            <div className="flex items-center justify-between border-t border-ink/10 pt-3">
-              <p className="flex items-center gap-1.5 text-sm text-ink/60">
-                <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
+            <div className="border-ink/10 flex items-center justify-between border-t pt-3">
+              <p className="text-ink/60 flex items-center gap-1.5 text-sm">
+                <span className="text-ink/40 text-xs font-medium tracking-widest uppercase">
                   Min
                 </span>
-                <span className="font-semibold tabular-nums">{Math.round(min)}°</span>
+                <span className="font-semibold tabular-nums">
+                  {Math.round(min)}°
+                </span>
               </p>
-              <p className="flex items-center gap-1.5 text-sm text-ink/60">
-                <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
+              <p className="text-ink/60 flex items-center gap-1.5 text-sm">
+                <span className="text-ink/40 text-xs font-medium tracking-widest uppercase">
                   Max
                 </span>
-                <span className="font-semibold tabular-nums">{Math.round(max)}°</span>
+                <span className="font-semibold tabular-nums">
+                  {Math.round(max)}°
+                </span>
               </p>
             </div>
           </div>
         </div>
 
         {/* Details Grid */}
-        <div className="glass-deep grid flex-1 grid-cols-2 gap-3 border-t border-ink/10 p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10">
+        <div className="glass-deep border-ink/10 grid flex-1 grid-cols-2 gap-3 border-t p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10">
           <StatCard
             title="Feels Like"
             value={`${Math.round(feelsLike)}°`}
             slug="thermometer"
           />
-          <StatCard
-            title="Wind"
-            value={`${wind} m/s`}
-            slug="wind"
-          />
-          <StatCard
-            title="Humidity"
-            value={`${humidity}%`}
-            slug="humidity"
-          />
+          <StatCard title="Wind" value={`${wind} m/s`} slug="wind" />
+          <StatCard title="Humidity" value={`${humidity}%`} slug="humidity" />
           <StatCard
             title="Pressure"
             value={`${pressure} hPa`}
@@ -168,7 +173,7 @@ export default function WeatherDetail({
             slug="sunset"
           />
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
