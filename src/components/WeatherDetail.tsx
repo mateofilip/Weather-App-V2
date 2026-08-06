@@ -43,18 +43,18 @@ export default function WeatherDetail({
     value: string | React.ReactNode;
     slug: string;
   }) => (
-    <div className="group flex flex-col justify-between gap-3 rounded-2xl border border-slate-50/25 bg-slate-50/40 p-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-50/60 hover:shadow-md active:scale-[0.98] sm:p-5 dark:border-slate-50/10 dark:bg-slate-50/10 dark:hover:bg-slate-50/20">
+    <div className="glass-chip group flex flex-col justify-between gap-3 rounded-2xl p-4 transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.98] sm:p-5">
       <div className="flex items-center gap-2">
         <WeatherIcon
           slug={slug}
           alt={title}
-          className="h-6 w-6 shrink-0 text-neutral-950/60 sm:h-7 sm:w-7 dark:text-slate-50/60"
+          className="h-6 w-6 shrink-0 text-ink/60 sm:h-7 sm:w-7"
         />
-        <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+        <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
           {title}
         </span>
       </div>
-      <p className="text-xl font-semibold tracking-tight tabular-nums text-neutral-950/90 sm:text-2xl dark:text-slate-50/90">
+      <p className="text-xl font-semibold tracking-tight tabular-nums text-ink/90 sm:text-2xl">
         {value}
       </p>
     </div>
@@ -62,18 +62,18 @@ export default function WeatherDetail({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/66 p-4 backdrop-blur-3xl"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/25 p-4 backdrop-blur-3xl"
       onClick={() => setShowModal(false)}
     >
       <div
-        className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-50/25 bg-slate-50/80 shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl sm:rounded-3xl lg:max-w-5xl lg:flex-row dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10"
+        className="glass-surface relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl sm:rounded-3xl lg:max-w-5xl lg:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={() => setShowModal(false)}
           aria-label="Close"
-          className="absolute top-3 right-3 z-20 cursor-pointer p-1 text-neutral-950/40 transition-colors duration-200 ease-out hover:text-neutral-950/60 active:scale-95 sm:top-4 sm:right-4 dark:text-slate-50/40 dark:hover:text-slate-50/70"
+          className="absolute top-3 right-3 z-20 cursor-pointer p-1 text-ink/40 transition-colors duration-200 ease-out hover:text-ink/60 active:scale-95 sm:top-4 sm:right-4"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -87,13 +87,13 @@ export default function WeatherDetail({
         </button>
 
         {/* Hero — mirrors the card layout */}
-        <div className="flex flex-col gap-6 bg-slate-50/40 p-6 sm:gap-7 sm:p-8 lg:w-2/5 lg:p-10 dark:bg-slate-50/10">
+        <div className="glass-tint flex flex-col gap-6 p-6 sm:gap-7 sm:p-8 lg:w-2/5 lg:p-10">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
-              <h2 className="truncate text-2xl font-semibold tracking-tight text-neutral-950 sm:text-3xl dark:text-slate-50">
+              <h2 className="truncate text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
                 {name}
               </h2>
-              <p className="truncate text-sm font-medium text-neutral-950/60 sm:text-base dark:text-slate-50/70">
+              <p className="truncate text-sm font-medium text-ink/60 sm:text-base">
                 {weather}
               </p>
             </div>
@@ -108,19 +108,19 @@ export default function WeatherDetail({
           </div>
 
           <div className="flex flex-1 flex-col justify-end gap-3">
-            <p className="text-6xl font-semibold tracking-tighter tabular-nums text-neutral-950/90 sm:text-7xl dark:text-slate-50/90">
+            <p className="text-6xl font-semibold tracking-tighter tabular-nums text-ink/90 sm:text-7xl">
               {Math.round(temperature)}°C
             </p>
 
-            <div className="flex items-center justify-between border-t border-neutral-950/10 pt-3 dark:border-slate-50/10">
-              <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
-                <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+            <div className="flex items-center justify-between border-t border-ink/10 pt-3">
+              <p className="flex items-center gap-1.5 text-sm text-ink/60">
+                <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
                   Min
                 </span>
                 <span className="font-semibold tabular-nums">{Math.round(min)}°</span>
               </p>
-              <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
-                <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+              <p className="flex items-center gap-1.5 text-sm text-ink/60">
+                <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
                   Max
                 </span>
                 <span className="font-semibold tabular-nums">{Math.round(max)}°</span>
@@ -130,7 +130,7 @@ export default function WeatherDetail({
         </div>
 
         {/* Details Grid */}
-        <div className="grid flex-1 grid-cols-2 gap-3 border-t border-neutral-950/10 bg-slate-50/90 p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10 dark:border-slate-50/10 dark:bg-neutral-900/90">
+        <div className="glass-deep grid flex-1 grid-cols-2 gap-3 border-t border-ink/10 p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10">
           <StatCard
             title="Feels Like"
             value={`${Math.round(feelsLike)}°`}

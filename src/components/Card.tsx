@@ -40,7 +40,7 @@ export default function Card({
   return (
     <>
       <article
-        className="relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl border border-slate-50/25 bg-slate-50/80 px-5 py-10 text-left shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-md active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10"
+        className="glass-surface glass-surface-hover relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl px-5 py-10 text-left transition-all duration-200 ease-out hover:-translate-y-1 active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12"
         onClick={() => {
           setShowModal(true);
         }}
@@ -49,7 +49,7 @@ export default function Card({
         <button
           onClick={onClose}
           aria-label={`Remove ${name}`}
-          className="absolute top-2 right-2 cursor-pointer p-1 text-neutral-950/40 transition-colors duration-200 ease-out hover:text-neutral-950/60 active:scale-95 sm:top-3 sm:right-3 dark:text-slate-50/40 dark:hover:text-slate-50/70"
+          className="absolute top-2 right-2 cursor-pointer p-1 text-ink/40 transition-colors duration-200 ease-out hover:text-ink/60 active:scale-95 sm:top-3 sm:right-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +65,10 @@ export default function Card({
 
         <div className="mb-2 flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="truncate text-lg font-semibold tracking-tight text-neutral-950 sm:text-xl dark:text-slate-50">
+            <h3 className="truncate text-lg font-semibold tracking-tight text-ink sm:text-xl">
               {name}
             </h3>
-            <p className="truncate text-sm text-neutral-950/60 dark:text-slate-50/70">{weather}</p>
+            <p className="truncate text-sm text-ink/60">{weather}</p>
           </div>
           <div className="relative shrink-0">
             <div className="absolute -inset-2 rounded-full bg-slate-50/60 blur-xl dark:bg-slate-50/10" />
@@ -82,20 +82,20 @@ export default function Card({
 
         <div className="flex flex-1 flex-col justify-end gap-3">
           <div>
-            <h5 className="text-5xl font-semibold tracking-tighter tabular-nums text-neutral-950/90 sm:text-6xl dark:text-slate-50/90">
+            <h5 className="text-5xl font-semibold tracking-tighter tabular-nums text-ink/90 sm:text-6xl">
               {Math.round(temperature)}°C
             </h5>
           </div>
 
-          <div className="flex items-center justify-between border-t border-neutral-950/10 pt-3 dark:border-slate-50/10">
-          <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
-            <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+          <div className="flex items-center justify-between border-t border-ink/10 pt-3">
+          <p className="flex items-center gap-1.5 text-sm text-ink/60">
+            <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
               Min
             </span>
             <span className="font-semibold tabular-nums">{Math.round(min)}°</span>
           </p>
-          <p className="flex items-center gap-1.5 text-sm text-neutral-950/60 dark:text-slate-50/70">
-            <span className="text-xs font-medium tracking-widest uppercase text-neutral-950/40 dark:text-slate-50/40">
+          <p className="flex items-center gap-1.5 text-sm text-ink/60">
+            <span className="text-xs font-medium tracking-widest uppercase text-ink/40">
               Max
             </span>
             <span className="font-semibold tabular-nums">{Math.round(max)}°</span>

@@ -2,8 +2,28 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  font-family: "OpenRunde", system-ui, sans-serif;
+@theme {
+  --font-sans: "OpenRunde", system-ui, sans-serif;
+
+  /* Semantic tokens. Flip automatically in dark mode (see .dark overrides below). */
+  --color-ink: oklch(0.21 0 0);
+  --color-accent: oklch(0.58 0.11 248);
+
+  /* Frosted-glass elevation shadows. */
+  --shadow-glass: 0 14px 44px -16px rgb(38 38 38 / 0.22);
+  --shadow-glass-hover: 0 22px 60px -18px rgb(38 38 38 / 0.3);
+  --shadow-chip: 0 4px 16px -8px rgb(38 38 38 / 0.16);
+  --shadow-chip-hover: 0 8px 22px -8px rgb(38 38 38 / 0.24);
+}
+
+.dark {
+  --color-ink: oklch(0.96 0 0);
+  --color-accent: oklch(0.78 0.09 240);
+
+  --shadow-glass: 0 18px 50px -12px rgb(0 0 0 / 0.55);
+  --shadow-glass-hover: 0 26px 70px -14px rgb(0 0 0 / 0.65);
+  --shadow-chip: 0 4px 16px -8px rgb(0 0 0 / 0.4);
+  --shadow-chip-hover: 0 8px 24px -8px rgb(0 0 0 / 0.5);
 }
 
 @font-face {
@@ -38,7 +58,146 @@
   src: url("/OpenRunde-Bold.woff2") format("woff2");
 }
 
-html {
-  font-family: "OpenRunde", system-ui, sans-serif;
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+}
+
+/* Frosted-glass material (Tailwind utilities override these: they live in @layer components). */
+@layer components {
+  .glass-surface {
+    border: 1px solid rgb(255 255 255 / 0.4);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.6), rgb(255 255 255 / 0.28)),
+      rgb(255 255 255 / 0.2);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.65),
+      inset 0 -1px 0 rgb(255 255 255 / 0.1),
+      var(--shadow-glass);
+    backdrop-filter: blur(28px) saturate(1.6);
+    -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  }
+
+  .glass-surface-hover:hover {
+    border-color: rgb(255 255 255 / 0.45);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.68), rgb(255 255 255 / 0.34)),
+      rgb(255 255 255 / 0.24);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.7),
+      inset 0 -1px 0 rgb(255 255 255 / 0.1),
+      var(--shadow-glass-hover);
+  }
+
+  .glass-chip {
+    border: 1px solid rgb(255 255 255 / 0.32);
+    background: linear-gradient(135deg, rgb(255 255 255 / 0.52), rgb(255 255 255 / 0.26));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.55),
+      var(--shadow-chip);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  }
+
+  .glass-chip:hover {
+    background: linear-gradient(135deg, rgb(255 255 255 / 0.64), rgb(255 255 255 / 0.36));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.6),
+      var(--shadow-chip-hover);
+  }
+
+  /* WeatherDetail inner layers */
+  .glass-tint {
+    background: linear-gradient(135deg, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.26));
+  }
+
+  .glass-deep {
+    background: rgb(248 250 252 / 0.92);
+  }
+
+  /* Ambient background wash */
+  .bg-wash {
+    background:
+      radial-gradient(90% 70% at 12% -5%, rgb(125 211 252 / 0.32), transparent 55%),
+      radial-gradient(70% 60% at 100% 0%, rgb(186 230 253 / 0.38), transparent 50%),
+      radial-gradient(85% 75% at 50% 115%, rgb(203 213 225 / 0.4), transparent 55%);
+  }
+
+  .dark .glass-surface {
+    border-color: rgb(255 255 255 / 0.14);
+    background:
+      linear-gradient(135deg, rgb(163 163 163 / 0.15), rgb(23 23 23 / 0.32)),
+      rgb(23 23 23 / 0.44);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.15),
+      inset 0 -1px 0 rgb(255 255 255 / 0.04),
+      var(--shadow-glass);
+  }
+
+  .dark .glass-surface-hover:hover {
+    border-color: rgb(255 255 255 / 0.16);
+    background:
+      linear-gradient(135deg, rgb(163 163 163 / 0.19), rgb(23 23 23 / 0.36)),
+      rgb(23 23 23 / 0.52);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.18),
+      inset 0 -1px 0 rgb(255 255 255 / 0.04),
+      var(--shadow-glass-hover);
+  }
+
+  .dark .glass-chip {
+    border-color: rgb(255 255 255 / 0.12);
+    background: linear-gradient(135deg, rgb(163 163 163 / 0.18), rgb(163 163 163 / 0.06));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.1),
+      var(--shadow-chip);
+  }
+
+  .dark .glass-chip:hover {
+    background: linear-gradient(135deg, rgb(163 163 163 / 0.26), rgb(163 163 163 / 0.1));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.12),
+      var(--shadow-chip-hover);
+  }
+
+  .dark .glass-tint {
+    background: linear-gradient(135deg, rgb(163 163 163 / 0.12), rgb(23 23 23 / 0.2));
+  }
+
+  .dark .glass-deep {
+    background: rgb(23 23 23 / 0.9);
+  }
+
+  .dark .bg-wash {
+    background:
+      radial-gradient(90% 70% at 12% -5%, rgb(163 163 163 / 0.06), transparent 55%),
+      radial-gradient(70% 60% at 100% 0%, rgb(163 163 163 / 0.08), transparent 50%),
+      radial-gradient(85% 75% at 50% 115%, rgb(38 38 38 / 0.6), transparent 55%);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-surface,
+  .glass-chip {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .glass-surface,
+  .glass-tint,
+  .glass-deep {
+    background: rgb(248 250 252 / 0.98);
+  }
+  .glass-chip {
+    background: rgb(248 250 252 / 0.92);
+  }
+  .dark .glass-surface,
+  .dark .glass-tint,
+  .dark .glass-deep {
+    background: rgb(23 23 23 / 0.98);
+  }
+  .dark .glass-chip {
+    background: rgb(38 38 38 / 0.96);
+  }
 }

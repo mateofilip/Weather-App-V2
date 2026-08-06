@@ -16,10 +16,10 @@
 		<meta name="twitter:description" content="A modern, responsive weather app built with Astro, React, and Tailwind CSS. Get real-time weather forecasts, beautiful UI, and detailed weather info for any city." />
 		<meta name="twitter:image" content="/icons/v1site.avif" />
 	</head>
-	<body class="relative flex min-h-dvh flex-col justify-between antialiased bg-slate-50 dark:bg-neutral-950">
+	<body class="bg-wash relative flex min-h-dvh flex-col justify-between bg-slate-100 antialiased dark:bg-neutral-950">
 		<div
 			aria-hidden="true"
-			class="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat bg-[url('/bg-image.avif')] brightness-125 dark:brightness-33"
+			class="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat bg-[url('/bg-image.avif')] opacity-80 dark:opacity-60 dark:brightness-33"
 		/>
 		<slot />
 	</body>

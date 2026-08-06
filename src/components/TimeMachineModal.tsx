@@ -9,15 +9,15 @@ export default function TimeMachineModal({
 }: TimeMachineModalProps) {
   return (
     <div
-      className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/66 backdrop-blur-3xl"
+      className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/25 backdrop-blur-3xl"
       onClick={() => setShowModal(false)}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative grid h-5/6 w-5/6 max-h-[90dvh] place-items-center overflow-y-auto rounded-3xl border border-slate-50/25 bg-slate-50/80 p-3 shadow-sm ring-1 ring-slate-50/30 ring-inset backdrop-blur-xl md:h-3/4 md:w-3/4 dark:border-slate-50/10 dark:bg-neutral-950/60 dark:ring-slate-50/10"
+        className="glass-surface relative grid h-5/6 w-5/6 max-h-[90dvh] place-items-center overflow-y-auto rounded-3xl p-3 md:h-3/4 md:w-3/4"
       >
         <button
-          className="absolute top-3 right-3 z-50 grid h-7 w-7 cursor-pointer place-items-center text-neutral-950/40 transition-colors duration-200 ease-out hover:text-neutral-950/60 active:scale-95 dark:text-slate-50/40 dark:hover:text-slate-50/70"
+          className="absolute top-3 right-3 z-50 grid h-7 w-7 cursor-pointer place-items-center text-ink/40 transition-colors duration-200 ease-out hover:text-ink/60 active:scale-95"
           onClick={() => setShowModal(false)}
         >
           <svg
@@ -40,7 +40,7 @@ export default function TimeMachineModal({
             className="group mx-auto w-full max-w-md"
           >
             <figure className="m-0">
-              <div className="flex items-center justify-center overflow-hidden rounded-2xl border border-slate-50/25 bg-slate-50/40 p-2 shadow-sm ring-1 ring-slate-50/30 ring-inset transition-all duration-200 ease-out group-hover:-rotate-1 group-hover:shadow-md dark:border-slate-50/10 dark:bg-slate-50/10 dark:ring-slate-50/10">
+              <div className="glass-chip flex items-center justify-center overflow-hidden rounded-2xl p-2 transition-all duration-200 ease-out group-hover:-rotate-1">
                 <Image
                   src="/icons/v1site.avif"
                   alt="Screenshot of the original version"
@@ -50,17 +50,17 @@ export default function TimeMachineModal({
                   priority
                 />
               </div>
-              <figcaption className="mt-3 text-center text-xs font-medium text-neutral-950/50 dark:text-slate-50/60">
+              <figcaption className="mt-3 text-center text-xs font-medium text-ink/50">
                 Click to open the original build
               </figcaption>
             </figure>
           </a>
 
           <div className="flex w-full max-w-md flex-col items-center gap-4 text-center md:items-start md:text-left">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-950 sm:text-3xl dark:text-slate-50">
+            <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
               Where it all started
             </h2>
-            <p className="text-sm leading-relaxed text-neutral-950/60 sm:text-base dark:text-slate-50/70">
+            <p className="text-sm leading-relaxed text-ink/60 sm:text-base">
               This was my very first project, and I keep it here on purpose. It
               reminds me how much I've improved as a developer since those
               early builds.
