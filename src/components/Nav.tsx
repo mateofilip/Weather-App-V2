@@ -35,8 +35,8 @@ export default function Nav({
           priority
         />
 
-        <h1 className="hidden text-lg font-bold tracking-tight text-ink sm:block sm:text-xl">
-          Weather<span className="text-ink/70">App</span>
+        <h1 className="text-ink hidden text-lg font-bold tracking-tight sm:block sm:text-xl">
+          Weather<span className="text-accent">App</span>
         </h1>
       </div>
 
@@ -54,7 +54,7 @@ export default function Nav({
           <div className="group relative w-full">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <svg
-                className="h-4 w-4 text-ink/60 transition-colors group-focus-within:text-ink"
+                className="text-ink/60 group-focus-within:text-ink h-4 w-4 transition-colors"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -71,7 +71,7 @@ export default function Nav({
             <input
               type="search"
               placeholder="Search for a city..."
-              className="glass-chip text-md block w-full rounded-full py-2 pr-4 pl-9 text-ink placeholder-ink/60 transition-all focus:w-full focus:border-ink/50 focus:ring-2 focus:ring-ink/20 focus:outline-none"
+              className="glass-chip text-md text-ink placeholder-ink/60 focus:border-ink/50 focus:ring-ink/20 block w-full rounded-full py-2 pr-4 pl-9 transition-all focus:w-full focus:ring-2 focus:outline-none"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
@@ -81,7 +81,7 @@ export default function Nav({
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="glass-chip group relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-all duration-200 ease-out focus:ring-2 focus:ring-ink/20 focus:outline-none sm:h-10 sm:w-10"
+          className="glass-chip group focus:ring-ink/20 relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-all duration-200 ease-out focus:ring-2 focus:outline-none sm:h-10 sm:w-10"
           aria-label="Toggle theme"
         >
           <div className="relative h-5 w-5">
@@ -90,7 +90,7 @@ export default function Nav({
                 isDark
                   ? "scale-0 rotate-180 opacity-0"
                   : "scale-100 rotate-0 opacity-100"
-              } text-ink`}
+              } text-amber-400`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -107,7 +107,7 @@ export default function Nav({
                 isDark
                   ? "scale-100 rotate-0 opacity-100"
                   : "scale-0 -rotate-180 opacity-0"
-              } text-ink`}
+              } text-blue-400`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

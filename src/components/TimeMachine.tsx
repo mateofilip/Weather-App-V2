@@ -16,7 +16,7 @@ export default function TimeMachine() {
         <Image
           src="/icons/timemachine.gif"
           alt="Time Machine"
-          className="w-7 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-105 sm:w-12 md:w-16 lg:w-20 xl:w-24 2xl:w-28"
+          className="w-14 cursor-pointer transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-105 sm:w-28"
           width={678}
           height={584}
         />
