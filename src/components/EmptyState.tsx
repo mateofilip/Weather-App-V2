@@ -3,7 +3,7 @@ import WeatherIcon from "./WeatherIcon";
 export default function EmptyState({
   onSearch,
 }: {
-  onSearch: (city: string) => void;
+  onSearch: (city: string, coords?: { lat: number; lon: number }) => void;
 }) {
   const SUGGESTIONS = ["Buenos Aires", "Paris", "Tokyo", "Amsterdam", "London"];
 
@@ -19,10 +19,10 @@ export default function EmptyState({
           />
         </div>
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+          <h1 className="text-ink text-2xl font-semibold tracking-tight sm:text-3xl">
             What's the weather like?
           </h1>
-          <p className="text-sm text-ink/60 sm:text-base">
+          <p className="text-ink/60 text-sm sm:text-base">
             Search for a city above, or pick one of the suggestions below.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function EmptyState({
             <button
               key={city}
               onClick={() => onSearch(city)}
-              className="glass-chip cursor-pointer rounded-full px-4 py-2 text-sm font-medium text-ink transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-95"
+              className="glass-chip text-ink cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-95"
             >
               {city}
             </button>

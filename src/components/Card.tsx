@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import WeatherDetail from "./WeatherDetail";
 import WeatherIcon from "./WeatherIcon";
 import { AnimatePresence } from "motion/react";
+import { Bookmark, X } from "lucide-react";
 
 interface CardProps {
   id: number;
@@ -17,7 +18,9 @@ interface CardProps {
   humidity: number;
   pressure: number;
   wind: number;
+  pinned: boolean;
   onClose: () => void;
+  onTogglePin: () => void;
 }
 
 export default function Card({
@@ -34,7 +37,9 @@ export default function Card({
   humidity,
   pressure,
   wind,
+  pinned,
   onClose,
+  onTogglePin,
 }: CardProps) {
   const [showModal, setShowModal] = useState(false);
 
@@ -49,22 +54,35 @@ export default function Card({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            onClose();
+            onTogglePin();
           }}
-          aria-label={`Remove ${name}`}
-          className="text-ink/40 hover:text-ink/60 absolute top-2 right-2 cursor-pointer p-1 transition-colors duration-200 ease-out active:scale-95 sm:top-3 sm:right-3"
+          aria-label={pinned ? `Unpin ${name}` : `Pin ${name}`}
+          aria-pressed={pinned}
+          title={pinned ? `Unpin ${name}` : `Pin ${name}`}
+          className={`hover:text-ink absolute top-2 cursor-pointer p-1 text-neutral-500 transition-all duration-200 ease-out active:scale-95 sm:top-3 ${
+            pinned ? "right-2 sm:right-3" : "right-9 sm:right-10"
+          }`}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="14px"
-            viewBox="0 -960 960 960"
-            width="14px"
-            fill="currentColor"
-            className="sm:h-4 sm:w-4"
-          >
-            <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
-          </svg>
+          {pinned ? (
+            <Bookmark className="h-4 w-4" fill="currentColor" />
+          ) : (
+            <Bookmark className="h-4 w-4" />
+          )}
         </button>
+
+        {!pinned && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            aria-label={`Remove ${name}`}
+            title={`Remove ${name}`}
+            className="hover:text-ink absolute top-2 right-2 cursor-pointer p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 sm:top-3 sm:right-3"
+          >
+            <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+          </button>
+        )}
 
         <div className="mb-2 flex items-center justify-between gap-3">
           <div className="min-w-0">

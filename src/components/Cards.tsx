@@ -6,12 +6,16 @@ import { useEffect, useState } from "react";
 
 export default function Cards({
   cities,
+  pinnedIds,
   onClose,
+  onTogglePin,
   onSearch,
 }: {
   cities: City[];
+  pinnedIds: Set<number>;
   onClose: (id: number) => void;
-  onSearch: (city: string) => void;
+  onTogglePin: (city: City) => void;
+  onSearch: (city: string, coords?: { lat: number; lon: number }) => void;
 }) {
   const [showEmpty, setShowEmpty] = useState(true);
   const [cardsReady, setCardsReady] = useState(false);
@@ -74,7 +78,9 @@ export default function Cards({
                     humidity={city.humidity}
                     pressure={city.pressure}
                     wind={city.wind}
+                    pinned={pinnedIds.has(city.id)}
                     onClose={() => onClose(city.id)}
+                    onTogglePin={() => onTogglePin(city)}
                   />
                 </div>
               </motion.div>

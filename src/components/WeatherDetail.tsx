@@ -1,5 +1,6 @@
 import WeatherIcon from "./WeatherIcon";
 import { motion } from "motion/react";
+import { X } from "lucide-react";
 
 interface WeatherDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -82,17 +83,9 @@ export default function WeatherDetail({
         <button
           onClick={() => setShowModal(false)}
           aria-label="Close"
-          className="text-ink/40 hover:text-ink/60 absolute top-3 right-3 z-20 cursor-pointer p-1 transition-colors duration-200 ease-out active:scale-95 sm:top-4 sm:right-4"
+          className="hover:text-ink absolute top-3 right-3 z-20 cursor-pointer p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 sm:top-4 sm:right-4"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="20px"
-            viewBox="0 -960 960 960"
-            width="20px"
-            fill="currentColor"
-          >
-            <path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
-          </svg>
+          <X className="h-5 w-5" />
         </button>
 
         {/* Hero — mirrors the card layout */}

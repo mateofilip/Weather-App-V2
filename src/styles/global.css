@@ -9,6 +9,10 @@
   --color-ink: oklch(0.21 0 0);
   --color-accent: oklch(0.58 0.11 248);
 
+  /* Finite radius (not 2147483647px like rounded-full) — some Chromium/Skia
+     builds misrender huge border-radius values as square corners. */
+  --radius-pill: 999px;
+
   /* Frosted-glass elevation shadows. */
   --shadow-glass: 0 14px 44px -16px rgb(38 38 38 / 0.22);
   --shadow-glass-hover: 0 22px 60px -18px rgb(38 38 38 / 0.3);

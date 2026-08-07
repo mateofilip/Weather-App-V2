@@ -5,9 +5,9 @@ Astro 7 + React 19 + Tailwind CSS v4 weather app (OpenWeatherMap). Single page; 
 ## Commands (use pnpm, not npm)
 
 - `pnpm dev` — dev server at http://localhost:4321
-- `pnpm build` — production build via Vercel adapter (also writes `.vercel/output`)
+- `pnpm build` — production build via Vercel adapter (also writes `.vercel/output`). Do **not** run this after every change — only run it when the user commands a commit. Otherwise verify edits by reading the code.
 - `pnpm preview` — preview the production build
-- No lint/test/typecheck scripts exist. The main verification is `pnpm build`. Do not run `astro check` — `@astrojs/check` is not installed and it prompts to add it.
+- No lint/test/typecheck scripts exist. Do not run `astro check` — `@astrojs/check` is not installed and it prompts to add it.
 
 ## Must-know gotchas
 
