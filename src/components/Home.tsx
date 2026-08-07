@@ -7,6 +7,7 @@ import { Toaster, toast } from "sonner";
 import { useState, useEffect } from "react";
 import { MotionConfig } from "motion/react";
 import type { City } from "../types/City";
+import type { Unit } from "../lib/units";
 const apiKey = (await import.meta.env.PUBLIC_API_KEY) as string;
 
 export default function Home() {
@@ -14,9 +15,16 @@ export default function Home() {
   const [pinnedIds, setPinnedIds] = useState<Set<number>>(new Set());
   const [stackOpen, setStackOpen] = useState(false);
   const [timeMachineOpen, setTimeMachineOpen] = useState(false);
+  const [unit, setUnit] = useState<Unit>(() =>
+    localStorage.getItem("unit") === "fahrenheit" ? "fahrenheit" : "celsius",
+  );
 
   function onClose(id: number) {
     setCities((oldCities) => oldCities.filter((city) => city.id !== id));
+  }
+
+  function clearCities() {
+    setCities((oldCities) => oldCities.filter((city) => pinnedIds.has(city.id)));
   }
 
   function onTogglePin(city: City) {
@@ -152,14 +160,18 @@ export default function Home() {
       <Cards
         cities={cities}
         pinnedIds={pinnedIds}
+        unit={unit}
         onClose={onClose}
         onTogglePin={onTogglePin}
         onSearch={onSearch}
       />
 
       <Toolbar
+        unit={unit}
+        onUnitChange={setUnit}
         onTimeMachine={() => setTimeMachineOpen(true)}
         onStack={() => setStackOpen(true)}
+        onClear={clearCities}
       />
 
       <TimeMachine

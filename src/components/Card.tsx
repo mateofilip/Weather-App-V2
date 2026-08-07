@@ -1,12 +1,16 @@
 import { useRef, useState, useEffect } from "react";
 import WeatherDetail from "./WeatherDetail";
 import WeatherIcon from "./WeatherIcon";
+import AnimatedTemp from "./AnimatedTemp";
 import { AnimatePresence } from "motion/react";
 import { Bookmark, X } from "lucide-react";
+import type { Unit } from "../lib/units";
+import { unitLabel } from "../lib/units";
 
 interface CardProps {
   id: number;
   name: string;
+  unit: Unit;
   temperature: number;
   min: number;
   max: number;
@@ -26,6 +30,7 @@ interface CardProps {
 export default function Card({
   id,
   name,
+  unit,
   temperature,
   min,
   max,
@@ -104,7 +109,7 @@ export default function Card({
         <div className="flex flex-1 flex-col justify-end gap-3">
           <div>
             <h5 className="text-ink/90 text-5xl font-semibold tracking-tighter tabular-nums sm:text-6xl">
-              {Math.round(temperature)}°C
+              <AnimatedTemp value={temperature} unit={unit} label={unitLabel(unit)} />
             </h5>
           </div>
 
@@ -114,7 +119,7 @@ export default function Card({
                 Min
               </span>
               <span className="font-semibold tabular-nums">
-                {Math.round(min)}°
+                <AnimatedTemp value={min} unit={unit} label="°" />
               </span>
             </p>
             <p className="text-ink/60 flex items-center gap-1.5 text-sm">
@@ -122,7 +127,7 @@ export default function Card({
                 Max
               </span>
               <span className="font-semibold tabular-nums">
-                {Math.round(max)}°
+                <AnimatedTemp value={max} unit={unit} label="°" />
               </span>
             </p>
           </div>
@@ -134,6 +139,7 @@ export default function Card({
           <WeatherDetail
             setShowModal={setShowModal}
             name={name}
+            unit={unit}
             temperature={temperature}
             min={min}
             max={max}

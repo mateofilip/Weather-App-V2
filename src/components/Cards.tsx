@@ -1,4 +1,5 @@
 import type { City } from "../types/City";
+import type { Unit } from "../lib/units";
 import Card from "./Card";
 import EmptyState from "./EmptyState";
 import { AnimatePresence, motion } from "motion/react";
@@ -7,12 +8,14 @@ import { useEffect, useState } from "react";
 export default function Cards({
   cities,
   pinnedIds,
+  unit,
   onClose,
   onTogglePin,
   onSearch,
 }: {
   cities: City[];
   pinnedIds: Set<number>;
+  unit: Unit;
   onClose: (id: number) => void;
   onTogglePin: (city: City) => void;
   onSearch: (city: string, coords?: { lat: number; lon: number }) => void;
@@ -67,6 +70,7 @@ export default function Cards({
                   <Card
                     id={city.id}
                     name={city.name}
+                    unit={unit}
                     temperature={city.temperature}
                     min={city.min}
                     max={city.max}

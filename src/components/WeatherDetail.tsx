@@ -1,10 +1,14 @@
 import WeatherIcon from "./WeatherIcon";
+import AnimatedTemp from "./AnimatedTemp";
 import { motion } from "motion/react";
 import { X } from "lucide-react";
+import type { Unit } from "../lib/units";
+import { unitLabel } from "../lib/units";
 
 interface WeatherDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
+  unit: Unit;
   temperature: number;
   min: number;
   max: number;
@@ -21,6 +25,7 @@ interface WeatherDetailProps {
 export default function WeatherDetail({
   setShowModal,
   name,
+  unit,
   temperature,
   min,
   max,
@@ -111,7 +116,7 @@ export default function WeatherDetail({
 
           <div className="flex flex-1 flex-col justify-end gap-3">
             <p className="text-ink/90 text-6xl font-semibold tracking-tighter tabular-nums sm:text-7xl">
-              {Math.round(temperature)}°C
+              <AnimatedTemp value={temperature} unit={unit} label={unitLabel(unit)} />
             </p>
 
             <div className="border-ink/10 flex items-center justify-between border-t pt-3">
@@ -120,7 +125,7 @@ export default function WeatherDetail({
                   Min
                 </span>
                 <span className="font-semibold tabular-nums">
-                  {Math.round(min)}°
+                  <AnimatedTemp value={min} unit={unit} label="°" />
                 </span>
               </p>
               <p className="text-ink/60 flex items-center gap-1.5 text-sm">
@@ -128,7 +133,7 @@ export default function WeatherDetail({
                   Max
                 </span>
                 <span className="font-semibold tabular-nums">
-                  {Math.round(max)}°
+                  <AnimatedTemp value={max} unit={unit} label="°" />
                 </span>
               </p>
             </div>
@@ -139,7 +144,7 @@ export default function WeatherDetail({
         <div className="glass-deep border-ink/10 grid flex-1 grid-cols-2 gap-3 border-t p-6 sm:gap-4 sm:p-8 lg:border-t-0 lg:border-l lg:p-10">
           <StatCard
             title="Feels Like"
-            value={`${Math.round(feelsLike)}°`}
+            value={<AnimatedTemp value={feelsLike} unit={unit} label="°" />}
             slug="thermometer"
           />
           <StatCard title="Wind" value={`${wind} m/s`} slug="wind" />
