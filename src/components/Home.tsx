@@ -2,6 +2,7 @@ import Nav from "./Nav";
 import Cards from "./Cards";
 import StackInfo from "./StackInfo";
 import TimeMachine from "./TimeMachine";
+import Toolbar from "./Toolbar";
 import { Toaster, toast } from "sonner";
 import { useState, useEffect } from "react";
 import { MotionConfig } from "motion/react";
@@ -11,6 +12,8 @@ const apiKey = (await import.meta.env.PUBLIC_API_KEY) as string;
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
   const [pinnedIds, setPinnedIds] = useState<Set<number>>(new Set());
+  const [stackOpen, setStackOpen] = useState(false);
+  const [timeMachineOpen, setTimeMachineOpen] = useState(false);
 
   function onClose(id: number) {
     setCities((oldCities) => oldCities.filter((city) => city.id !== id));
@@ -154,9 +157,17 @@ export default function Home() {
         onSearch={onSearch}
       />
 
-      <TimeMachine />
+      <Toolbar
+        onTimeMachine={() => setTimeMachineOpen(true)}
+        onStack={() => setStackOpen(true)}
+      />
 
-      <StackInfo />
+      <TimeMachine
+        open={timeMachineOpen}
+        onOpenChange={setTimeMachineOpen}
+      />
+
+      <StackInfo open={stackOpen} onOpenChange={setStackOpen} />
     </MotionConfig>
   );
 }

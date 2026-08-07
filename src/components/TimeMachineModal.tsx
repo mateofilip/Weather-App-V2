@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { X } from "lucide-react";
 
 interface TimeMachineModalProps {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowModal: (open: boolean) => void;
 }
 
 export default function TimeMachineModal({

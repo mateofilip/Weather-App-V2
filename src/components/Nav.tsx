@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Image } from "@lonik/oh-image/react";
 import { AnimatePresence, motion } from "motion/react";
-import { Search, Sun, Moon, MapPin } from "lucide-react";
+import { Search, MapPin } from "lucide-react";
 import type { CitySuggestion } from "../types/CitySuggestion";
 
 const apiKey = import.meta.env.PUBLIC_API_KEY as string;
@@ -14,7 +13,6 @@ export default function Nav({
   onSearch: (city: string, coords?: { lat: number; lon: number }) => void;
 }) {
   const [city, setCity] = useState("");
-  const [isDark, setIsDark] = useState(false);
   const [suggestions, setSuggestions] = useState<CitySuggestion[]>([]);
   const [status, setStatus] = useState<SuggestionStatus>("idle");
   const [open, setOpen] = useState(false);
@@ -22,10 +20,6 @@ export default function Nav({
   const [dropdownHeight, setDropdownHeight] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsDark(document.body.classList.contains("dark"));
-  }, []);
 
   useEffect(() => {
     const query = city.trim();
@@ -150,24 +144,8 @@ export default function Nav({
   }, [showDropdown]);
 
   return (
-    <nav className="glass-surface glass-surface-hover sticky top-6 z-50 mx-auto mb-8 flex w-fit max-w-4xl items-center justify-between gap-6 rounded-full p-2 transition-all duration-200 ease-out sm:gap-10 sm:p-2.5">
-      {/* Logo Section */}
-      <div className="flex items-center gap-2 pl-2">
-        <Image
-          src="/icons/navicon.avif"
-          alt="Weather App Icon"
-          className="h-5 w-5 object-contain sm:h-6 sm:w-6"
-          width={1024}
-          height={1024}
-          priority
-        />
-
-        <h1 className="text-ink hidden text-lg font-bold tracking-tight sm:block sm:text-xl">
-          Weather<span className="text-accent">App</span>
-        </h1>
-      </div>
-
-      <div className="flex items-center gap-2">
+    <nav className="sticky top-6 z-50 mx-auto mb-8 w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-20 2xl:px-32">
+      <div className="glass-surface glass-surface-hover mx-auto flex w-full max-w-md items-center gap-2 rounded-full p-2 transition-all duration-200 ease-out sm:p-2.5">
         {/* Search Section */}
         <form
           ref={formRef}
@@ -185,7 +163,7 @@ export default function Nav({
             setOpen(false);
             setHighlightedIndex(-1);
           }}
-          className="relative flex h-8 w-50 items-center sm:h-9 sm:w-80"
+          className="relative flex h-8 flex-1 items-center sm:h-9"
         >
           <motion.div
             animate={{ borderRadius: showDropdown ? 16 : 999 }}
@@ -195,7 +173,7 @@ export default function Nav({
                 ease: "easeOut",
               },
             }}
-            className="glass-chip group focus-within:border-ink/50 focus-within:ring-ink/20 absolute top-0 left-0 z-50 w-50 overflow-hidden transition-colors duration-200 ease-out focus-within:ring-2 sm:w-80"
+            className="glass-chip group focus-within:border-ink/50 focus-within:ring-ink/20 absolute top-0 left-0 z-50 w-full overflow-hidden transition-colors duration-200 ease-out focus-within:ring-2"
           >
             <div className="relative flex h-8 items-center sm:h-9">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -294,30 +272,6 @@ export default function Nav({
             </AnimatePresence>
           </motion.div>
         </form>
-
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="glass-chip group focus:ring-ink/20 relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-all duration-200 ease-out focus:ring-2 focus:outline-none sm:h-10 sm:w-10"
-          aria-label="Toggle theme"
-        >
-          <div className="relative h-5 w-5">
-            <Sun
-              className={`absolute inset-0 h-full w-full transform transition-all duration-200 ease-out ${
-                isDark
-                  ? "scale-0 rotate-180 opacity-0"
-                  : "scale-100 rotate-0 opacity-100"
-              } text-amber-400`}
-            />
-            <Moon
-              className={`absolute inset-0 h-full w-full transform transition-all duration-200 ease-out ${
-                isDark
-                  ? "scale-100 rotate-0 opacity-100"
-                  : "scale-0 -rotate-180 opacity-0"
-              } text-blue-400`}
-            />
-          </div>
-        </button>
       </div>
     </nav>
   );
