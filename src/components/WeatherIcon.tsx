@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useId, useLayoutEffect, useMemo, useRef } from "react";
 import { weatherIconBody, meteoconBody } from "../lib/weatherIcons";
 
 interface WeatherIconProps {
@@ -8,6 +8,15 @@ interface WeatherIconProps {
   alt?: string;
 }
 
+const ID_ATTR = /id="([^"]+)"/g;
+const URL_REF = /url\(#([^)]+)\)/g;
+
+function namespace(body: string, uid: string): string {
+  return body
+    .replace(ID_ATTR, (_m, id: string) => `id="${uid}-${id}"`)
+    .replace(URL_REF, (_m, id: string) => `url(#${uid}-${id})`);
+}
+
 export default function WeatherIcon({
   code,
   slug,
@@ -15,11 +24,15 @@ export default function WeatherIcon({
   alt,
 }: WeatherIconProps) {
   const ref = useRef<SVGSVGElement>(null);
-  const body = slug
-    ? meteoconBody(slug)
-    : code
-      ? weatherIconBody(code)
-      : undefined;
+  const uid = useId().replace(/:/g, "");
+  const body = useMemo(() => {
+    const raw = slug
+      ? meteoconBody(slug)
+      : code
+        ? weatherIconBody(code)
+        : undefined;
+    return raw ? namespace(raw, uid) : undefined;
+  }, [slug, code, uid]);
 
   useLayoutEffect(() => {
     const el = ref.current;
