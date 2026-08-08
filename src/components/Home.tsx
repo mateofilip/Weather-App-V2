@@ -4,20 +4,25 @@ import StackInfo from "./StackInfo";
 import TimeMachine from "./TimeMachine";
 import Toolbar from "./Toolbar";
 import { Toaster, toast } from "sonner";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MotionConfig } from "motion/react";
 import type { City } from "../types/City";
 import type { Unit } from "../lib/units";
-const apiKey = (await import.meta.env.PUBLIC_API_KEY) as string;
+const apiKey = import.meta.env.PUBLIC_API_KEY as string;
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
+  const citiesRef = useRef<City[]>([]);
   const [pinnedIds, setPinnedIds] = useState<Set<number>>(new Set());
   const [stackOpen, setStackOpen] = useState(false);
   const [timeMachineOpen, setTimeMachineOpen] = useState(false);
   const [unit, setUnit] = useState<Unit>(() =>
     localStorage.getItem("unit") === "fahrenheit" ? "fahrenheit" : "celsius",
   );
+
+  useEffect(() => {
+    citiesRef.current = cities;
+  }, [cities]);
 
   function onClose(id: number) {
     setCities((oldCities) => oldCities.filter((city) => city.id !== id));
@@ -52,12 +57,21 @@ export default function Home() {
     cityToSearch: string,
     coords?: { lat: number; lon: number },
   ): Promise<City> {
+    if (!apiKey) throw new Error("Weather API is not configured.");
     const location = coords
       ? `lat=${coords.lat}&lon=${coords.lon}`
       : `q=${encodeURIComponent(cityToSearch)}`;
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?${location}&appid=${apiKey}&units=metric`,
     );
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 403)
+        throw new Error("Invalid API key.");
+      if (response.status === 429)
+        throw new Error("Rate limit reached, try again.");
+      if (response.status === 404) throw new Error("City not found.");
+      throw new Error("Could not reach the weather service.");
+    }
     const data = await response.json();
     if (!data.city) throw new Error("City not found.");
     return {
@@ -130,11 +144,13 @@ export default function Home() {
     try {
       const city = await fetchCity(cityToSearch, coords);
 
-      cities.some((c) => c.id === city.id)
+      citiesRef.current.some((c) => c.id === city.id)
         ? toast.warning("City already added.")
-        : setCities([city, ...cities]);
+        : setCities((old) => [city, ...old]);
     } catch (error) {
-      toast.error("City not found.");
+      toast.error(
+        error instanceof Error ? error.message : "City not found.",
+      );
     }
   }
 
