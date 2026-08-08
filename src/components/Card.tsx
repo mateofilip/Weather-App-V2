@@ -51,9 +51,18 @@ export default function Card({
   return (
     <>
       <article
-        className="glass-surface glass-surface-hover relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl px-5 py-10 text-left transition-all duration-200 ease-out hover:-translate-y-1 active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12"
+        className="glass-surface glass-surface-hover relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl px-5 py-10 text-left transition-all duration-200 ease-out hover:-translate-y-1 focus-visible:ring-ink/30 active:scale-[0.98] focus-visible:ring-2 focus-visible:outline-none sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12"
+        tabIndex={0}
+        role="button"
+        aria-label={`View details for ${name}`}
         onClick={() => {
           setShowModal(true);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setShowModal(true);
+          }
         }}
       >
         <button
