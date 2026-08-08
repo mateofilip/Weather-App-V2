@@ -20,7 +20,11 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
     }
   };
 
-  const { dialogRef, dialogProps } = useDialog(isOpen, handleClose, "Tech stack");
+  const { dialogRef, dialogProps } = useDialog(
+    isOpen,
+    handleClose,
+    "Tech stack",
+  );
 
   useEffect(() => {
     if (open !== undefined) {
@@ -33,7 +37,7 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
   }, [open]);
 
   useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
@@ -86,7 +90,7 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
               <button
                 onClick={handleClose}
                 aria-label="Close"
-                className="hover:text-ink cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 focus-visible:ring-ink/30 focus-visible:ring-2 focus-visible:outline-none"
+                className="hover:text-ink focus-visible:ring-ink/30 cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:outline-none active:scale-95"
               >
                 <X className="h-5 w-5" />
               </button>
