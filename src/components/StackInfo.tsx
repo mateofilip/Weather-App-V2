@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
+import { useDialog } from "../hooks/useDialog";
 
 interface StackInfoProps {
   open?: boolean;
@@ -10,6 +11,16 @@ interface StackInfoProps {
 export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = () => {
+    if (open !== undefined) {
+      onOpenChange?.(false);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  const { dialogRef, dialogProps } = useDialog(isOpen, handleClose, "Tech stack");
 
   useEffect(() => {
     if (open !== undefined) {
@@ -21,16 +32,8 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
     }
   }, [open]);
 
-  const handleClose = () => {
-    if (open !== undefined) {
-      onOpenChange?.(false);
-    } else {
-      setIsOpen(false);
-    }
-  };
-
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = (event: MouseEvent) => {
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
@@ -46,7 +49,7 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
   const stack = [
     { name: "Astro", description: "Web Framework" },
@@ -67,8 +70,12 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <motion.div
-            ref={modalRef}
-            className="glass-surface w-full max-w-sm rounded-3xl p-6"
+            {...dialogProps}
+            ref={(el) => {
+              dialogRef.current = el;
+              modalRef.current = el;
+            }}
+            className="glass-surface w-full max-w-sm rounded-3xl p-6 focus:outline-none"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
@@ -78,7 +85,8 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
               <h2 className="text-ink text-xl font-bold">Tech Stack</h2>
               <button
                 onClick={handleClose}
-                className="hover:text-ink cursor-pointer p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95"
+                aria-label="Close"
+                className="hover:text-ink cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 focus-visible:ring-ink/30 focus-visible:ring-2 focus-visible:outline-none"
               >
                 <X className="h-5 w-5" />
               </button>

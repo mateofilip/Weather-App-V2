@@ -1,6 +1,7 @@
 import { Image } from "@lonik/oh-image/react";
 import { motion } from "motion/react";
 import { X } from "lucide-react";
+import { useDialog } from "../hooks/useDialog";
 
 interface TimeMachineModalProps {
   setShowModal: (open: boolean) => void;
@@ -9,6 +10,8 @@ interface TimeMachineModalProps {
 export default function TimeMachineModal({
   setShowModal,
 }: TimeMachineModalProps) {
+  const { dialogProps } = useDialog(true, () => setShowModal(false), "Time machine");
+
   return (
     <motion.div
       className="fixed top-0 left-0 z-50 grid h-dvh w-dvw place-items-center bg-black/25 backdrop-blur-3xl"
@@ -19,16 +22,18 @@ export default function TimeMachineModal({
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <motion.div
+        {...dialogProps}
         onClick={(e) => e.stopPropagation()}
-        className="glass-surface relative grid h-5/6 max-h-[90dvh] w-5/6 place-items-center overflow-y-auto rounded-3xl p-3 md:h-3/4 md:w-3/4"
+        className="glass-surface relative grid h-5/6 max-h-[90dvh] w-5/6 place-items-center overflow-y-auto rounded-3xl p-3 focus:outline-none md:h-3/4 md:w-3/4"
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
         <button
-          className="hover:text-ink absolute top-3 right-3 z-50 grid h-7 w-7 cursor-pointer place-items-center text-neutral-500 transition-colors duration-200 ease-out active:scale-95"
+          className="hover:text-ink absolute top-3 right-3 z-50 grid h-7 w-7 cursor-pointer place-items-center rounded-full text-neutral-500 transition-colors duration-200 ease-out active:scale-95 focus-visible:ring-ink/30 focus-visible:ring-2 focus-visible:outline-none"
           onClick={() => setShowModal(false)}
+          aria-label="Close"
         >
           <X className="h-5 w-5" />
         </button>

@@ -2,6 +2,7 @@ import WeatherIcon from "./WeatherIcon";
 import AnimatedTemp from "./AnimatedTemp";
 import { motion } from "motion/react";
 import { X } from "lucide-react";
+import { useDialog } from "../hooks/useDialog";
 import type { Unit } from "../lib/units";
 import { unitLabel } from "../lib/units";
 
@@ -40,6 +41,11 @@ export default function WeatherDetail({
 }: WeatherDetailProps) {
   const sunsetTime = new Date(sunset * 1000);
   const sunriseTime = new Date(sunrise * 1000);
+  const { dialogProps } = useDialog(
+    true,
+    () => setShowModal(false),
+    `${name} weather details`,
+  );
 
   const StatCard = ({
     title,
@@ -77,7 +83,8 @@ export default function WeatherDetail({
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <motion.div
-        className="glass-surface relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl sm:rounded-3xl lg:max-w-5xl lg:flex-row"
+        {...dialogProps}
+        className="glass-surface relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl focus:outline-none sm:rounded-3xl lg:max-w-5xl lg:flex-row"
         onClick={(e) => e.stopPropagation()}
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
