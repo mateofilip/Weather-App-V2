@@ -1,40 +1,20 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { useDialog } from "../hooks/useDialog";
 
 interface StackInfoProps {
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
-  const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  const handleClose = () => {
-    if (open !== undefined) {
-      onOpenChange?.(false);
-    } else {
-      setIsOpen(false);
-    }
-  };
-
   const { dialogRef, dialogProps } = useDialog(
-    isOpen,
-    handleClose,
+    open,
+    () => onOpenChange(false),
     "Tech stack",
   );
-
-  useEffect(() => {
-    if (open !== undefined) {
-      if (open) {
-        setIsOpen(true);
-      } else {
-        setIsOpen(false);
-      }
-    }
-  }, [open]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -42,18 +22,18 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
       ) {
-        handleClose();
+        onOpenChange(false);
       }
     };
 
-    if (isOpen) {
+    if (open) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, handleClose]);
+  }, [open, onOpenChange]);
 
   const stack = [
     { name: "Astro", description: "Web Framework" },
@@ -65,7 +45,7 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {open && (
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/25 p-4 backdrop-blur-3xl"
           initial={{ opacity: 0 }}
@@ -88,9 +68,9 @@ export default function StackInfo({ open, onOpenChange }: StackInfoProps) {
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-ink text-xl font-bold">Tech Stack</h2>
               <button
-                onClick={handleClose}
+                onClick={() => onOpenChange(false)}
                 aria-label="Close"
-                className="hover:text-ink focus-visible:ring-ink/30 cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:outline-none active:scale-95"
+                className="hover:text-ink cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 focus-visible:ring-ink/30 focus-visible:ring-2 focus-visible:outline-none"
               >
                 <X className="h-5 w-5" />
               </button>

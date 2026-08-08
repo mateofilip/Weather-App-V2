@@ -13,16 +13,12 @@ A modern, responsive weather application built with Astro, React, and Tailwind C
 - ⚡ Fast, smooth UI with auto-animations
 - 🖼️ Custom icons and OpenRunde font
 
-## Screenshots
-
-![Weather App Screenshot](public/icons/v2site.png)
-
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (v18+ recommended)
-- npm
+- pnpm
 - An OpenWeatherMap API key
 
 ### Setup
@@ -34,7 +30,7 @@ A modern, responsive weather application built with Astro, React, and Tailwind C
    ```
 2. Install dependencies:
    ```sh
-   npm install
+   pnpm install
    ```
 3. Create a `.env` file in the root and add your API key:
    ```env
@@ -42,15 +38,15 @@ A modern, responsive weather application built with Astro, React, and Tailwind C
    ```
 4. Start the development server:
    ```sh
-   npm run dev
+   pnpm dev
    ```
    The app will be available at `http://localhost:4321`.
 
 ### Build for Production
 
 ```sh
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
 ### Deployment
