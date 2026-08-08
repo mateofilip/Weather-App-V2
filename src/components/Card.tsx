@@ -100,9 +100,9 @@ export default function Card({
 
         <div className="mb-2 flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="text-ink truncate text-lg font-semibold tracking-tight sm:text-xl">
+            <h2 className="text-ink truncate text-lg font-semibold tracking-tight sm:text-xl">
               {name}
-            </h3>
+            </h2>
             <p className="text-ink/60 truncate text-sm">{weather}</p>
           </div>
           <div className="relative shrink-0">

@@ -247,6 +247,7 @@ export default function Toolbar({
                 key="theme"
                 type="button"
                 aria-label="Toggle theme"
+                aria-pressed={isDark}
                 title="Toggle theme"
                 initial={enter}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)", x: 0, y: 0 }}

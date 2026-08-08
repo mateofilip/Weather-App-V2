@@ -19,9 +19,9 @@ export default function EmptyState({
           />
         </div>
         <div className="space-y-2">
-          <h1 className="text-ink text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight sm:text-3xl">
             What's the weather like?
-          </h1>
+          </h2>
           <p className="text-ink/60 text-sm sm:text-base">
             Search for a city above, or pick one of the suggestions below.
           </p>
@@ -31,7 +31,7 @@ export default function EmptyState({
             <button
               key={city}
               onClick={() => onSearch(city)}
-              className="glass-chip text-ink cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-95"
+              className="glass-chip text-ink cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 focus-visible:ring-ink/30 active:scale-95 focus-visible:ring-2 focus-visible:outline-none"
             >
               {city}
             </button>

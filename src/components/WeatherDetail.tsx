@@ -95,7 +95,7 @@ export default function WeatherDetail({
         <button
           onClick={() => setShowModal(false)}
           aria-label="Close"
-          className="hover:text-ink absolute top-3 right-3 z-20 cursor-pointer p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 sm:top-4 sm:right-4"
+          className="hover:text-ink absolute top-3 right-3 z-20 cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 focus-visible:ring-ink/30 focus-visible:ring-2 focus-visible:outline-none sm:top-4 sm:right-4"
         >
           <X className="h-5 w-5" />
         </button>
