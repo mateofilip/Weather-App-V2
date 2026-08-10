@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { Broom, Check, Ellipsis, Info, Moon, Ship, Sun, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { Broom, Check, Ellipsis, Info, Moon, Ship, Sun, SunMoon, X } from "lucide-react";
 import type { Unit } from "../lib/units";
+import { useTheme } from "../hooks/useTheme";
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(() =>
@@ -32,11 +33,12 @@ export default function Toolbar({
   onStack: () => void;
   onClear: () => void;
 }) {
+  const reduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery("(min-width: 640px)");
   const [expanded, setExpanded] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [cleared, setCleared] = useState(false);
   const [size, setSize] = useState({ w: 0, h: 0 });
-  const isDesktop = useMediaQuery("(min-width: 640px)");
+  const { theme, toggleTheme } = useTheme();
   const toolbarRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const clearTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -45,10 +47,6 @@ export default function Toolbar({
     return () => {
       if (clearTimerRef.current) clearTimeout(clearTimerRef.current);
     };
-  }, []);
-
-  useEffect(() => {
-    setIsDark(document.body.classList.contains("dark"));
   }, []);
 
   useEffect(() => {
@@ -79,14 +77,12 @@ export default function Toolbar({
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    localStorage.setItem(
-      "theme",
-      localStorage.getItem("theme") === "light" ? "dark" : "light",
-    );
-    document.body.classList.toggle("dark");
-  };
+  const themeLabel =
+    theme === "light"
+      ? "Switch to dark theme"
+      : theme === "dark"
+        ? "Switch to system theme"
+        : "Switch to light theme";
 
   const toggleUnit = () => {
     const next: Unit = unit === "celsius" ? "fahrenheit" : "celsius";
@@ -101,16 +97,35 @@ export default function Toolbar({
     clearTimerRef.current = setTimeout(() => setCleared(false), 1200);
   };
 
-  const offset = isDesktop ? { y: 12 } : { x: 12 };
-  const enter = { opacity: 0, scale: 0.8, filter: "blur(4px)", ...offset };
-  const exit = {
-    opacity: 0,
-    scale: 0.8,
-    filter: "blur(4px)",
-    x: offset.x ?? 0,
-    y: offset.y ?? 0,
-    transition: { duration: 0.15, ease: "easeOut" },
-  };
+  const slide = isDesktop ? { y: 20 } : { x: 20 };
+  const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
+  const easeIn: [number, number, number, number] = [0.4, 0, 1, 1];
+  const enterStagger = 0.045;
+  const exitStagger = 0.03;
+
+  const buttonMotionProps = (index: number, total: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, scale: 0.9, ...slide },
+          animate: { opacity: 1, scale: 1, x: 0, y: 0 },
+          exit: {
+            opacity: 0,
+            scale: 0.9,
+            x: slide.x ?? 0,
+            y: slide.y ?? 0,
+            transition: {
+              duration: 0.15,
+              ease: easeIn,
+              delay: index * exitStagger,
+            },
+          },
+          transition: {
+            duration: 0.26,
+            ease: easeOut,
+            delay: (total - 1 - index) * enterStagger,
+          },
+        };
 
   const actions = [
     {
@@ -133,12 +148,18 @@ export default function Toolbar({
     },
   ];
 
+  const totalButtons = actions.length + 3;
+
   return (
     <div ref={toolbarRef} className="fixed right-4 bottom-4 z-40">
       <motion.div
         initial={false}
         animate={{ width: size.w + 2, height: size.h + 2 }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
+        transition={
+          reduceMotion
+            ? { duration: 0 }
+            : { duration: 0.26, ease: easeOut }
+        }
         className="glass-surface relative overflow-hidden rounded-full"
       >
         <div
@@ -151,16 +172,13 @@ export default function Toolbar({
           <AnimatePresence initial={false}>
             {expanded &&
               [
-                ...actions.map((action) => (
+                ...actions.map((action, i) => (
                   <motion.button
                     key={action.key}
                     type="button"
                     aria-label={action.label}
                     title={action.label}
-                    initial={enter}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)", x: 0, y: 0 }}
-                    exit={exit}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    {...buttonMotionProps(i, totalButtons)}
                     onClick={action.onClick}
                     className={iconButtonClass}
                   >
@@ -172,10 +190,7 @@ export default function Toolbar({
                 type="button"
                 aria-label="Clear unpinned cities"
                 title="Clear unpinned cities"
-                initial={enter}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)", x: 0, y: 0 }}
-                exit={exit}
-                transition={{ duration: 0.15, ease: "easeOut" }}
+                {...buttonMotionProps(actions.length, totalButtons)}
                 onClick={handleClear}
                 className={iconButtonClass}
               >
@@ -221,10 +236,7 @@ export default function Toolbar({
                     ? "Switch to Fahrenheit"
                     : "Switch to Celsius"
                 }
-                initial={enter}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)", x: 0, y: 0 }}
-                exit={exit}
-                transition={{ duration: 0.15, ease: "easeOut" }}
+                {...buttonMotionProps(actions.length + 1, totalButtons)}
                 onClick={toggleUnit}
                 className={iconButtonClass}
               >
@@ -246,31 +258,31 @@ export default function Toolbar({
               <motion.button
                 key="theme"
                 type="button"
-                aria-label="Toggle theme"
-                aria-pressed={isDark}
-                title="Toggle theme"
-                initial={enter}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)", x: 0, y: 0 }}
-                exit={exit}
-                transition={{ duration: 0.15, ease: "easeOut" }}
+                aria-label={themeLabel}
+                title={themeLabel}
+                {...buttonMotionProps(actions.length + 2, totalButtons)}
                 onClick={toggleTheme}
                 className={iconButtonClass}
               >
                 <div className="relative h-5 w-5">
-                  <Sun
-                    className={`absolute inset-0 h-full w-full transform transition-all duration-150 ease-out ${
-                      isDark
-                        ? "scale-0 rotate-180 opacity-0"
-                        : "scale-100 rotate-0 opacity-100"
-                    }`}
-                  />
-                  <Moon
-                    className={`absolute inset-0 h-full w-full transform transition-all duration-150 ease-out ${
-                      isDark
-                        ? "scale-100 rotate-0 opacity-100"
-                        : "scale-0 -rotate-180 opacity-0"
-                    }`}
-                  />
+                  <AnimatePresence initial={false}>
+                    <motion.span
+                      key={theme}
+                      className="absolute inset-0 grid place-items-center"
+                      initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
+                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                      exit={{ opacity: 0, scale: 0.6, rotate: 90 }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
+                    >
+                      {theme === "light" ? (
+                        <Sun className="h-5 w-5" />
+                      ) : theme === "dark" ? (
+                        <Moon className="h-5 w-5" />
+                      ) : (
+                        <SunMoon className="h-5 w-5" />
+                      )}
+                    </motion.span>
+                  </AnimatePresence>
                 </div>
               </motion.button>,
             ]}
