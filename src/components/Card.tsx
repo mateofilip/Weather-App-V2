@@ -1,11 +1,12 @@
-import { useRef, useState, useEffect } from "react";
-import WeatherDetail from "./WeatherDetail";
+import { lazy, Suspense, useRef, useState, useEffect } from "react";
 import WeatherIcon from "./WeatherIcon";
 import AnimatedTemp from "./AnimatedTemp";
 import { AnimatePresence } from "motion/react";
 import { Bookmark, X } from "lucide-react";
 import type { Unit } from "../lib/units";
 import { unitLabel } from "../lib/units";
+
+const WeatherDetail = lazy(() => import("./WeatherDetail"));
 
 interface CardProps {
   id: number;
@@ -51,7 +52,7 @@ export default function Card({
   return (
     <>
       <article
-        className="glass-surface glass-surface-hover relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl px-5 py-10 text-left transition-all duration-200 ease-out hover:-translate-y-1 focus-visible:ring-ink/30 active:scale-[0.98] focus-visible:ring-2 focus-visible:outline-none sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12"
+        className="glass-surface glass-surface-hover focus-visible:ring-ink/30 relative mx-auto flex w-xs cursor-pointer flex-col gap-6 rounded-2xl px-5 py-10 text-left transition-all duration-200 ease-out hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none active:scale-[0.98] sm:gap-7 sm:rounded-3xl sm:px-6 sm:py-12"
         tabIndex={0}
         role="button"
         aria-label={`View details for ${name}`}
@@ -118,7 +119,11 @@ export default function Card({
         <div className="flex flex-1 flex-col justify-end gap-3">
           <div>
             <h5 className="text-ink/90 text-5xl font-semibold tracking-tighter tabular-nums sm:text-6xl">
-              <AnimatedTemp value={temperature} unit={unit} label={unitLabel(unit)} />
+              <AnimatedTemp
+                value={temperature}
+                unit={unit}
+                label={unitLabel(unit)}
+              />
             </h5>
           </div>
 
@@ -143,26 +148,28 @@ export default function Card({
         </div>
       </article>
 
-      <AnimatePresence>
-        {showModal && (
-          <WeatherDetail
-            setShowModal={setShowModal}
-            name={name}
-            unit={unit}
-            temperature={temperature}
-            min={min}
-            max={max}
-            feelsLike={feelsLike}
-            weather={weather}
-            icon={icon}
-            sunrise={sunrise}
-            sunset={sunset}
-            humidity={humidity}
-            pressure={pressure}
-            wind={wind}
-          />
-        )}
-      </AnimatePresence>
+      <Suspense fallback={null}>
+        <AnimatePresence>
+          {showModal && (
+            <WeatherDetail
+              setShowModal={setShowModal}
+              name={name}
+              unit={unit}
+              temperature={temperature}
+              min={min}
+              max={max}
+              feelsLike={feelsLike}
+              weather={weather}
+              icon={icon}
+              sunrise={sunrise}
+              sunset={sunset}
+              humidity={humidity}
+              pressure={pressure}
+              wind={wind}
+            />
+          )}
+        </AnimatePresence>
+      </Suspense>
     </>
   );
 }

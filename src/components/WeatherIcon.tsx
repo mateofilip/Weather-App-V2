@@ -4,6 +4,7 @@ import { weatherIconBody, meteoconBody } from "../lib/weatherIcons";
 interface WeatherIconProps {
   code?: string;
   slug?: string;
+  body?: string;
   className?: string;
   alt?: string;
 }
@@ -20,19 +21,18 @@ function namespace(body: string, uid: string): string {
 export default function WeatherIcon({
   code,
   slug,
+  body: bodyProp,
   className,
   alt,
 }: WeatherIconProps) {
   const ref = useRef<SVGSVGElement>(null);
   const uid = useId().replace(/:/g, "");
   const body = useMemo(() => {
-    const raw = slug
-      ? meteoconBody(slug)
-      : code
-        ? weatherIconBody(code)
-        : undefined;
+    const raw =
+      bodyProp ??
+      (slug ? meteoconBody(slug) : code ? weatherIconBody(code) : undefined);
     return raw ? namespace(raw, uid) : undefined;
-  }, [slug, code, uid]);
+  }, [slug, code, bodyProp, uid]);
 
   useLayoutEffect(() => {
     const el = ref.current;

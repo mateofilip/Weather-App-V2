@@ -1,5 +1,7 @@
-import TimeMachineModal from "./TimeMachineModal.tsx";
+import { lazy, Suspense } from "react";
 import { AnimatePresence } from "motion/react";
+
+const TimeMachineModal = lazy(() => import("./TimeMachineModal.tsx"));
 
 export default function TimeMachine({
   open,
@@ -9,8 +11,10 @@ export default function TimeMachine({
   onOpenChange: (open: boolean) => void;
 }) {
   return (
-    <AnimatePresence>
-      {open && <TimeMachineModal setShowModal={onOpenChange} />}
-    </AnimatePresence>
+    <Suspense fallback={null}>
+      <AnimatePresence>
+        {open && <TimeMachineModal setShowModal={onOpenChange} />}
+      </AnimatePresence>
+    </Suspense>
   );
 }

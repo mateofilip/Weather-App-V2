@@ -3,6 +3,7 @@ import AnimatedTemp from "./AnimatedTemp";
 import { motion } from "motion/react";
 import { X } from "lucide-react";
 import { useDialog } from "../hooks/useDialog";
+import { detailIconBody } from "../lib/detailIcons";
 import type { Unit } from "../lib/units";
 import { unitLabel } from "../lib/units";
 
@@ -59,7 +60,7 @@ export default function WeatherDetail({
     <div className="glass-chip group flex flex-col justify-between gap-3 rounded-2xl p-4 transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.98] sm:p-5">
       <div className="flex items-center gap-2">
         <WeatherIcon
-          slug={slug}
+          body={detailIconBody(slug)}
           alt={title}
           className="text-ink/60 h-6 w-6 shrink-0 sm:h-7 sm:w-7"
         />
@@ -95,7 +96,7 @@ export default function WeatherDetail({
         <button
           onClick={() => setShowModal(false)}
           aria-label="Close"
-          className="hover:text-ink absolute top-3 right-3 z-20 cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out active:scale-95 focus-visible:ring-ink/30 focus-visible:ring-2 focus-visible:outline-none sm:top-4 sm:right-4"
+          className="hover:text-ink focus-visible:ring-ink/30 absolute top-3 right-3 z-20 cursor-pointer rounded-full p-1 text-neutral-500 transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:outline-none active:scale-95 sm:top-4 sm:right-4"
         >
           <X className="h-5 w-5" />
         </button>
@@ -123,7 +124,11 @@ export default function WeatherDetail({
 
           <div className="flex flex-1 flex-col justify-end gap-3">
             <p className="text-ink/90 text-6xl font-semibold tracking-tighter tabular-nums sm:text-7xl">
-              <AnimatedTemp value={temperature} unit={unit} label={unitLabel(unit)} />
+              <AnimatedTemp
+                value={temperature}
+                unit={unit}
+                label={unitLabel(unit)}
+              />
             </p>
 
             <div className="border-ink/10 flex items-center justify-between border-t pt-3">

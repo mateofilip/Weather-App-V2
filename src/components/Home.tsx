@@ -1,14 +1,15 @@
 import Nav from "./Nav";
 import Cards from "./Cards";
-import StackInfo from "./StackInfo";
 import TimeMachine from "./TimeMachine";
 import Toolbar from "./Toolbar";
 import { Toaster, toast } from "sonner";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { MotionConfig } from "motion/react";
 import type { City } from "../types/City";
 import type { Unit } from "../lib/units";
 const apiKey = import.meta.env.PUBLIC_API_KEY as string;
+
+const StackInfo = lazy(() => import("./StackInfo"));
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
@@ -29,7 +30,9 @@ export default function Home() {
   }
 
   function clearCities() {
-    setCities((oldCities) => oldCities.filter((city) => pinnedIds.has(city.id)));
+    setCities((oldCities) =>
+      oldCities.filter((city) => pinnedIds.has(city.id)),
+    );
   }
 
   function onTogglePin(city: City) {
@@ -148,9 +151,7 @@ export default function Home() {
         ? toast.warning("City already added.")
         : setCities((old) => [city, ...old]);
     } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : "City not found.",
-      );
+      toast.error(error instanceof Error ? error.message : "City not found.");
     }
   }
 
@@ -180,12 +181,11 @@ export default function Home() {
         onClear={clearCities}
       />
 
-      <TimeMachine
-        open={timeMachineOpen}
-        onOpenChange={setTimeMachineOpen}
-      />
+      <TimeMachine open={timeMachineOpen} onOpenChange={setTimeMachineOpen} />
 
-      <StackInfo open={stackOpen} onOpenChange={setStackOpen} />
+      <Suspense fallback={null}>
+        <StackInfo open={stackOpen} onOpenChange={setStackOpen} />
+      </Suspense>
     </MotionConfig>
   );
 }
