@@ -34,7 +34,7 @@ A modern, responsive weather application built with Astro, React, and Tailwind C
    ```
 3. Create a `.env` file in the root and add your API key:
    ```env
-   PUBLIC_API_KEY=your_openweathermap_api_key
+   API_KEY=your_openweathermap_api_key
    ```
 4. Start the development server:
    ```sh
@@ -52,7 +52,7 @@ pnpm preview
 ### Deployment
 
 - Deploy easily to Vercel, Netlify, or any static host.
-- Ensure your `PUBLIC_API_KEY` is set in your deployment environment variables.
+- Ensure your `API_KEY` is set in your deployment environment variables. It is read **server-side only** by the `/api/weather` and `/api/geo` proxy routes and never shipped to the client.
 
 ## Credits
 

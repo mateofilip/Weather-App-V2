@@ -7,7 +7,6 @@ import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { MotionConfig } from "motion/react";
 import type { City } from "../types/City";
 import type { Unit } from "../lib/units";
-const apiKey = import.meta.env.PUBLIC_API_KEY as string;
 
 const StackInfo = lazy(() => import("./StackInfo"));
 
@@ -60,20 +59,24 @@ export default function Home() {
     cityToSearch: string,
     coords?: { lat: number; lon: number },
   ): Promise<City> {
-    if (!apiKey) throw new Error("Weather API is not configured.");
     const location = coords
       ? `lat=${coords.lat}&lon=${coords.lon}`
       : `q=${encodeURIComponent(cityToSearch)}`;
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?${location}&appid=${apiKey}&units=metric`,
-    );
+    const response = await fetch(`/api/weather?${location}`);
     if (!response.ok) {
+      let serverMessage: string | null = null;
+      try {
+        const body = await response.json();
+        if (typeof body?.error === "string") serverMessage = body.error;
+      } catch {
+        /* ignore */
+      }
       if (response.status === 401 || response.status === 403)
         throw new Error("Invalid API key.");
       if (response.status === 429)
         throw new Error("Rate limit reached, try again.");
       if (response.status === 404) throw new Error("City not found.");
-      throw new Error("Could not reach the weather service.");
+      throw new Error(serverMessage ?? "Could not reach the weather service.");
     }
     const data = await response.json();
     if (!data.city) throw new Error("City not found.");

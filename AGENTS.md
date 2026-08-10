@@ -32,5 +32,5 @@ Astro 7 + React 19 + Tailwind CSS v4 weather app (OpenWeatherMap). Single page; 
   - **`bg-wash`** — ambient radial-gradient wash used on `body`.
   **Close buttons are an exception: plain text X** (`p-1 text-ink/40 hover:text-ink/60 active:scale-95`) — same in Card, WeatherDetail, StackInfo, and TimeMachineModal. Decorative icon glows use raw `bg-slate-50/… blur-*` (a white halo, not ink).
 - **Fonts:** self-hosted in `public/`. UI font is **OpenRunde**, registered as 4 static `@font-face` weights (400/500/600/700) in `src/styles/global.css` — not a variable font, so don't use a weight range.
-- **Env:** API key is read from `PUBLIC_API_KEY` in `.env` (gitignored) at module top level in `src/components/Home.tsx`. Set it in deployment env too.
+- **Env:** The OpenWeatherMap key is read from `API_KEY` (gitignored, `.env`) **server-side only** in the API proxy routes `src/pages/api/weather.ts` and `src/pages/api/geo.ts` (`prerender = false`, so `astro.config.mjs` uses `output: "hybrid"`). The client fetches relative `/api/weather?...` / `/api/geo?...` and never sees the key. Set `API_KEY` in deployment env too (Vercel dashboard; `PUBLIC_API_KEY` is obsolete — remove it).
 - **Deployment:** `@astrojs/vercel` adapter with `imageService: true`. `@astrojs/netlify` is in deps but unused by config.

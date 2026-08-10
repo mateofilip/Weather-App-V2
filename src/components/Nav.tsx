@@ -3,8 +3,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { Search, MapPin } from "lucide-react";
 import type { CitySuggestion } from "../types/CitySuggestion";
 
-const apiKey = import.meta.env.PUBLIC_API_KEY as string;
-
 type SuggestionStatus = "idle" | "loading" | "success" | "error";
 
 export default function Nav({
@@ -40,7 +38,7 @@ export default function Nav({
     const timer = setTimeout(async () => {
       try {
         const response = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${apiKey}`,
+          `/api/geo?q=${encodeURIComponent(query)}&limit=5`,
           { signal: controller.signal },
         );
         const data = (await response.json()) as Array<{
